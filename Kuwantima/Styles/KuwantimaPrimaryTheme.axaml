@@ -1,0 +1,143 @@
+<Styles xmlns="https://github.com/avaloniaui"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:fluent="clr-namespace:Avalonia.Themes.Fluent;assembly=Avalonia.Themes.Fluent">
+	<Design.PreviewWith>
+		<ScrollViewer Background="AliceBlue" HorizontalScrollBarVisibility="Auto">
+			<!-- Root container with a neutral background and proper padding -->
+			<Border Padding="30"  CornerRadius="8" Classes="KuwantimaGlass" MinWidth="400">
+				<StackPanel Orientation="Horizontal" Spacing="40">
+
+					<!-- LIGHT PREVIEW -->
+					<ThemeVariantScope RequestedThemeVariant="Light">
+						<Border CornerRadius="8" BoxShadow="0 4 10 0 #40000000"
+								Background="{DynamicResource SystemRegionBrush}" MinWidth="400" Padding="20">
+							<StackPanel Spacing="20">
+								<TextBlock Text="Kuwantima Primary (Light)"
+										   FontWeight="Bold" FontSize="18"
+										   Foreground="{DynamicResource SystemAccentColor}" />
+
+								<StackPanel Orientation="Horizontal" Spacing="15">
+									<Button Content="Primary Accent" Classes="accent" />
+									<Button Content="Standard" />
+									<Button Classes="Kuwantima" Content="Kuwantima" />
+								</StackPanel>
+
+								<Separator Background="{DynamicResource SystemBaseLowColor}" Height="1" />
+
+								<UniformGrid Columns="3">
+									<StackPanel Spacing="5" HorizontalAlignment="Center">
+										<Ellipse Width="40" Height="40" Fill="{DynamicResource SystemFillColorSuccessBrush}" />
+										<TextBlock Text="Success" HorizontalAlignment="Center" FontSize="10" Foreground="{DynamicResource SystemBaseHighColor}"/>
+									</StackPanel>
+									<StackPanel Spacing="5" HorizontalAlignment="Center">
+										<Ellipse Width="40" Height="40" Fill="{DynamicResource SystemFillColorAttentionBrush}" />
+										<TextBlock Text="Attention" HorizontalAlignment="Center" FontSize="10" Foreground="{DynamicResource SystemBaseHighColor}"/>
+									</StackPanel>
+									<StackPanel Spacing="5" HorizontalAlignment="Center">
+										<Ellipse Width="40" Height="40" Fill="{DynamicResource SystemFillColorCautionBrush}" />
+										<TextBlock Text="Caution" HorizontalAlignment="Center" FontSize="10" Foreground="{DynamicResource SystemBaseHighColor}"/>
+									</StackPanel>
+								</UniformGrid>
+							</StackPanel>
+						</Border>
+					</ThemeVariantScope>
+
+					<!-- DARK PREVIEW -->
+					<ThemeVariantScope RequestedThemeVariant="Dark">
+						<Border CornerRadius="8" Classes="KuwantimaGlass" MinWidth="400" Padding="20">
+							<StackPanel Spacing="20">
+								<TextBlock Text="Kuwantima Primary (Dark)"
+										   FontWeight="Bold" FontSize="18"
+										   Foreground="{DynamicResource SystemAccentColor}" />
+
+								<StackPanel Orientation="Horizontal" Spacing="15">
+									<Button Content="Primary Accent" Classes="accent" />
+									<Button Content="Standard" />
+									<Button Classes="Kuwantima" Content="Kuwantima" />
+								</StackPanel>
+
+								<Separator Background="{DynamicResource SystemBaseLowColor}" Height="1" />
+
+								<UniformGrid Columns="3">
+									<StackPanel Spacing="5" HorizontalAlignment="Center">
+										<Ellipse Width="40" Height="40" Fill="{DynamicResource SystemFillColorSuccessBrush}" />
+										<TextBlock Text="Success" HorizontalAlignment="Center" FontSize="10" Foreground="{DynamicResource SystemBaseHighColor}"/>
+									</StackPanel>
+									<StackPanel Spacing="5" HorizontalAlignment="Center">
+										<Ellipse Width="40" Height="40" Fill="{DynamicResource SystemFillColorAttentionBrush}" />
+										<TextBlock Text="Attention" HorizontalAlignment="Center" FontSize="10" Foreground="{DynamicResource SystemBaseHighColor}"/>
+									</StackPanel>
+									<StackPanel Spacing="5" HorizontalAlignment="Center">
+										<Ellipse Width="40" Height="40" Fill="{DynamicResource SystemFillColorCautionBrush}" />
+										<TextBlock Text="Caution" HorizontalAlignment="Center" FontSize="10" Foreground="{DynamicResource SystemBaseHighColor}"/>
+									</StackPanel>
+								</UniformGrid>
+							</StackPanel>
+						</Border>
+					</ThemeVariantScope>
+
+				</StackPanel>
+			</Border>
+		</ScrollViewer>
+	</Design.PreviewWith>
+
+
+	<!-- 1. Global Semantic Overrides & Merged Resources -->
+	<Styles.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+
+				<ResourceInclude Source="avares://Kuwantima/Styles/KuwantimaStreamIcons.axaml"/>
+				<ResourceInclude Source="avares://Kuwantima/Styles/ThemeResources.axaml"/>
+
+			</ResourceDictionary.MergedDictionaries>
+
+		</ResourceDictionary>
+	</Styles.Resources>
+
+	<!-- 2. STYLES (For Control Styles and Templates) -->
+
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaButton.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaCheckBox.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaComboBox.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaExpander.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaGlassBorder.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaListBox.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaMenuToggleButton.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaRadioButton.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaTextBox.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaToggleButton.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaSlider.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaProgressBar.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaTabControl.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaToolTip.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaGridSplitter.axaml"/>
+
+	<!-- 3. The Fluent Theme with Custom Palettes -->
+	<fluent:FluentTheme>
+		<fluent:FluentTheme.Palettes>
+			<fluent:ColorPaletteResources x:Key="Light"
+										  Accent="#0078D4"
+										  RegionColor="#F3F3F3"
+										  BaseHigh="MidnightBlue"
+										  BaseLow="AliceBlue"
+										  ChromeLow="#E5E5E5"
+										  ErrorText="#E81123" />
+
+			<fluent:ColorPaletteResources x:Key="Dark"
+										  Accent="#0078D4"
+										  RegionColor="#1C1C1C"
+										  BaseHigh="AliceBlue"
+										  BaseLow="MidnightBlue"
+										  ChromeLow="#2B2B2B"
+										  ErrorText="#F1707A" />
+		</fluent:FluentTheme.Palettes>
+	</fluent:FluentTheme>
+
+	<!-- 4. Global Icon Defaults -->
+	<Style Selector="PathIcon">
+		<Setter Property="Width" Value="20" />
+		<Setter Property="Height" Value="20" />
+	</Style>
+
+</Styles>

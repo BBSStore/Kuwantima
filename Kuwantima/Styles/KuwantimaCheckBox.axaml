@@ -1,0 +1,194 @@
+<Styles xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Design.PreviewWith>
+		<Border Padding="20">
+			<Grid ColumnDefinitions="*, *">
+				<!-- LEFT SIDE: LIGHT THEME PREVIEW -->
+				<ThemeVariantScope RequestedThemeVariant="Light" Grid.Column="0">
+					<Panel Background="{DynamicResource SystemRegionBrush}">
+						<StackPanel Spacing="20" Margin="40" HorizontalAlignment="Center" VerticalAlignment="Center">
+							<TextBlock Text="Light Theme" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
+
+							<!-- Unchecked State -->
+							<CheckBox Classes="Kuwantima" Content="Unchecked" IsChecked="False"/>
+
+							<!-- Checked State -->
+							<CheckBox Classes="Kuwantima" Content="Checked" IsChecked="True"/>
+
+							<!-- Indeterminate State -->
+							<CheckBox Classes="Kuwantima" Content="Indeterminate" IsChecked="{x:Null}" IsThreeState="True"/>
+
+							<!-- Disabled State -->
+							<CheckBox Classes="Kuwantima" Content="Disabled" IsEnabled="False"/>
+
+							<!-- Disabled + Checked -->
+							<CheckBox Classes="Kuwantima" Content="Disabled Checked" IsEnabled="False" IsChecked="True"/>
+						</StackPanel>
+					</Panel>
+				</ThemeVariantScope>
+
+				<!-- RIGHT SIDE: DARK THEME PREVIEW -->
+				<ThemeVariantScope RequestedThemeVariant="Dark" Grid.Column="1">
+					<Panel Background="{DynamicResource SystemRegionBrush}">
+						<StackPanel Spacing="20" Margin="40" HorizontalAlignment="Center" VerticalAlignment="Center">
+							<TextBlock Text="Dark Theme" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
+
+							<!-- Unchecked State -->
+							<CheckBox Classes="Kuwantima" Content="Unchecked" IsChecked="False"/>
+
+							<!-- Checked State -->
+							<CheckBox Classes="Kuwantima" Content="Checked" IsChecked="True"/>
+
+							<!-- Indeterminate State -->
+							<CheckBox Classes="Kuwantima" Content="Indeterminate" IsChecked="{x:Null}" IsThreeState="True"/>
+
+							<!-- Disabled State -->
+							<CheckBox Classes="Kuwantima" Content="Disabled" IsEnabled="False"/>
+
+							<!-- Disabled + Checked -->
+							<CheckBox Classes="Kuwantima" Content="Disabled Checked" IsEnabled="False" IsChecked="True"/>
+						</StackPanel>
+					</Panel>
+				</ThemeVariantScope>
+
+				<!-- Optional Vertical Divider -->
+				<Separator Width="1" VerticalAlignment="Stretch" Background="{DynamicResource KuwantimaDarkBorderBrush}" Grid.ColumnSpan="2"/>
+			</Grid>
+		</Border>
+	</Design.PreviewWith>
+
+	<!-- Base Style for Kuwantima CheckBoxes -->
+	<Style Selector="CheckBox.Kuwantima">
+		<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundBaseLowBrush}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorder}"/>
+		<Setter Property="BorderThickness" Value="1.5"/>
+		<Setter Property="Padding" Value="12,8"/>
+		<Setter Property="CornerRadius" Value="4"/>
+		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Panel>
+					<ContentPresenter Name="PART_ContentPresenter"
+									  TextElement.Foreground="{TemplateBinding Foreground}"
+									  Background="{TemplateBinding Background}"
+									  BorderBrush="{TemplateBinding BorderBrush}"
+									  BorderThickness="{TemplateBinding BorderThickness}"
+									  CornerRadius="{TemplateBinding CornerRadius}"
+									  Padding="{TemplateBinding Padding}"
+									  Content="{TemplateBinding Content}"
+									  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+									  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+
+					<!-- Status indicator (top-left corner) — square with rounded corners -->
+					<Border Name="StatusRing"
+							Width="12" Height="12"
+							Margin="2"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							BorderThickness="1.5"
+							BorderBrush="{DynamicResource KuwantimaGlassGlowBorder}"
+							CornerRadius="2.5"
+							IsHitTestVisible="False">
+						<!-- Checkmark glyph, hidden by default -->
+						<Path Name="CheckGlyph"
+							  Data="M 1,4.5 L 3.5,7 L 7,1.5"
+							  Stroke="{DynamicResource SystemControlBackgroundAccentBrush}"
+							  StrokeThickness="1.5"
+							  StrokeLineCap="Round"
+							  Stretch="Uniform"
+							  Width="7" Height="7"
+							  HorizontalAlignment="Center"
+							  VerticalAlignment="Center"
+							  Opacity="0"/>
+						<!-- Indeterminate dash, hidden by default -->
+					</Border>
+
+					<!-- Indeterminate indicator (top-left corner) -->
+					<Border Name="IndeterminateRing"
+							Width="12" Height="12"
+							Margin="2"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							BorderThickness="1.5"
+							BorderBrush="Transparent"
+							CornerRadius="2.5"
+							IsHitTestVisible="False"
+							IsVisible="False">
+						<Rectangle Width="7" Height="2.5"
+								   HorizontalAlignment="Center"
+								   VerticalAlignment="Center"
+								   Fill="{DynamicResource SystemControlBackgroundAccentBrush}"
+								   RadiusX="0.5" RadiusY="0.5"/>
+					</Border>
+				</Panel>
+			</ControlTemplate>
+		</Setter>
+
+		<!-- 1. Hover -->
+		<Style Selector="^:pointerover">
+			<Setter Property="Background" Value="{DynamicResource KuwantimaControlHoverBrush}"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorderHover}"/>
+		</Style>
+
+		<!-- 2. Checked -->
+		<Style Selector="^:checked">
+			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAccentBrush}"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+
+			<Style Selector="^ /template/ Border#StatusRing">
+				<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+			</Style>
+
+			<Style Selector="^ /template/ Path#CheckGlyph">
+				<Setter Property="Stroke" Value="White"/>
+				<Setter Property="Opacity" Value="1"/>
+			</Style>
+		</Style>
+
+		<!-- 3. Checked + Hover -->
+		<Style Selector="^:checked:pointerover">
+			<Setter Property="Background" Value="{DynamicResource SystemAccentColorLight3}"/>
+		</Style>
+
+		<!-- 4. Indeterminate -->
+		<Style Selector="^:indeterminate">
+			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAccentBrush}"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+
+			<Style Selector="^ /template/ Border#StatusRing">
+				<Setter Property="IsVisible" Value="False"/>
+			</Style>
+
+			<Style Selector="^ /template/ Border#IndeterminateRing">
+				<Setter Property="IsVisible" Value="True"/>
+				<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+			</Style>
+
+			<Style Selector="^ /template/ Border#IndeterminateRing Rectangle">
+				<Setter Property="Fill" Value="White"/>
+			</Style>
+		</Style>
+
+		<!-- 5. Indeterminate + Hover -->
+		<Style Selector="^:indeterminate:pointerover">
+			<Setter Property="Background" Value="{DynamicResource SystemAccentColorLight3}"/>
+		</Style>
+
+		<!-- 6. Disabled: pin Background/Foreground to prevent Fluent's disabled brushes from double-dimming -->
+		<Style Selector="^:disabled">
+			<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundBaseLowBrush}"/>
+			<Setter Property="Foreground" Value="{DynamicResource SystemBaseHighColor}"/>
+			<Setter Property="BorderBrush" Value="Transparent"/>
+			<Setter Property="Opacity" Value="0.5"/>
+			<Setter Property="Cursor" Value="Arrow"/>
+
+			<Style Selector="^ /template/ Path#CheckGlyph">
+				<Setter Property="Opacity" Value="0.3"/>
+			</Style>
+		</Style>
+	</Style>
+</Styles>

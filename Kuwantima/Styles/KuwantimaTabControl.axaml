@@ -1,0 +1,131 @@
+<Styles xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Design.PreviewWith>
+		<Border Padding="20" Width="600">
+			<Grid ColumnDefinitions="*, *">
+				<!-- LEFT SIDE: LIGHT THEME PREVIEW -->
+				<ThemeVariantScope RequestedThemeVariant="Light" Grid.Column="0">
+					<Border Background="{DynamicResource SystemRegionBrush}" Padding="16" Classes="KuwantimaGlass">
+						<StackPanel Spacing="12">
+							<TextBlock Text="Light Theme" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
+
+							<TabControl Classes="Kuwantima">
+								<TabItem Header="Overview">
+									<StackPanel Spacing="6" Margin="8">
+										<TextBlock Text="Fleet status summary" FontSize="12"/>
+										<TextBlock Text="12 vehicles online" FontSize="12" Foreground="{DynamicResource KuwantimaSuccessTextBrush}"/>
+									</StackPanel>
+								</TabItem>
+								<TabItem Header="Details">
+									<TextBlock Text="Detailed breakdown of routes and zones" Margin="8" FontSize="12"/>
+								</TabItem>
+								<TabItem Header="History">
+									<TextBlock Text="Historical data and analytics" Margin="8" FontSize="12"/>
+								</TabItem>
+								<TabItem Header="Disabled" IsEnabled="False">
+									<TextBlock Text="Disabled content"/>
+								</TabItem>
+							</TabControl>
+						</StackPanel>
+					</Border>
+				</ThemeVariantScope>
+
+				<!-- RIGHT SIDE: DARK THEME PREVIEW -->
+				<ThemeVariantScope RequestedThemeVariant="Dark" Grid.Column="1">
+					<Border Background="{DynamicResource SystemRegionBrush}" Padding="16" Classes="KuwantimaGlass">
+						<StackPanel Spacing="12">
+							<TextBlock Text="Dark Theme" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
+
+							<TabControl Classes="Kuwantima">
+								<TabItem Header="Overview">
+									<StackPanel Spacing="6" Margin="8">
+										<TextBlock Text="Fleet status summary" FontSize="12"/>
+										<TextBlock Text="12 vehicles online" FontSize="12" Foreground="{DynamicResource KuwantimaSuccessTextBrush}"/>
+									</StackPanel>
+								</TabItem>
+								<TabItem Header="Details">
+									<TextBlock Text="Detailed breakdown of routes and zones" Margin="8" FontSize="12"/>
+								</TabItem>
+								<TabItem Header="History">
+									<TextBlock Text="Historical data and analytics" Margin="8" FontSize="12"/>
+								</TabItem>
+								<TabItem Header="Disabled" IsEnabled="False">
+									<TextBlock Text="Disabled content"/>
+								</TabItem>
+							</TabControl>
+						</StackPanel>
+					</Border>
+				</ThemeVariantScope>
+			</Grid>
+		</Border>
+	</Design.PreviewWith>
+
+	<!-- ═══ BASE: TabControl.Kuwantima ═══ -->
+	<Style Selector="TabControl.Kuwantima">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="Padding" Value="0"/>
+	</Style>
+
+	<!-- ═══ TAB ITEMS: TabControl.Kuwantima TabItem ═══ -->
+	<Style Selector="TabControl.Kuwantima TabItem">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="Foreground" Value="{DynamicResource SystemBaseHighColor}"/>
+		<Setter Property="Padding" Value="14,8"/>
+		<Setter Property="Margin" Value="0,0,2,0"/>
+		<Setter Property="FontSize" Value="13"/>
+		<Setter Property="Cursor" Value="Hand"/>
+
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Border Name="PART_TabBorder"
+				        Background="{TemplateBinding Background}"
+				        BorderThickness="0,0,0,2"
+				        BorderBrush="Transparent"
+				        Padding="{TemplateBinding Padding}"
+				        CornerRadius="4,4,0,0">
+					<Border.Transitions>
+						<Transitions>
+							<BrushTransition Property="Background" Duration="0:0:0.2"/>
+							<BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+						</Transitions>
+					</Border.Transitions>
+					<ContentPresenter Name="PART_ContentPresenter"
+					                  Content="{TemplateBinding Header}"
+					                  ContentTemplate="{TemplateBinding HeaderTemplate}"
+					                  HorizontalContentAlignment="Center"
+					                  VerticalContentAlignment="Center"/>
+				</Border>
+			</ControlTemplate>
+		</Setter>
+
+		<!-- Hover -->
+		<Style Selector="^:pointerover /template/ Border#PART_TabBorder">
+			<Setter Property="Background" Value="{DynamicResource KuwantimaControlHoverBrush}"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorderHover}"/>
+		</Style>
+
+		<!-- Selected -->
+		<Style Selector="^:selected">
+			<Setter Property="Foreground" Value="{DynamicResource SystemBaseHighColor}"/>
+		</Style>
+		<Style Selector="^:selected /template/ Border#PART_TabBorder">
+			<Setter Property="Background" Value="{DynamicResource KuwantimaControlHoverBrush}"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+		</Style>
+
+		<!-- Selected + Hover -->
+		<Style Selector="^:selected:pointerover /template/ Border#PART_TabBorder">
+			<Setter Property="Background" Value="{DynamicResource SystemAccentColorLight3}"/>
+		</Style>
+
+		<!-- Disabled: pin to prevent Fluent double-dimming -->
+		<Style Selector="^:disabled">
+			<Setter Property="Foreground" Value="{DynamicResource SystemBaseHighColor}"/>
+			<Setter Property="Opacity" Value="0.5"/>
+			<Setter Property="Cursor" Value="Arrow"/>
+		</Style>
+		<Style Selector="^:disabled /template/ Border#PART_TabBorder">
+			<Setter Property="BorderBrush" Value="Transparent"/>
+		</Style>
+	</Style>
+</Styles>

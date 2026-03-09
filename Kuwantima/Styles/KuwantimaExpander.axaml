@@ -1,0 +1,191 @@
+<Styles xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Design.PreviewWith>
+		<Border Padding="20" Width="500">
+			<Grid ColumnDefinitions="*, *">
+				<!-- LEFT SIDE: LIGHT THEME PREVIEW -->
+				<ThemeVariantScope RequestedThemeVariant="Light" Grid.Column="0">
+					<Panel Background="{DynamicResource SystemRegionBrush}">
+						<StackPanel Spacing="16" Margin="20" HorizontalAlignment="Stretch">
+							<TextBlock Text="Light Theme" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
+
+							<Expander Classes="Kuwantima" Header="Collapsed Section">
+								<TextBlock Text="This is the expanded content area. It can contain any controls."
+								           TextWrapping="Wrap" Margin="4"/>
+							</Expander>
+
+							<Expander Classes="Kuwantima" Header="Expanded Section" IsExpanded="True">
+								<StackPanel Spacing="8" Margin="4">
+									<TextBlock Text="Item 1" FontSize="12"/>
+									<TextBlock Text="Item 2" FontSize="12"/>
+									<TextBlock Text="Item 3" FontSize="12"/>
+								</StackPanel>
+							</Expander>
+
+							<Expander Classes="Kuwantima" Header="Disabled" IsEnabled="False">
+								<TextBlock Text="Hidden content"/>
+							</Expander>
+						</StackPanel>
+					</Panel>
+				</ThemeVariantScope>
+
+				<!-- RIGHT SIDE: DARK THEME PREVIEW -->
+				<ThemeVariantScope RequestedThemeVariant="Dark" Grid.Column="1">
+					<Panel Background="{DynamicResource SystemRegionBrush}">
+						<StackPanel Spacing="16" Margin="20" HorizontalAlignment="Stretch">
+							<TextBlock Text="Dark Theme" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
+
+							<Expander Classes="Kuwantima" Header="Collapsed Section">
+								<TextBlock Text="This is the expanded content area. It can contain any controls."
+								           TextWrapping="Wrap" Margin="4"/>
+							</Expander>
+
+							<Expander Classes="Kuwantima" Header="Expanded Section" IsExpanded="True">
+								<StackPanel Spacing="8" Margin="4">
+									<TextBlock Text="Item 1" FontSize="12"/>
+									<TextBlock Text="Item 2" FontSize="12"/>
+									<TextBlock Text="Item 3" FontSize="12"/>
+								</StackPanel>
+							</Expander>
+
+							<Expander Classes="Kuwantima" Header="Disabled" IsEnabled="False">
+								<TextBlock Text="Hidden content"/>
+							</Expander>
+						</StackPanel>
+					</Panel>
+				</ThemeVariantScope>
+
+				<!-- Vertical Divider -->
+				<Separator Width="1" VerticalAlignment="Stretch" Background="{DynamicResource KuwantimaDarkBorderBrush}" Grid.ColumnSpan="2"/>
+			</Grid>
+		</Border>
+	</Design.PreviewWith>
+
+	<!-- ═══ BASE: Expander.Kuwantima ═══ -->
+	<Style Selector="Expander.Kuwantima">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="Padding" Value="0"/>
+		<Setter Property="HorizontalAlignment" Value="Stretch"/>
+
+		<Setter Property="Template">
+			<ControlTemplate>
+				<StackPanel>
+					<!-- Header row: clickable toggle -->
+					<Border Name="HeaderBorder"
+					        Background="{DynamicResource SystemControlBackgroundBaseLowBrush}"
+					        BorderBrush="{DynamicResource KuwantimaGlassGlowBorder}"
+					        BorderThickness="1.5"
+					        CornerRadius="4"
+					        Padding="12,8"
+					        Cursor="Hand">
+						<Border.Transitions>
+							<Transitions>
+								<BrushTransition Property="Background" Duration="0:0:0.2"/>
+								<BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+							</Transitions>
+						</Border.Transitions>
+
+						<ToggleButton Name="PART_toggle"
+						              IsChecked="{TemplateBinding IsExpanded, Mode=TwoWay}"
+						              Background="Transparent"
+						              BorderThickness="0"
+						              Padding="0"
+						              HorizontalAlignment="Stretch"
+						              HorizontalContentAlignment="Stretch"
+						              Cursor="Hand">
+							<ToggleButton.Template>
+								<ControlTemplate>
+									<ContentPresenter Content="{TemplateBinding Content}"
+									                  HorizontalContentAlignment="Stretch"
+									                  Background="Transparent"/>
+								</ControlTemplate>
+							</ToggleButton.Template>
+
+							<Grid ColumnDefinitions="Auto,*">
+								<!-- Chevron -->
+								<Border Name="ChevronContainer"
+								        Width="20" Height="20"
+								        VerticalAlignment="Center"
+								        Margin="0,0,8,0"
+								        RenderTransformOrigin="50%,50%"
+								        RenderTransform="rotate(0deg)">
+									<Border.Transitions>
+										<Transitions>
+											<TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2"/>
+										</Transitions>
+									</Border.Transitions>
+									<PathIcon Data="M 6,2 L 12,8 L 6,14"
+									          Width="10" Height="10"
+									          Foreground="{DynamicResource KuwantimaGlassGlowBorder}">
+										<PathIcon.Transitions>
+											<Transitions>
+												<BrushTransition Property="Foreground" Duration="0:0:0.2"/>
+											</Transitions>
+										</PathIcon.Transitions>
+									</PathIcon>
+								</Border>
+
+								<!-- Header content -->
+								<ContentPresenter Name="PART_HeaderPresenter"
+								                  Grid.Column="1"
+								                  Content="{Binding $parent[Expander].Header}"
+								                  ContentTemplate="{Binding $parent[Expander].HeaderTemplate}"
+								                  VerticalAlignment="Center"/>
+							</Grid>
+						</ToggleButton>
+					</Border>
+
+					<!-- Content area -->
+					<Border Name="ContentBorder"
+					        IsVisible="False"
+					        Padding="{TemplateBinding Padding}"
+					        Margin="0,4,0,0">
+						<ContentPresenter Name="PART_ContentPresenter"
+						                  Content="{TemplateBinding Content}"
+						                  ContentTemplate="{TemplateBinding ContentTemplate}"/>
+					</Border>
+				</StackPanel>
+			</ControlTemplate>
+		</Setter>
+
+		<!-- Hover: highlight header -->
+		<Style Selector="^:pointerover /template/ Border#HeaderBorder">
+			<Setter Property="Background" Value="{DynamicResource KuwantimaControlHoverBrush}"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorderHover}"/>
+		</Style>
+
+		<!-- Expanded: show content, rotate chevron, accent border -->
+		<Style Selector="^:expanded /template/ Border#ContentBorder">
+			<Setter Property="IsVisible" Value="True"/>
+		</Style>
+
+		<Style Selector="^:expanded /template/ Border#HeaderBorder">
+			<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+			<Setter Property="Background" Value="{DynamicResource KuwantimaControlHoverBrush}"/>
+		</Style>
+
+		<Style Selector="^:expanded /template/ Border#ChevronContainer">
+			<Setter Property="RenderTransform" Value="rotate(90deg)"/>
+		</Style>
+
+		<Style Selector="^:expanded /template/ Border#ChevronContainer PathIcon">
+			<Setter Property="Foreground" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+		</Style>
+
+		<!-- Expanded + Hover -->
+		<Style Selector="^:expanded:pointerover /template/ Border#HeaderBorder">
+			<Setter Property="Background" Value="{DynamicResource SystemAccentColorLight3}"/>
+		</Style>
+
+		<!-- Disabled -->
+		<Style Selector="^:disabled">
+			<Setter Property="Opacity" Value="0.5"/>
+		</Style>
+
+		<Style Selector="^:disabled /template/ Border#HeaderBorder">
+			<Setter Property="BorderBrush" Value="Transparent"/>
+			<Setter Property="Cursor" Value="Arrow"/>
+		</Style>
+	</Style>
+</Styles>

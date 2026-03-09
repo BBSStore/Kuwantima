@@ -1,0 +1,202 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+					xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+					mc:Ignorable="d">
+
+	<Design.PreviewWith>
+		<ScrollViewer HorizontalScrollBarVisibility="Auto">
+			<!-- Neutral backdrop to make both themes pop -->
+			<Border Padding="30" Background="#808080">
+				<StackPanel Orientation="Horizontal" Spacing="40">
+
+					<!-- LIGHT SIDE -->
+					<ThemeVariantScope RequestedThemeVariant="Light">
+						<Border Padding="20" MinWidth="300" CornerRadius="8"
+								Background="{DynamicResource SystemRegionBrush}"
+								BoxShadow="0 4 10 0 #40000000">
+							<StackPanel Spacing="15">
+								<TextBlock Text="SideMenu Icons (Light)" FontWeight="Bold" Foreground="{DynamicResource SystemBaseHighColor}"/>
+
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<PathIcon Data="{StaticResource Icon.Home}" Foreground="{DynamicResource SystemAccentColor}"/>
+									<TextBlock Text="Home" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource SystemBaseHighColor}"/>
+								</StackPanel>
+
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<PathIcon Data="{StaticResource Icon.Gear}" Foreground="{DynamicResource SystemAccentColor}"/>
+									<TextBlock Text="Settings" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource SystemBaseHighColor}"/>
+								</StackPanel>
+
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<PathIcon Data="{StaticResource Icon.Sliders}" Foreground="{DynamicResource SystemFillColorAttentionBrush}"/>
+									<TextBlock Text="Configuration" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource SystemBaseHighColor}"/>
+								</StackPanel>
+
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<PathIcon Data="{StaticResource Icon.Expand}" Foreground="{DynamicResource SystemFillColorAttentionBrush}"/>
+									<TextBlock Text="Expand" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource SystemBaseHighColor}"/>
+								</StackPanel>
+
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<PathIcon Data="{StaticResource Icon.Collapse}" Foreground="{DynamicResource SystemFillColorAttentionBrush}"/>
+									<TextBlock Text="Collapse" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource SystemBaseHighColor}"/>
+								</StackPanel>
+
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<PathIcon Data="{StaticResource Icon.Sun}" Foreground="{DynamicResource SystemFillColorAttentionBrush}"/>
+									<TextBlock Text="Sun" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource SystemBaseHighColor}"/>
+								</StackPanel>
+
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<PathIcon Data="{StaticResource Icon.Moon.ThirdEye.Smiling}" Foreground="{DynamicResource SystemFillColorAttentionBrush}"/>
+									<TextBlock Text="Moon" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource SystemBaseHighColor}"/>
+								</StackPanel>
+
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<PathIcon Data="{StaticResource Icon.Search}" Foreground="{DynamicResource SystemFillColorAttentionBrush}"/>
+									<TextBlock Text="Search" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource SystemBaseHighColor}"/>
+								</StackPanel>
+
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<PathIcon Data="{StaticResource Icon.Clear.Circle}" Foreground="{DynamicResource SystemFillColorAttentionBrush}"/>
+									<TextBlock Text="Clear" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource SystemBaseHighColor}"/>
+								</StackPanel>
+
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<PathIcon Data="{StaticResource Icon.Layers}" Foreground="{DynamicResource SystemFillColorAttentionBrush}"/>
+									<TextBlock Text="Layers" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource SystemBaseHighColor}"/>
+								</StackPanel>
+
+							</StackPanel>
+						</Border>
+					</ThemeVariantScope>
+
+					<!-- DARK SIDE -->
+					<ThemeVariantScope RequestedThemeVariant="Dark">
+						<Border Padding="20" MinWidth="300" CornerRadius="8"
+								Background="{DynamicResource SystemRegionBrush}"
+								BoxShadow="0 4 10 0 #40000000">
+							<StackPanel Spacing="15">
+								<TextBlock Text="SideMenu Icons (Dark)" FontWeight="Bold" Foreground="{DynamicResource SystemBaseHighColor}"/>
+
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<PathIcon Data="{StaticResource Icon.Home}" Foreground="{DynamicResource SystemAccentColor}"/>
+									<TextBlock Text="Home" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource SystemBaseHighColor}"/>
+								</StackPanel>
+
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<PathIcon Data="{StaticResource Icon.Gear}" Foreground="{DynamicResource SystemAccentColor}"/>
+									<TextBlock Text="Settings" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource SystemBaseHighColor}"/>
+								</StackPanel>
+
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<PathIcon Data="{StaticResource Icon.Sliders}" Foreground="{DynamicResource SystemFillColorAttentionBrush}"/>
+									<TextBlock Text="Configuration" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource SystemBaseHighColor}"/>
+								</StackPanel>
+
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<PathIcon Data="{StaticResource Icon.Expand}" Foreground="{DynamicResource SystemFillColorAttentionBrush}"/>
+									<TextBlock Text="Expand" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource SystemBaseHighColor}"/>
+								</StackPanel>
+
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<PathIcon Data="{StaticResource Icon.Collapse}" Foreground="{DynamicResource SystemFillColorAttentionBrush}"/>
+									<TextBlock Text="Collapse" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource SystemBaseHighColor}"/>
+								</StackPanel>
+
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<PathIcon Data="{StaticResource Icon.Sun}" Foreground="{DynamicResource SystemFillColorAttentionBrush}"/>
+									<TextBlock Text="Sun" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource SystemBaseHighColor}"/>
+								</StackPanel>
+
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<PathIcon Data="{StaticResource Icon.Moon.ThirdEye.Smiling}" Foreground="{DynamicResource SystemFillColorAttentionBrush}"/>
+									<TextBlock Text="Moon" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource SystemBaseHighColor}"/>
+								</StackPanel>
+
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<PathIcon Data="{StaticResource Icon.Search}" Foreground="{DynamicResource SystemFillColorAttentionBrush}"/>
+									<TextBlock Text="Search" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource SystemBaseHighColor}"/>
+								</StackPanel>
+
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<PathIcon Data="{StaticResource Icon.Clear.Circle}" Foreground="{DynamicResource SystemFillColorAttentionBrush}"/>
+									<TextBlock Text="Clear" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource SystemBaseHighColor}"/>
+								</StackPanel>
+
+								<StackPanel Orientation="Horizontal" Spacing="10">
+									<PathIcon Data="{StaticResource Icon.Layers}" Foreground="{DynamicResource SystemFillColorAttentionBrush}"/>
+									<TextBlock Text="Layers" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource SystemBaseHighColor}"/>
+								</StackPanel>
+
+							</StackPanel>
+						</Border>
+					</ThemeVariantScope>
+
+				</StackPanel>
+			</Border>
+		</ScrollViewer>
+	</Design.PreviewWith>
+
+	<!-- Navigation -->
+	<StreamGeometry x:Key="Icon.Home">
+		M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z
+	</StreamGeometry>
+
+	<!-- Settings -->
+	<StreamGeometry x:Key="Icon.Gear">
+		M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.35 19.43,11.03L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.97 19.05,5.05L16.56,6.05C16.04,5.65 15.44,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.56,5.32 7.96,5.65 7.44,6.05L4.95,5.05C4.73,4.97 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11.03C4.53,11.35 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.95C7.96,18.35 8.56,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.44,18.68 16.04,18.35 16.56,17.95L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z
+	</StreamGeometry>
+
+	<!-- Configuration -->
+	<StreamGeometry x:Key="Icon.Sliders">
+		M3,17V19H9V17H3M3,5V7H13V5H3M13,21V19H21V17H13V15H11V21H13M7,9V11H3V13H7V15H9V9H7M21,13V11H11V13H21M15,9H17V7H21V5H17V3H15V9Z
+	</StreamGeometry>
+
+	<!-- Layout -->
+	<StreamGeometry x:Key="Icon.Expand">
+		M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z
+	</StreamGeometry>
+
+	<StreamGeometry x:Key="Icon.Collapse">
+		M4,2H20A2,2 0 0,1 22,4V20A2,2 0 0,1 20,22H4A2,2 0 0,1 2,20V4A2,2 0 0,1 4,2M4,4V20H10V4H4M12,4V20H20V4H12M18,12L14,8V11H12V13H14V16L18,12Z
+	</StreamGeometry>
+
+	<!-- Theme -->
+	<StreamGeometry x:Key="Icon.Sun">
+		M12,4.5C12.4142,4.5 12.75,4.16421 12.75,3.75V2.75C12.75,2.33579 12.4142,2 12,2C11.5858,2 11.25,2.33579 11.25,2.75V3.75C11.25,4.16421 11.5858,4.5 12,4.5ZM17.3033,6.6967C17.5962,6.40381 17.5962,5.92893 17.3033,5.63604L16.5962,4.92893C16.3033,4.63604 15.8284,4.63604 15.5355,4.92893C15.2426,5.22183 15.2426,5.6967 15.5355,5.98959L16.2426,6.6967C16.5355,6.98959 17.0104,6.98959 17.3033,6.6967ZM21.25,12C21.25,11.5858 20.9142,11.25 20.5,11.25H19.5C19.0858,11.25 18.75,11.5858 18.75,12C18.75,12.4142 19.0858,12.75 19.5,12.75H20.5C20.9142,12.75 21.25,12.4142 21.25,12ZM17.3033,17.3033C17.5962,17.5962 18.0711,17.5962 18.364,17.3033L19.0711,16.5962C19.364,16.3033 19.364,15.8284 19.0711,15.5355C18.7782,15.2426 18.3033,15.2426 18.0104,15.5355L17.3033,16.2426C17.0104,16.5355 17.0104,17.0104 17.3033,17.3033ZM12,18.75C11.5858,18.75 11.25,19.0858 11.25,19.5V20.5C11.25,20.9142 11.5858,21.25 12,21.25C12.4142,21.25 12.75,20.9142 12.75,20.5V19.5C12.75,19.0858 12.4142,18.75 12,18.75ZM6.6967,17.3033C6.40381,17.5962 5.92893,17.5962 5.63604,17.3033L4.92893,16.5962C4.63604,16.3033 4.63604,15.8284 4.92893,15.5355C5.22183,15.2426 5.6967,15.2426 5.98959,15.5355L6.6967,16.2426C6.98959,16.5355 6.98959,17.0104 6.6967,17.3033ZM2.75,11.25C2.33579,11.25 2,11.5858 2,12C2,12.4142 2.33579,12.75 2.75,12.75H3.75C4.16421,12.75 4.5,12.4142 4.5,12C4.5,11.5858 4.16421,11.25 3.75,11.25H2.75ZM6.6967,6.6967C6.98959,6.40381 6.98959,5.92893 6.6967,5.63604L5.98959,4.92893C5.6967,4.63604 5.22183,4.63604 4.92893,4.92893C4.63604,5.22183 4.63604,5.6967 4.92893,5.98959L5.63604,6.6967C5.92893,6.98959 6.40381,6.98959 6.6967,6.6967ZM12,17C14.7614,17 17,14.7614 17,12C17,9.23858 14.7614,7 12,7C9.23858,7 7,9.23858 7,12C7,14.7614 9.23858,17 12,17ZM12,15.5C10.067,15.5 8.5,13.933 8.5,12C8.5,10.067 10.067,8.5 12,8.5C13.933,8.5 15.5,10.067 15.5,12C15.5,13.933 13.933,15.5 12,15.5Z
+	</StreamGeometry>
+
+	<StreamGeometry x:Key="Icon.Moon.ThirdEye.Smiling">
+		M 2,14
+		A 10,10 0 0,0 22,14
+		A 10,8 0 0,1 2,14
+		M 7,6 A 1,1 0 1,1 7.1,6
+		M 17,6 A 1,1 0 1,1 17.1,6
+		M 12,3 A 1.5,1.5 0 1,1 12.1,3
+	</StreamGeometry>
+
+	<!-- Search -->
+	<StreamGeometry x:Key="Icon.Search">
+		M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z
+	</StreamGeometry>
+
+	<!-- Dismiss -->
+	<StreamGeometry x:Key="Icon.Clear.Circle">M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z</StreamGeometry>
+
+	<!-- Layers -->
+	<StreamGeometry x:Key="Icon.Layers">
+		M12,16L19.36,10.27L21,9L12,2L3,9L4.63,10.27M12,18.54L4.62,12.81L3,14.07L12,21.07L21,14.07L19.37,12.8L12,18.54Z
+	</StreamGeometry>
+
+	<!-- Refresh -->
+	<StreamGeometry x:Key="Icon.Refresh">M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z</StreamGeometry>
+
+	<!-- Map -->
+	<StreamGeometry x:Key="Icon.Map">M15,19L9,16.89V5L15,7.11M20.5,3C20.44,3 20.39,3 20.34,3.03L15,5.1L9,3L3.36,4.9C3.15,4.97 3,5.15 3,5.38V20.5A0.5,0.5 0 0,0 3.5,21C3.55,21 3.61,21 3.66,20.97L9,18.9L15,21L20.64,19.1C20.85,19.03 21,18.85 21,18.62V3.5A0.5,0.5 0 0,0 20.5,3Z</StreamGeometry>
+
+	<!-- Copy -->
+	<StreamGeometry x:Key="Icon.Copy">M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z</StreamGeometry>
+
+</ResourceDictionary>

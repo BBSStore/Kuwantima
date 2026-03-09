@@ -1,0 +1,163 @@
+<Styles xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<Design.PreviewWith>
+		<ScrollViewer HorizontalScrollBarVisibility="Auto">
+			<Border Padding="30" Background="#808080">
+				<StackPanel Orientation="Horizontal" Spacing="40">
+
+					<!-- LIGHT SIDE -->
+					<ThemeVariantScope RequestedThemeVariant="Light">
+						<Border Padding="20" MinWidth="260" CornerRadius="8"
+								Background="{DynamicResource SystemRegionBrush}"
+								BoxShadow="0 4 10 0 #40000000">
+							<StackPanel Spacing="10">
+								<TextBlock Text="KuwantimaMenuToggle (Light)" FontWeight="Bold" Foreground="{DynamicResource SystemBaseHighColor}"/>
+
+								<TextBlock Text="Expanded" FontSize="11" Foreground="{DynamicResource SystemBaseHighColor}" Margin="0,6,0,0"/>
+								<ToggleButton Classes="KuwantimaMenu Expanded"
+											  Tag="{StaticResource Icon.Expand}"
+											  Content="Expand" IsChecked="False"/>
+								<ToggleButton Classes="KuwantimaMenu Expanded"
+											  Tag="{StaticResource Icon.Collapse}"
+											  Content="Collapse" IsChecked="True"/>
+
+								<TextBlock Text="Collapsed" FontSize="11" Foreground="{DynamicResource SystemBaseHighColor}" Margin="0,6,0,0"/>
+								<ToggleButton Classes="KuwantimaMenu"
+											  Tag="{StaticResource Icon.Expand}"
+											  Content="Expand" IsChecked="False"/>
+								<ToggleButton Classes="KuwantimaMenu"
+											  Tag="{StaticResource Icon.Collapse}"
+											  Content="Collapse" IsChecked="True"/>
+
+								<TextBlock Text="Disabled" FontSize="11" Foreground="{DynamicResource SystemBaseHighColor}" Margin="0,6,0,0"/>
+								<ToggleButton Classes="KuwantimaMenu Expanded"
+											  Tag="{StaticResource Icon.Gear}"
+											  Content="Disabled" IsEnabled="False"/>
+							</StackPanel>
+						</Border>
+					</ThemeVariantScope>
+
+					<!-- DARK SIDE -->
+					<ThemeVariantScope RequestedThemeVariant="Dark">
+						<Border Padding="20" MinWidth="260" CornerRadius="8"
+								Background="{DynamicResource SystemRegionBrush}"
+								BoxShadow="0 4 10 0 #40000000">
+							<StackPanel Spacing="10">
+								<TextBlock Text="KuwantimaMenuToggle (Dark)" FontWeight="Bold" Foreground="{DynamicResource SystemBaseHighColor}"/>
+
+								<TextBlock Text="Expanded" FontSize="11" Foreground="{DynamicResource SystemBaseHighColor}" Margin="0,6,0,0"/>
+								<ToggleButton Classes="KuwantimaMenu Expanded"
+											  Tag="{StaticResource Icon.Expand}"
+											  Content="Expand" IsChecked="False"/>
+								<ToggleButton Classes="KuwantimaMenu Expanded"
+											  Tag="{StaticResource Icon.Collapse}"
+											  Content="Collapse" IsChecked="True"/>
+
+								<TextBlock Text="Collapsed" FontSize="11" Foreground="{DynamicResource SystemBaseHighColor}" Margin="0,6,0,0"/>
+								<ToggleButton Classes="KuwantimaMenu"
+											  Tag="{StaticResource Icon.Expand}"
+											  Content="Expand" IsChecked="False"/>
+								<ToggleButton Classes="KuwantimaMenu"
+											  Tag="{StaticResource Icon.Collapse}"
+											  Content="Collapse" IsChecked="True"/>
+
+								<TextBlock Text="Disabled" FontSize="11" Foreground="{DynamicResource SystemBaseHighColor}" Margin="0,6,0,0"/>
+								<ToggleButton Classes="KuwantimaMenu Expanded"
+											  Tag="{StaticResource Icon.Gear}"
+											  Content="Disabled" IsEnabled="False"/>
+							</StackPanel>
+						</Border>
+					</ThemeVariantScope>
+
+				</StackPanel>
+			</Border>
+		</ScrollViewer>
+	</Design.PreviewWith>
+
+	<!-- Base Style for KuwantimaMenu ToggleButtons -->
+	<Style Selector="ToggleButton.KuwantimaMenu">
+		<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundBaseLowBrush}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorder}"/>
+		<Setter Property="BorderThickness" Value="1.5"/>
+		<Setter Property="Padding" Value="8"/>
+		<Setter Property="CornerRadius" Value="4"/>
+		<Setter Property="Width" Value="48"/>
+		<Setter Property="Height" Value="48"/>
+		<Setter Property="HorizontalAlignment" Value="Left"/>
+		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Border Name="PART_Border"
+						Background="{TemplateBinding Background}"
+						BorderBrush="{TemplateBinding BorderBrush}"
+						BorderThickness="{TemplateBinding BorderThickness}"
+						CornerRadius="{TemplateBinding CornerRadius}">
+					<Panel>
+						<!-- Icon: centered in the full button area -->
+						<PathIcon Name="PART_Icon"
+								  Data="{TemplateBinding Tag}"
+								  Width="18" Height="18"
+								  HorizontalAlignment="Center"
+								  VerticalAlignment="Center"
+								  Foreground="{TemplateBinding Foreground}"/>
+
+						<!-- Content: collapsed by default, overlays when expanded -->
+						<ContentPresenter Name="ContentArea"
+										  IsVisible="False"
+										  Background="Transparent"
+										  TextElement.Foreground="{TemplateBinding Foreground}"
+										  Content="{TemplateBinding Content}"
+										  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+										  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+										  Margin="34,0,0,0"/>
+					</Panel>
+				</Border>
+			</ControlTemplate>
+		</Setter>
+
+		<!-- 1. Hover -->
+		<Style Selector="^:pointerover">
+			<Setter Property="Background" Value="{DynamicResource KuwantimaControlHoverBrush}"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorderHover}"/>
+		</Style>
+
+		<!-- 2. Checked -->
+		<Style Selector="^:checked">
+			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAccentBrush}"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+		</Style>
+
+		<!-- 3. Checked + Hover -->
+		<Style Selector="^:checked:pointerover">
+			<Setter Property="Background" Value="{DynamicResource SystemAccentColorLight3}"/>
+		</Style>
+
+		<!-- 4. Disabled: pin Background/Foreground to prevent Fluent's disabled brushes from double-dimming -->
+		<Style Selector="^:disabled">
+			<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundBaseLowBrush}"/>
+			<Setter Property="Foreground" Value="{DynamicResource SystemBaseHighColor}"/>
+			<Setter Property="BorderBrush" Value="Transparent"/>
+			<Setter Property="Opacity" Value="0.5"/>
+			<Setter Property="Cursor" Value="Arrow"/>
+		</Style>
+	</Style>
+
+	<!-- Expanded class: stretch, left-align icon, show content text -->
+	<Style Selector="ToggleButton.KuwantimaMenu.Expanded">
+		<Setter Property="Width" Value="NaN"/>
+		<Setter Property="HorizontalAlignment" Value="Stretch"/>
+	</Style>
+
+	<Style Selector="ToggleButton.KuwantimaMenu.Expanded /template/ PathIcon#PART_Icon">
+		<Setter Property="HorizontalAlignment" Value="Left"/>
+		<Setter Property="Margin" Value="8,0,0,0"/>
+	</Style>
+
+	<Style Selector="ToggleButton.KuwantimaMenu.Expanded /template/ ContentPresenter#ContentArea">
+		<Setter Property="IsVisible" Value="True"/>
+	</Style>
+</Styles>

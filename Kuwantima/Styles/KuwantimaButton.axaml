@@ -1,0 +1,161 @@
+<Styles xmlns="https://github.com/avaloniaui"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Design.PreviewWith>
+		<Border Padding="20">
+			<Grid ColumnDefinitions="*, *">
+				<!-- LEFT SIDE: LIGHT THEME PREVIEW -->
+				<ThemeVariantScope RequestedThemeVariant="Light" Grid.Column="0">
+					<Panel Background="{DynamicResource SystemRegionBrush}">
+						<StackPanel Spacing="12" Margin="40" HorizontalAlignment="Center" VerticalAlignment="Center">
+							<TextBlock Text="Light Theme" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
+
+							<Button Classes="Kuwantima" Content="Base"/>
+							<Button Classes="Kuwantima Accent" Content="Accent"/>
+							<Button Classes="Kuwantima Minimal">
+								<PathIcon Data="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z" Width="16" Height="16"/>
+							</Button>
+							<Button Classes="Kuwantima Link" Content="Link text"/>
+							<Button Classes="Kuwantima" Content="Disabled" IsEnabled="False"/>
+							<Button Classes="Kuwantima Accent" Content="Disabled" IsEnabled="False"/>
+						</StackPanel>
+					</Panel>
+				</ThemeVariantScope>
+
+				<!-- RIGHT SIDE: DARK THEME PREVIEW -->
+				<ThemeVariantScope RequestedThemeVariant="Dark" Grid.Column="1">
+					<Panel Background="{DynamicResource SystemRegionBrush}">
+						<StackPanel Spacing="12" Margin="40" HorizontalAlignment="Center" VerticalAlignment="Center">
+							<TextBlock Text="Dark Theme" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
+
+							<Button Classes="Kuwantima" Content="Base"/>
+							<Button Classes="Kuwantima Accent" Content="Accent"/>
+							<Button Classes="Kuwantima Minimal">
+								<PathIcon Data="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z" Width="16" Height="16"/>
+							</Button>
+							<Button Classes="Kuwantima Link" Content="Link text"/>
+							<Button Classes="Kuwantima" Content="Disabled" IsEnabled="False"/>
+							<Button Classes="Kuwantima Accent" Content="Disabled" IsEnabled="False"/>
+						</StackPanel>
+					</Panel>
+				</ThemeVariantScope>
+
+				<!-- Vertical Divider -->
+				<Separator Width="1" VerticalAlignment="Stretch" Background="{DynamicResource KuwantimaDarkBorderBrush}" Grid.ColumnSpan="2"/>
+			</Grid>
+		</Border>
+	</Design.PreviewWith>
+
+	<!-- ═══ BASE: Button.Kuwantima ═══ -->
+	<Style Selector="Button.Kuwantima">
+		<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundBaseLowBrush}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorder}"/>
+		<Setter Property="BorderThickness" Value="1.5"/>
+		<Setter Property="Padding" Value="12,8"/>
+		<Setter Property="CornerRadius" Value="4"/>
+		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+		<Setter Property="Cursor" Value="Hand"/>
+
+		<Setter Property="Template">
+			<ControlTemplate>
+				<ContentPresenter Name="PART_ContentPresenter"
+								  TextElement.Foreground="{TemplateBinding Foreground}"
+								  Background="{TemplateBinding Background}"
+								  BorderBrush="{TemplateBinding BorderBrush}"
+								  BorderThickness="{TemplateBinding BorderThickness}"
+								  CornerRadius="{TemplateBinding CornerRadius}"
+								  Padding="{TemplateBinding Padding}"
+								  Content="{TemplateBinding Content}"
+								  ContentTemplate="{TemplateBinding ContentTemplate}"
+								  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+								  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+			</ControlTemplate>
+		</Setter>
+
+		<Setter Property="Transitions">
+			<Transitions>
+				<BrushTransition Property="Background" Duration="0:0:0.2"/>
+				<BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+			</Transitions>
+		</Setter>
+
+		<!-- Hover -->
+		<Style Selector="^:pointerover">
+			<Setter Property="Background" Value="{DynamicResource KuwantimaControlHoverBrush}"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorderHover}"/>
+		</Style>
+
+		<!-- Pressed -->
+		<Style Selector="^:pressed">
+			<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAccentBrush}"/>
+			<Setter Property="Foreground" Value="White"/>
+		</Style>
+
+		<!-- Disabled: pin Background/Foreground to prevent Fluent's disabled brushes from double-dimming -->
+		<Style Selector="^:disabled">
+			<Setter Property="Opacity" Value="0.5"/>
+			<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundBaseLowBrush}"/>
+			<Setter Property="Foreground" Value="{DynamicResource SystemBaseHighColor}"/>
+			<Setter Property="BorderBrush" Value="Transparent"/>
+			<Setter Property="Cursor" Value="Arrow"/>
+		</Style>
+	</Style>
+
+	<!-- ═══ ACCENT: Button.Kuwantima.Accent ═══ -->
+	<Style Selector="Button.Kuwantima.Accent">
+		<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAccentBrush}"/>
+		<Setter Property="Foreground" Value="White"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+
+		<Style Selector="^:pointerover">
+			<Setter Property="Background" Value="{DynamicResource SystemAccentColorLight3}"/>
+		</Style>
+
+		<Style Selector="^:pressed">
+			<Setter Property="Background" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+		</Style>
+
+		<Style Selector="^:disabled">
+			<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAccentBrush}"/>
+			<Setter Property="Foreground" Value="White"/>
+		</Style>
+	</Style>
+
+	<!-- ═══ MINIMAL: Button.Kuwantima.Minimal ═══ -->
+	<Style Selector="Button.Kuwantima.Minimal">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="Padding" Value="4"/>
+	</Style>
+
+	<!-- ═══ LINK: Button.Kuwantima.Link ═══ -->
+	<Style Selector="Button.Kuwantima.Link">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="Padding" Value="0"/>
+
+		<!-- Style nested TextBlock for link appearance -->
+		<Style Selector="^ TextBlock">
+			<Setter Property="Foreground" Value="{DynamicResource SystemControlBackgroundAccentBrush}"/>
+			<Setter Property="TextDecorations" Value="Underline"/>
+			<Setter Property="FontSize" Value="11"/>
+		</Style>
+
+		<Style Selector="^:pointerover">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="Transparent"/>
+		</Style>
+
+		<Style Selector="^:pointerover TextBlock">
+			<Setter Property="Opacity" Value="0.7"/>
+		</Style>
+
+		<Style Selector="^:pressed">
+			<Setter Property="Background" Value="Transparent"/>
+		</Style>
+
+		<Style Selector="^:pressed TextBlock">
+			<Setter Property="Opacity" Value="0.5"/>
+		</Style>
+	</Style>
+</Styles>

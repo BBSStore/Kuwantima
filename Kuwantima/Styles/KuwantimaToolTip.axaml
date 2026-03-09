@@ -1,0 +1,95 @@
+<Styles xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Design.PreviewWith>
+		<Border Padding="20" Width="500">
+			<Grid ColumnDefinitions="*, *">
+				<!-- LEFT SIDE: LIGHT THEME PREVIEW -->
+				<ThemeVariantScope RequestedThemeVariant="Light" Grid.Column="0">
+					<Border Background="{DynamicResource SystemRegionBrush}" Padding="16" Classes="KuwantimaGlass">
+						<StackPanel Spacing="16">
+							<TextBlock Text="Light Theme" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
+
+							<!-- Inline tooltip previews -->
+							<Border Background="{DynamicResource KuwantimaGlassBackground}"
+							        BorderBrush="{DynamicResource KuwantimaGlassGlowBorder}"
+							        BorderThickness="1.5"
+							        CornerRadius="6"
+							        BoxShadow="{DynamicResource KuwantimaGlassGlow}"
+							        Padding="10,6" HorizontalAlignment="Center">
+								<TextBlock Text="Simple tooltip text" FontSize="12"/>
+							</Border>
+
+							<Border Background="{DynamicResource KuwantimaGlassBackground}"
+							        BorderBrush="{DynamicResource KuwantimaGlassGlowBorderHover}"
+							        BorderThickness="1.5"
+							        CornerRadius="6"
+							        BoxShadow="{DynamicResource KuwantimaGlassGlowHover}"
+							        Padding="10,6" HorizontalAlignment="Center">
+								<TextBlock Text="Hover-state tooltip" FontSize="12"/>
+							</Border>
+
+							<Button Classes="Kuwantima" Content="Hover me"
+							        ToolTip.Tip="This is a Kuwantima tooltip"/>
+						</StackPanel>
+					</Border>
+				</ThemeVariantScope>
+
+				<!-- RIGHT SIDE: DARK THEME PREVIEW -->
+				<ThemeVariantScope RequestedThemeVariant="Dark" Grid.Column="1">
+					<Border Background="{DynamicResource SystemRegionBrush}" Padding="16" Classes="KuwantimaGlass">
+						<StackPanel Spacing="16">
+							<TextBlock Text="Dark Theme" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
+
+							<Border Background="{DynamicResource KuwantimaGlassBackground}"
+							        BorderBrush="{DynamicResource KuwantimaGlassGlowBorder}"
+							        BorderThickness="1.5"
+							        CornerRadius="6"
+							        BoxShadow="{DynamicResource KuwantimaGlassGlow}"
+							        Padding="10,6" HorizontalAlignment="Center">
+								<TextBlock Text="Simple tooltip text" FontSize="12"/>
+							</Border>
+
+							<Border Background="{DynamicResource KuwantimaGlassBackground}"
+							        BorderBrush="{DynamicResource KuwantimaGlassGlowBorderHover}"
+							        BorderThickness="1.5"
+							        CornerRadius="6"
+							        BoxShadow="{DynamicResource KuwantimaGlassGlowHover}"
+							        Padding="10,6" HorizontalAlignment="Center">
+								<TextBlock Text="Hover-state tooltip" FontSize="12"/>
+							</Border>
+
+							<Button Classes="Kuwantima" Content="Hover me"
+							        ToolTip.Tip="This is a Kuwantima tooltip"/>
+						</StackPanel>
+					</Border>
+				</ThemeVariantScope>
+			</Grid>
+		</Border>
+	</Design.PreviewWith>
+
+	<!-- ═══ ToolTip ═══ -->
+	<Style Selector="ToolTip">
+		<Setter Property="Background" Value="{DynamicResource KuwantimaGlassBackground}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorder}"/>
+		<Setter Property="BorderThickness" Value="1.5"/>
+		<Setter Property="CornerRadius" Value="6"/>
+		<Setter Property="Padding" Value="10,6"/>
+		<Setter Property="Foreground" Value="{DynamicResource SystemBaseHighColor}"/>
+		<Setter Property="FontSize" Value="12"/>
+
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Border Background="{TemplateBinding Background}"
+				        BorderBrush="{TemplateBinding BorderBrush}"
+				        BorderThickness="{TemplateBinding BorderThickness}"
+				        CornerRadius="{TemplateBinding CornerRadius}"
+				        BoxShadow="{DynamicResource KuwantimaGlassGlow}"
+				        Padding="{TemplateBinding Padding}">
+					<ContentPresenter Content="{TemplateBinding Content}"
+					                  ContentTemplate="{TemplateBinding ContentTemplate}"
+					                  TextElement.Foreground="{TemplateBinding Foreground}"/>
+				</Border>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+</Styles>

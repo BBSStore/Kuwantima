@@ -1,0 +1,71 @@
+<Styles xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Design.PreviewWith>
+		<Border Padding="20" Width="500">
+			<Grid ColumnDefinitions="*, *">
+				<!-- LEFT SIDE: LIGHT THEME PREVIEW -->
+				<ThemeVariantScope RequestedThemeVariant="Light" Grid.Column="0">
+					<Border Background="{DynamicResource SystemRegionBrush}" Padding="16" Classes="KuwantimaGlass">
+						<StackPanel Spacing="16">
+							<TextBlock Text="Light Theme" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
+
+							<Slider Classes="Kuwantima" Value="60" Minimum="0" Maximum="100"/>
+							<Slider Classes="Kuwantima" Value="30" Minimum="0" Maximum="100"/>
+							<Slider Classes="Kuwantima" Value="80" Minimum="0" Maximum="100" IsEnabled="False"/>
+						</StackPanel>
+					</Border>
+				</ThemeVariantScope>
+
+				<!-- RIGHT SIDE: DARK THEME PREVIEW -->
+				<ThemeVariantScope RequestedThemeVariant="Dark" Grid.Column="1">
+					<Border Background="{DynamicResource SystemRegionBrush}" Padding="16" Classes="KuwantimaGlass">
+						<StackPanel Spacing="16">
+							<TextBlock Text="Dark Theme" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
+
+							<Slider Classes="Kuwantima" Value="60" Minimum="0" Maximum="100"/>
+							<Slider Classes="Kuwantima" Value="30" Minimum="0" Maximum="100"/>
+							<Slider Classes="Kuwantima" Value="80" Minimum="0" Maximum="100" IsEnabled="False"/>
+						</StackPanel>
+					</Border>
+				</ThemeVariantScope>
+			</Grid>
+		</Border>
+	</Design.PreviewWith>
+
+	<!-- ═══ BASE: Slider.Kuwantima ═══ -->
+	<Style Selector="Slider.Kuwantima">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="Foreground" Value="{DynamicResource SystemControlBackgroundAccentBrush}"/>
+	</Style>
+
+	<!-- Track: the unfilled portion -->
+	<Style Selector="Slider.Kuwantima /template/ RepeatButton#PART_DecreaseButton">
+		<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAccentBrush}"/>
+	</Style>
+
+	<Style Selector="Slider.Kuwantima /template/ RepeatButton#PART_IncreaseButton">
+		<Setter Property="Background" Value="{DynamicResource KuwantimaGlassGlowBorder}"/>
+	</Style>
+
+	<!-- Thumb -->
+	<Style Selector="Slider.Kuwantima /template/ Thumb">
+		<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAccentBrush}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorder}"/>
+		<Setter Property="BorderThickness" Value="2"/>
+	</Style>
+
+	<Style Selector="Slider.Kuwantima:pointerover /template/ Thumb">
+		<Setter Property="Background" Value="{DynamicResource SystemAccentColorLight3}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorderHover}"/>
+	</Style>
+
+	<Style Selector="Slider.Kuwantima:pressed /template/ Thumb">
+		<Setter Property="Background" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+	</Style>
+
+	<!-- Disabled: pin to prevent Fluent double-dimming -->
+	<Style Selector="Slider.Kuwantima:disabled">
+		<Setter Property="Opacity" Value="0.5"/>
+		<Setter Property="Cursor" Value="Arrow"/>
+	</Style>
+</Styles>

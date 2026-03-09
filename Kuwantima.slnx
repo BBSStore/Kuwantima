@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Kuwantima.Sandbox/Kuwantima.Sandbox.csproj" />
+  <Project Path="Kuwantima/Kuwantima.csproj" />
+</Solution>

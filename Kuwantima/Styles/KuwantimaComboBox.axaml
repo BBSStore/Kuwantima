@@ -1,0 +1,268 @@
+<Styles xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Design.PreviewWith>
+		<Border Padding="20" Width="500">
+			<Grid ColumnDefinitions="*, *">
+				<!-- LEFT SIDE: LIGHT THEME PREVIEW -->
+				<ThemeVariantScope RequestedThemeVariant="Light" Grid.Column="0">
+					<Panel Background="{DynamicResource SystemRegionBrush}">
+						<StackPanel Spacing="16" Margin="20" HorizontalAlignment="Stretch">
+							<TextBlock Text="Light Theme" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
+
+							<ComboBox Classes="Kuwantima" PlaceholderText="Select an item..." HorizontalAlignment="Stretch">
+								<ComboBoxItem>Vehicle</ComboBoxItem>
+								<ComboBoxItem>Site</ComboBoxItem>
+								<ComboBoxItem>Feature</ComboBoxItem>
+								<ComboBoxItem>Route</ComboBoxItem>
+								<ComboBoxItem>Zone</ComboBoxItem>
+							</ComboBox>
+
+							<ComboBox Classes="Kuwantima" SelectedIndex="1" HorizontalAlignment="Stretch">
+								<ComboBoxItem>Vehicle</ComboBoxItem>
+								<ComboBoxItem>Site</ComboBoxItem>
+								<ComboBoxItem>Feature</ComboBoxItem>
+							</ComboBox>
+
+							<ComboBox Classes="Kuwantima" IsEnabled="False" SelectedIndex="0" HorizontalAlignment="Stretch">
+								<ComboBoxItem>Disabled</ComboBoxItem>
+							</ComboBox>
+						</StackPanel>
+					</Panel>
+				</ThemeVariantScope>
+
+				<!-- RIGHT SIDE: DARK THEME PREVIEW -->
+				<ThemeVariantScope RequestedThemeVariant="Dark" Grid.Column="1">
+					<Panel Background="{DynamicResource SystemRegionBrush}">
+						<StackPanel Spacing="16" Margin="20" HorizontalAlignment="Stretch">
+							<TextBlock Text="Dark Theme" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
+
+							<ComboBox Classes="Kuwantima" PlaceholderText="Select an item..." HorizontalAlignment="Stretch">
+								<ComboBoxItem>Vehicle</ComboBoxItem>
+								<ComboBoxItem>Site</ComboBoxItem>
+								<ComboBoxItem>Feature</ComboBoxItem>
+								<ComboBoxItem>Route</ComboBoxItem>
+								<ComboBoxItem>Zone</ComboBoxItem>
+							</ComboBox>
+
+							<ComboBox Classes="Kuwantima" SelectedIndex="1" HorizontalAlignment="Stretch">
+								<ComboBoxItem>Vehicle</ComboBoxItem>
+								<ComboBoxItem>Site</ComboBoxItem>
+								<ComboBoxItem>Feature</ComboBoxItem>
+							</ComboBox>
+
+							<ComboBox Classes="Kuwantima" IsEnabled="False" SelectedIndex="0" HorizontalAlignment="Stretch">
+								<ComboBoxItem>Disabled</ComboBoxItem>
+							</ComboBox>
+						</StackPanel>
+					</Panel>
+				</ThemeVariantScope>
+
+				<!-- Vertical Divider -->
+				<Separator Width="1" VerticalAlignment="Stretch" Background="{DynamicResource KuwantimaDarkBorderBrush}" Grid.ColumnSpan="2"/>
+			</Grid>
+		</Border>
+	</Design.PreviewWith>
+
+	<!-- ═══ BASE: ComboBox.Kuwantima ═══ -->
+	<Style Selector="ComboBox.Kuwantima">
+		<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundBaseLowBrush}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorder}"/>
+		<Setter Property="BorderThickness" Value="1.5"/>
+		<Setter Property="Padding" Value="12,8"/>
+		<Setter Property="CornerRadius" Value="4"/>
+		<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+		<Setter Property="Cursor" Value="Hand"/>
+		<Setter Property="FocusAdorner" Value="{x:Null}"/>
+		<Setter Property="MaxDropDownHeight" Value="320"/>
+		<Setter Property="PlaceholderForeground" Value="{DynamicResource KuwantimaSecondaryTextBrush}"/>
+
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Border Name="Background"
+				        Background="{TemplateBinding Background}"
+				        BorderBrush="{TemplateBinding BorderBrush}"
+				        BorderThickness="{TemplateBinding BorderThickness}"
+				        CornerRadius="{TemplateBinding CornerRadius}">
+					<Border.Transitions>
+						<Transitions>
+							<BrushTransition Property="Background" Duration="0:0:0.2"/>
+							<BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+						</Transitions>
+					</Border.Transitions>
+
+					<Grid ColumnDefinitions="*,32">
+						<!-- Selected item display -->
+						<ContentControl Name="ContentPresenter"
+						                Grid.Column="0"
+						                Content="{TemplateBinding SelectionBoxItem}"
+						                ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+						                Margin="{TemplateBinding Padding}"
+						                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+						                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+
+						<!-- Placeholder text -->
+						<TextBlock Name="PlaceholderTextBlock"
+						           Grid.Column="0"
+						           Margin="{TemplateBinding Padding}"
+						           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+						           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+						           Text="{TemplateBinding PlaceholderText}"
+						           Foreground="{TemplateBinding PlaceholderForeground}"
+						           IsVisible="{Binding SelectionBoxItem, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static ObjectConverters.IsNull}}"/>
+
+						<!-- Chevron -->
+						<Border Name="ChevronContainer"
+						        Grid.Column="1"
+						        Width="20" Height="20"
+						        HorizontalAlignment="Center"
+						        VerticalAlignment="Center"
+						        RenderTransformOrigin="50%,50%"
+						        RenderTransform="rotate(90deg)">
+							<Border.Transitions>
+								<Transitions>
+									<TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2"/>
+								</Transitions>
+							</Border.Transitions>
+							<PathIcon Name="DropDownGlyph"
+							          Data="M 6,2 L 12,8 L 6,14"
+							          Width="10" Height="10"
+							          Foreground="{DynamicResource KuwantimaGlassGlowBorder}">
+								<PathIcon.Transitions>
+									<Transitions>
+										<BrushTransition Property="Foreground" Duration="0:0:0.2"/>
+									</Transitions>
+								</PathIcon.Transitions>
+							</PathIcon>
+						</Border>
+
+						<!-- Dropdown popup -->
+						<Popup Name="PART_Popup"
+						       Grid.Column="0"
+						       WindowManagerAddShadowHint="False"
+						       IsOpen="{TemplateBinding IsDropDownOpen, Mode=TwoWay}"
+						       MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
+						       MaxHeight="{TemplateBinding MaxDropDownHeight}"
+						       PlacementTarget="Background"
+						       IsLightDismissEnabled="True"
+						       InheritsTransform="True">
+							<Border Name="PopupBorder"
+							        Background="{DynamicResource SystemRegionBrush}"
+							        BorderBrush="{DynamicResource KuwantimaGlassGlowBorderHover}"
+							        BorderThickness="1.5"
+							        CornerRadius="4"
+							        Padding="4"
+							        HorizontalAlignment="Stretch">
+								<ScrollViewer HorizontalScrollBarVisibility="Disabled"
+								              VerticalScrollBarVisibility="Auto">
+									<ItemsPresenter Name="PART_ItemsPresenter"
+									                ItemsPanel="{TemplateBinding ItemsPanel}"/>
+								</ScrollViewer>
+							</Border>
+						</Popup>
+					</Grid>
+				</Border>
+			</ControlTemplate>
+		</Setter>
+
+		<!-- Hover -->
+		<Style Selector="^:pointerover /template/ Border#Background">
+			<Setter Property="Background" Value="{DynamicResource KuwantimaControlHoverBrush}"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorderHover}"/>
+		</Style>
+
+		<!-- Pressed -->
+		<Style Selector="^:pressed /template/ Border#Background">
+			<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAccentBrush}"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+		</Style>
+		<Style Selector="^:pressed /template/ ContentControl#ContentPresenter">
+			<Setter Property="Foreground" Value="White"/>
+		</Style>
+
+		<!-- Dropdown open: accent border, chevron rotates to point down -->
+		<Style Selector="^:dropdownopen /template/ Border#Background">
+			<Setter Property="Background" Value="{DynamicResource KuwantimaControlHoverBrush}"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+		</Style>
+		<Style Selector="^:dropdownopen /template/ Border#ChevronContainer">
+			<Setter Property="RenderTransform" Value="rotate(180deg)"/>
+		</Style>
+		<Style Selector="^:dropdownopen /template/ PathIcon#DropDownGlyph">
+			<Setter Property="Foreground" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+		</Style>
+
+		<!-- Dropdown open + hover -->
+		<Style Selector="^:dropdownopen:pointerover /template/ Border#Background">
+			<Setter Property="Background" Value="{DynamicResource SystemAccentColorLight3}"/>
+		</Style>
+
+		<!-- Focus -->
+		<Style Selector="^:focus-visible /template/ Border#Background">
+			<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorderHover}"/>
+		</Style>
+
+		<!-- Disabled: pin Background/Foreground to prevent Fluent's disabled brushes from double-dimming -->
+		<Style Selector="^:disabled">
+			<Setter Property="Opacity" Value="0.5"/>
+			<Setter Property="Foreground" Value="{DynamicResource SystemBaseHighColor}"/>
+			<Setter Property="Cursor" Value="Arrow"/>
+		</Style>
+		<Style Selector="^:disabled /template/ Border#Background">
+			<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundBaseLowBrush}"/>
+			<Setter Property="BorderBrush" Value="Transparent"/>
+		</Style>
+	</Style>
+
+	<!-- ═══ ITEMS: ComboBox.Kuwantima ComboBoxItem ═══ -->
+	<Style Selector="ComboBox.Kuwantima ComboBoxItem">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="Padding" Value="8,6"/>
+		<Setter Property="CornerRadius" Value="3"/>
+
+		<Setter Property="Template">
+			<ControlTemplate>
+				<ContentPresenter Name="PART_ContentPresenter"
+				                  Foreground="{TemplateBinding Foreground}"
+				                  Background="{TemplateBinding Background}"
+				                  BorderBrush="{TemplateBinding BorderBrush}"
+				                  BorderThickness="{TemplateBinding BorderThickness}"
+				                  CornerRadius="{TemplateBinding CornerRadius}"
+				                  ContentTemplate="{TemplateBinding ContentTemplate}"
+				                  Content="{TemplateBinding Content}"
+				                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+				                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+				                  Padding="{TemplateBinding Padding}"/>
+			</ControlTemplate>
+		</Setter>
+
+		<Setter Property="Transitions">
+			<Transitions>
+				<BrushTransition Property="Background" Duration="0:0:0.2"/>
+			</Transitions>
+		</Setter>
+
+		<!-- Hover -->
+		<Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+			<Setter Property="Background" Value="{DynamicResource KuwantimaControlHoverBrush}"/>
+		</Style>
+
+		<!-- Selected -->
+		<Style Selector="^:selected /template/ ContentPresenter#PART_ContentPresenter">
+			<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAccentBrush}"/>
+			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+			<Setter Property="BorderThickness" Value="2,0,0,0"/>
+		</Style>
+
+		<!-- Selected + hover -->
+		<Style Selector="^:selected:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+			<Setter Property="Background" Value="{DynamicResource SystemAccentColorLight3}"/>
+		</Style>
+
+		<!-- Disabled -->
+		<Style Selector="^:disabled">
+			<Setter Property="Opacity" Value="0.5"/>
+		</Style>
+	</Style>
+</Styles>

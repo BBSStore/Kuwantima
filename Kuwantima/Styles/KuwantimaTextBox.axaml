@@ -1,0 +1,126 @@
+<Styles xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Design.PreviewWith>
+		<Border Padding="20" Width="500">
+			<Grid ColumnDefinitions="*, *">
+				<!-- LEFT SIDE: LIGHT THEME PREVIEW -->
+				<ThemeVariantScope RequestedThemeVariant="Light" Grid.Column="0">
+					<Panel Background="{DynamicResource SystemRegionBrush}">
+						<StackPanel Spacing="16" Margin="20" HorizontalAlignment="Stretch">
+							<TextBlock Text="Light Theme" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
+
+							<TextBox Classes="Kuwantima" Watermark="Enter text..." HorizontalAlignment="Stretch"/>
+
+							<TextBox Classes="Kuwantima" Text="Editable value" HorizontalAlignment="Stretch"/>
+
+							<TextBox Classes="Kuwantima" IsEnabled="False" Text="Disabled" HorizontalAlignment="Stretch"/>
+
+							<TextBox Classes="Kuwantima ReadOnly" Text="Read-only display text"
+							         IsReadOnly="True" HorizontalAlignment="Stretch"/>
+						</StackPanel>
+					</Panel>
+				</ThemeVariantScope>
+
+				<!-- RIGHT SIDE: DARK THEME PREVIEW -->
+				<ThemeVariantScope RequestedThemeVariant="Dark" Grid.Column="1">
+					<Panel Background="{DynamicResource SystemRegionBrush}">
+						<StackPanel Spacing="16" Margin="20" HorizontalAlignment="Stretch">
+							<TextBlock Text="Dark Theme" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
+
+							<TextBox Classes="Kuwantima" Watermark="Enter text..." HorizontalAlignment="Stretch"/>
+
+							<TextBox Classes="Kuwantima" Text="Editable value" HorizontalAlignment="Stretch"/>
+
+							<TextBox Classes="Kuwantima" IsEnabled="False" Text="Disabled" HorizontalAlignment="Stretch"/>
+
+							<TextBox Classes="Kuwantima ReadOnly" Text="Read-only display text"
+							         IsReadOnly="True" HorizontalAlignment="Stretch"/>
+						</StackPanel>
+					</Panel>
+				</ThemeVariantScope>
+
+				<!-- Vertical Divider -->
+				<Separator Width="1" VerticalAlignment="Stretch" Background="{DynamicResource KuwantimaDarkBorderBrush}" Grid.ColumnSpan="2"/>
+			</Grid>
+		</Border>
+	</Design.PreviewWith>
+
+	<!-- ═══ BASE: TextBox.Kuwantima ═══ -->
+	<Style Selector="TextBox.Kuwantima">
+		<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundBaseLowBrush}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorder}"/>
+		<Setter Property="BorderThickness" Value="1.5"/>
+		<Setter Property="Padding" Value="12,8"/>
+		<Setter Property="CornerRadius" Value="4"/>
+		<Setter Property="Foreground" Value="{DynamicResource TextControlForeground}"/>
+		<Setter Property="CaretBrush" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+		<Setter Property="SelectionBrush" Value="{DynamicResource SystemControlBackgroundAccentBrush}"/>
+
+		<!-- Placeholder text color -->
+		<Style Selector="^ /template/ TextBlock#PART_Placeholder">
+			<Setter Property="Foreground" Value="{DynamicResource KuwantimaSecondaryTextBrush}"/>
+		</Style>
+
+		<!-- Override Fluent template part: border element -->
+		<Style Selector="^ /template/ Border#PART_BorderElement">
+			<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundBaseLowBrush}"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorder}"/>
+			<Setter Property="BorderThickness" Value="1.5"/>
+			<Setter Property="CornerRadius" Value="4"/>
+			<Setter Property="Transitions">
+				<Transitions>
+					<BrushTransition Property="Background" Duration="0:0:0.2"/>
+					<BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+				</Transitions>
+			</Setter>
+		</Style>
+
+		<!-- Hover -->
+		<Style Selector="^:pointerover /template/ Border#PART_BorderElement">
+			<Setter Property="Background" Value="{DynamicResource KuwantimaControlHoverBrush}"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorderHover}"/>
+		</Style>
+
+		<!-- Focus -->
+		<Style Selector="^:focus /template/ Border#PART_BorderElement">
+			<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundBaseLowBrush}"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+			<Setter Property="BorderThickness" Value="1.5"/>
+		</Style>
+
+		<!-- Disabled: pin Background/Foreground to prevent Fluent's disabled brushes from double-dimming -->
+		<Style Selector="^:disabled">
+			<Setter Property="Opacity" Value="0.5"/>
+			<Setter Property="Foreground" Value="{DynamicResource SystemBaseHighColor}"/>
+			<Setter Property="Cursor" Value="Arrow"/>
+		</Style>
+		<Style Selector="^:disabled /template/ Border#PART_BorderElement">
+			<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundBaseLowBrush}"/>
+			<Setter Property="BorderBrush" Value="Transparent"/>
+		</Style>
+	</Style>
+
+	<!-- ═══ READ-ONLY: TextBox.Kuwantima.ReadOnly ═══ -->
+	<Style Selector="TextBox.Kuwantima.ReadOnly">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="Padding" Value="0"/>
+		<Setter Property="IsReadOnly" Value="True"/>
+		<Setter Property="Cursor" Value="Arrow"/>
+
+		<Style Selector="^ /template/ Border#PART_BorderElement">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderThickness" Value="0"/>
+		</Style>
+
+		<Style Selector="^:pointerover /template/ Border#PART_BorderElement">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="Transparent"/>
+		</Style>
+
+		<Style Selector="^:focus /template/ Border#PART_BorderElement">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="Transparent"/>
+		</Style>
+	</Style>
+</Styles>

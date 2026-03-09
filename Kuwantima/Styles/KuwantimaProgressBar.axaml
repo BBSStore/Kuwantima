@@ -1,0 +1,74 @@
+<Styles xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Design.PreviewWith>
+		<Border Padding="20" Width="500">
+			<Grid ColumnDefinitions="*, *">
+				<!-- LEFT SIDE: LIGHT THEME PREVIEW -->
+				<ThemeVariantScope RequestedThemeVariant="Light" Grid.Column="0">
+					<Border Background="{DynamicResource SystemRegionBrush}" Padding="16" Classes="KuwantimaGlass">
+						<StackPanel Spacing="16">
+							<TextBlock Text="Light Theme" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
+
+							<ProgressBar Classes="Kuwantima" Value="25" Minimum="0" Maximum="100"/>
+							<ProgressBar Classes="Kuwantima" Value="65" Minimum="0" Maximum="100"/>
+							<ProgressBar Classes="Kuwantima" Value="100" Minimum="0" Maximum="100"/>
+							<ProgressBar Classes="Kuwantima" IsIndeterminate="True"/>
+							<ProgressBar Classes="Kuwantima" Value="50" Minimum="0" Maximum="100" IsEnabled="False"/>
+						</StackPanel>
+					</Border>
+				</ThemeVariantScope>
+
+				<!-- RIGHT SIDE: DARK THEME PREVIEW -->
+				<ThemeVariantScope RequestedThemeVariant="Dark" Grid.Column="1">
+					<Border Background="{DynamicResource SystemRegionBrush}" Padding="16" Classes="KuwantimaGlass">
+						<StackPanel Spacing="16">
+							<TextBlock Text="Dark Theme" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
+
+							<ProgressBar Classes="Kuwantima" Value="25" Minimum="0" Maximum="100"/>
+							<ProgressBar Classes="Kuwantima" Value="65" Minimum="0" Maximum="100"/>
+							<ProgressBar Classes="Kuwantima" Value="100" Minimum="0" Maximum="100"/>
+							<ProgressBar Classes="Kuwantima" IsIndeterminate="True"/>
+							<ProgressBar Classes="Kuwantima" Value="50" Minimum="0" Maximum="100" IsEnabled="False"/>
+						</StackPanel>
+					</Border>
+				</ThemeVariantScope>
+			</Grid>
+		</Border>
+	</Design.PreviewWith>
+
+	<!-- ═══ BASE: ProgressBar.Kuwantima ═══ -->
+	<Style Selector="ProgressBar.Kuwantima">
+		<Setter Property="Background" Value="{DynamicResource KuwantimaGlassGlowBorder}"/>
+		<Setter Property="Foreground" Value="{DynamicResource SystemControlBackgroundAccentBrush}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorder}"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="CornerRadius" Value="4"/>
+		<Setter Property="MinHeight" Value="6"/>
+		<Setter Property="Height" Value="6"/>
+
+		<Setter Property="Transitions">
+			<Transitions>
+				<BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+			</Transitions>
+		</Setter>
+	</Style>
+
+	<!-- Hover: glow border -->
+	<Style Selector="ProgressBar.Kuwantima:pointerover">
+		<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorderHover}"/>
+	</Style>
+
+	<!-- Indicator (filled portion) -->
+	<Style Selector="ProgressBar.Kuwantima /template/ Border#PART_Indicator">
+		<Setter Property="CornerRadius" Value="4"/>
+	</Style>
+
+	<!-- Disabled: pin to prevent Fluent double-dimming -->
+	<Style Selector="ProgressBar.Kuwantima:disabled">
+		<Setter Property="Foreground" Value="{DynamicResource SystemControlBackgroundAccentBrush}"/>
+		<Setter Property="Background" Value="{DynamicResource KuwantimaGlassGlowBorder}"/>
+		<Setter Property="BorderBrush" Value="Transparent"/>
+		<Setter Property="Opacity" Value="0.5"/>
+		<Setter Property="Cursor" Value="Arrow"/>
+	</Style>
+</Styles>

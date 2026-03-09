@@ -1,0 +1,59 @@
+<Styles xmlns="https://github.com/avaloniaui"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Design.PreviewWith>
+		<StackPanel Orientation="Horizontal" Background="{DynamicResource SystemRegionBrush}">
+
+			<!-- LIGHT SIDE -->
+			<ThemeVariantScope RequestedThemeVariant="Light">
+				<Border Width="400" Background="{DynamicResource SystemRegionBrush}">
+					<Border Padding="20" Classes="KuwantimaGlass">
+						<StackPanel Spacing="10">
+							<TextBlock Text="Light Theme" Foreground="Black" FontWeight="Bold"/>
+							<Border Classes="KuwantimaGlass" Height="50" />
+							<Border Classes="KuwantimaGlass" Height="30" />
+						</StackPanel>
+					</Border>
+				</Border>
+			</ThemeVariantScope>
+
+			<!-- DARK SIDE -->
+			<ThemeVariantScope RequestedThemeVariant="Dark">
+				<Border Width="400" Background="{DynamicResource SystemRegionBrush}">
+					<Border Padding="20" Classes="KuwantimaGlass">
+						<StackPanel Spacing="10">
+							<TextBlock Text="Dark Theme" Foreground="White" FontWeight="Bold"/>
+							<Border Classes="KuwantimaGlass" Height="50" />
+							<Border Classes="KuwantimaGlass" Height="30" />
+						</StackPanel>
+					</Border>
+				</Border>
+			</ThemeVariantScope>
+
+		</StackPanel>
+	</Design.PreviewWith>
+
+
+	<!-- Base Style for Glass Panels -->
+	<Style Selector="Border.KuwantimaGlass">
+		<Setter Property="Background" Value="{DynamicResource KuwantimaGlassBackground}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorder}"/>
+		<Setter Property="BorderThickness" Value="1.5"/>
+		<Setter Property="CornerRadius" Value="16"/>
+		<Setter Property="ClipToBounds" Value="False"/>
+		<Setter Property="BoxShadow" Value="{DynamicResource KuwantimaGlassGlow}"/>
+
+		<Setter Property="Transitions">
+			<Transitions>
+				<BrushTransition Property="Background" Duration="0:0:0.2"/>
+				<BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+				<BoxShadowsTransition Property="BoxShadow" Duration="0:0:0.2"/>
+			</Transitions>
+		</Setter>
+	</Style>
+
+	<!-- Hover: intensified glow -->
+	<Style Selector="Border.KuwantimaGlass:pointerover">
+		<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorderHover}"/>
+		<Setter Property="BoxShadow" Value="{DynamicResource KuwantimaGlassGlowHover}"/>
+	</Style>
+</Styles>
