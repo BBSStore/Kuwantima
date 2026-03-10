@@ -11,34 +11,22 @@ namespace Kuwantima.Sandbox.Views
         {
             InitializeComponent();
 
-            // Wire up theme toggle
             if (DataContext is MainWindowViewModel vm)
-                SetupThemeToggle(vm);
+                InitTheme(vm);
 
             DataContextChanged += (_, _) =>
             {
                 if (DataContext is MainWindowViewModel viewModel)
-                    SetupThemeToggle(viewModel);
+                    InitTheme(viewModel);
             };
         }
 
-        private void SetupThemeToggle(MainWindowViewModel vm)
+        private void InitTheme(MainWindowViewModel vm)
         {
-            // Set initial state from current theme
             var app = Application.Current;
             if (app is null) return;
 
             vm.IsDarkTheme = app.ActualThemeVariant == ThemeVariant.Dark;
-
-            vm.PropertyChanged += (_, e) =>
-            {
-                if (e.PropertyName == nameof(MainWindowViewModel.IsDarkTheme))
-                {
-                    app.RequestedThemeVariant = vm.IsDarkTheme
-                        ? ThemeVariant.Dark
-                        : ThemeVariant.Light;
-                }
-            };
         }
     }
 }

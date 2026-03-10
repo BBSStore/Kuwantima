@@ -1,0 +1,60 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Kuwantima.Sandbox.Views.Pages.InputsPage">
+
+    <Border Classes="KuwantimaGlass" Padding="0" ClipToBounds="True">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="24">
+        <StackPanel Spacing="24" MaxWidth="500">
+
+            <!-- Text Inputs -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="Text Input" FontWeight="SemiBold" FontSize="14"
+                           Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
+                <TextBox Classes="Kuwantima" Watermark="Enter text here..."/>
+                <TextBox Classes="Kuwantima" Text="Editable value"/>
+                <TextBox Classes="Kuwantima ReadOnly" Text="Read-only display" IsReadOnly="True"/>
+                <TextBox Classes="Kuwantima" Text="Disabled" IsEnabled="False"/>
+            </StackPanel>
+
+            <!-- ComboBox -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="ComboBox" FontWeight="SemiBold" FontSize="14"
+                           Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
+                <ComboBox Classes="Kuwantima" PlaceholderText="Choose..." HorizontalAlignment="Stretch">
+                    <ComboBoxItem>Vehicle</ComboBoxItem>
+                    <ComboBoxItem>Site</ComboBoxItem>
+                    <ComboBoxItem>Feature</ComboBoxItem>
+                    <ComboBoxItem>Route</ComboBoxItem>
+                    <ComboBoxItem>Zone</ComboBoxItem>
+                </ComboBox>
+                <ComboBox Classes="Kuwantima" SelectedIndex="1" HorizontalAlignment="Stretch">
+                    <ComboBoxItem>Light</ComboBoxItem>
+                    <ComboBoxItem>Dark</ComboBoxItem>
+                    <ComboBoxItem>System</ComboBoxItem>
+                </ComboBox>
+                <ComboBox Classes="Kuwantima" IsEnabled="False" SelectedIndex="0" HorizontalAlignment="Stretch">
+                    <ComboBoxItem>Disabled</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <!-- ListBox -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="ListBox" FontWeight="SemiBold" FontSize="14"
+                           Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
+                <ListBox Classes="Kuwantima" SelectedIndex="2" MaxHeight="220"
+                         ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                    <ListBoxItem>Dashboard</ListBoxItem>
+                    <ListBoxItem>Fleet Overview</ListBoxItem>
+                    <ListBoxItem>Vehicle Tracking</ListBoxItem>
+                    <ListBoxItem>Route Planning</ListBoxItem>
+                    <ListBoxItem>Zone Management</ListBoxItem>
+                    <ListBoxItem>Site Configuration</ListBoxItem>
+                    <ListBoxItem>Alert History</ListBoxItem>
+                    <ListBoxItem>Driver Reports</ListBoxItem>
+                </ListBox>
+            </StackPanel>
+
+        </StackPanel>
+    </ScrollViewer>
+    </Border>
+</UserControl>

@@ -1,5 +1,7 @@
+using Avalonia;
+using Avalonia.Styling;
 using CommunityToolkit.Mvvm.ComponentModel;
-using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Kuwantima.Sandbox.ViewModels
 {
@@ -7,6 +9,20 @@ namespace Kuwantima.Sandbox.ViewModels
     {
         [ObservableProperty]
         private bool _isDarkTheme;
+
+        partial void OnIsDarkThemeChanged(bool value)
+        {
+            var variant = value ? ThemeVariant.Dark : ThemeVariant.Light;
+
+            if (Application.Current is { } app)
+                app.RequestedThemeVariant = variant;
+        }
+
+        [ObservableProperty]
+        private int _selectedPageIndex;
+
+        [ObservableProperty]
+        private bool _isPaneOpen = true;
 
         [ObservableProperty]
         private double _sliderValue = 60;
@@ -20,20 +36,32 @@ namespace Kuwantima.Sandbox.ViewModels
         [ObservableProperty]
         private bool _isChecked = true;
 
-        public ObservableCollection<string> ListItems { get; } =
-        [
-            "Dashboard",
-            "Fleet Overview",
-            "Vehicle Tracking",
-            "Route Planning",
-            "Zone Management",
-            "Site Configuration",
-            "Alert History",
-            "Driver Reports",
-            "Fuel Analytics",
-            "Maintenance Log",
-            "Geofence Editor",
-            "System Settings"
-        ];
+        partial void OnSelectedPageIndexChanged(int value)
+        {
+            OnPropertyChanged(nameof(IsButtonsPageVisible));
+            OnPropertyChanged(nameof(IsInputsPageVisible));
+            OnPropertyChanged(nameof(IsTogglesPageVisible));
+            OnPropertyChanged(nameof(IsFeedbackPageVisible));
+            OnPropertyChanged(nameof(IsContainersPageVisible));
+        }
+
+        public bool IsButtonsPageVisible => SelectedPageIndex == 0;
+        public bool IsInputsPageVisible => SelectedPageIndex == 1;
+        public bool IsTogglesPageVisible => SelectedPageIndex == 2;
+        public bool IsFeedbackPageVisible => SelectedPageIndex == 3;
+        public bool IsContainersPageVisible => SelectedPageIndex == 4;
+
+        [RelayCommand]
+        private void NavigateTo(string pageIndex)
+        {
+            if (int.TryParse(pageIndex, out var index))
+                SelectedPageIndex = index;
+        }
+
+        [RelayCommand]
+        private void TogglePane()
+        {
+            IsPaneOpen = !IsPaneOpen;
+        }
     }
 }

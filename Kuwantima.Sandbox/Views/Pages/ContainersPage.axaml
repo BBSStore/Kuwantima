@@ -1,0 +1,114 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Kuwantima.Sandbox.Views.Pages.ContainersPage">
+
+    <Border Classes="KuwantimaGlass" Padding="0" ClipToBounds="True">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="24">
+        <StackPanel Spacing="24" MaxWidth="600">
+
+            <!-- TabControl -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="Tab Control" FontWeight="SemiBold" FontSize="14"
+                           Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
+                <TabControl Classes="Kuwantima">
+                    <TabItem Header="Overview">
+                        <StackPanel Spacing="6" Margin="8">
+                            <TextBlock Text="Fleet summary" FontSize="12"/>
+                            <TextBlock Text="12 vehicles online" FontSize="12"
+                                       Foreground="{DynamicResource KuwantimaSuccessTextBrush}"/>
+                            <TextBlock Text="3 alerts pending" FontSize="12"
+                                       Foreground="{DynamicResource KuwantimaWarningTextBrush}"/>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="Details">
+                        <StackPanel Spacing="6" Margin="8">
+                            <TextBlock Text="Route: Eastern Seaboard Alpha" FontSize="12"/>
+                            <TextBlock Text="ETA: 14:32" FontSize="12"/>
+                            <TextBlock Text="Distance: 142 km" FontSize="12"/>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="History">
+                        <TextBlock Text="Historical analytics and reports" Margin="8" FontSize="12"/>
+                    </TabItem>
+                    <TabItem Header="Disabled" IsEnabled="False">
+                        <TextBlock Text="Disabled"/>
+                    </TabItem>
+                </TabControl>
+            </StackPanel>
+
+            <!-- Glass Panels -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="Glass Panels" FontWeight="SemiBold" FontSize="14"
+                           Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
+
+                <Border Classes="KuwantimaGlass" Padding="12">
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Status Panel" FontWeight="SemiBold" FontSize="13"/>
+                        <TextBlock Text="All systems operational" FontSize="12"
+                                   Foreground="{DynamicResource KuwantimaSuccessTextBrush}"/>
+                        <ProgressBar Classes="Kuwantima" Value="92" Minimum="0" Maximum="100"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Classes="KuwantimaGlass" Padding="12">
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Alert Panel" FontWeight="SemiBold" FontSize="13"/>
+                        <TextBlock Text="3 alerts pending" FontSize="12"
+                                   Foreground="{DynamicResource KuwantimaWarningTextBrush}"/>
+                        <TextBlock Text="Last checked: 2 min ago" FontSize="11"
+                                   Foreground="{DynamicResource KuwantimaSecondaryTextBrush}"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <!-- Icons -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="Icons" FontWeight="SemiBold" FontSize="14"
+                           Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
+
+                <Border Classes="KuwantimaGlass" Padding="12">
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <StackPanel Spacing="4" Margin="8" HorizontalAlignment="Center">
+                            <PathIcon Data="{StaticResource Icon.Home}" Foreground="{DynamicResource SystemAccentColor}"/>
+                            <TextBlock Text="Home" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Spacing="4" Margin="8" HorizontalAlignment="Center">
+                            <PathIcon Data="{StaticResource Icon.Gear}" Foreground="{DynamicResource SystemAccentColor}"/>
+                            <TextBlock Text="Gear" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Spacing="4" Margin="8" HorizontalAlignment="Center">
+                            <PathIcon Data="{StaticResource Icon.Search}" Foreground="{DynamicResource SystemAccentColor}"/>
+                            <TextBlock Text="Search" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Spacing="4" Margin="8" HorizontalAlignment="Center">
+                            <PathIcon Data="{StaticResource Icon.Layers}" Foreground="{DynamicResource SystemAccentColor}"/>
+                            <TextBlock Text="Layers" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Spacing="4" Margin="8" HorizontalAlignment="Center">
+                            <PathIcon Data="{StaticResource Icon.Map}" Foreground="{DynamicResource SystemAccentColor}"/>
+                            <TextBlock Text="Map" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Spacing="4" Margin="8" HorizontalAlignment="Center">
+                            <PathIcon Data="{StaticResource Icon.Sun}" Foreground="{DynamicResource SystemFillColorCautionBrush}"/>
+                            <TextBlock Text="Sun" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Spacing="4" Margin="8" HorizontalAlignment="Center">
+                            <PathIcon Data="{StaticResource Icon.Moon.ThirdEye.Smiling}" Foreground="{DynamicResource SystemFillColorAttentionBrush}"/>
+                            <TextBlock Text="Moon" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Spacing="4" Margin="8" HorizontalAlignment="Center">
+                            <PathIcon Data="{StaticResource Icon.Refresh}" Foreground="{DynamicResource SystemFillColorSuccessBrush}"/>
+                            <TextBlock Text="Refresh" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Spacing="4" Margin="8" HorizontalAlignment="Center">
+                            <PathIcon Data="{StaticResource Icon.Copy}" Foreground="{DynamicResource SystemAccentColor}"/>
+                            <TextBlock Text="Copy" FontSize="10" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </WrapPanel>
+                </Border>
+            </StackPanel>
+
+        </StackPanel>
+    </ScrollViewer>
+    </Border>
+</UserControl>

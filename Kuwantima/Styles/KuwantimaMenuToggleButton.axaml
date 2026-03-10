@@ -96,7 +96,7 @@
 						BorderThickness="{TemplateBinding BorderThickness}"
 						CornerRadius="{TemplateBinding CornerRadius}">
 					<Panel>
-						<!-- Icon: centered in the full button area -->
+						<!-- Icon: centered when collapsed, left-aligned when expanded -->
 						<PathIcon Name="PART_Icon"
 								  Data="{TemplateBinding Tag}"
 								  Width="18" Height="18"
@@ -112,7 +112,7 @@
 										  Content="{TemplateBinding Content}"
 										  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
 										  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-										  Margin="34,0,0,0"/>
+										  Margin="39,0,0,0"/>
 					</Panel>
 				</Border>
 			</ControlTemplate>
@@ -154,7 +154,7 @@
 
 	<Style Selector="ToggleButton.KuwantimaMenu.Expanded /template/ PathIcon#PART_Icon">
 		<Setter Property="HorizontalAlignment" Value="Left"/>
-		<Setter Property="Margin" Value="8,0,0,0"/>
+		<Setter Property="Margin" Value="13,0,0,0"/>
 	</Style>
 
 	<Style Selector="ToggleButton.KuwantimaMenu.Expanded /template/ ContentPresenter#ContentArea">

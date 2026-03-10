@@ -1,0 +1,54 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Kuwantima.Sandbox.ViewModels"
+             x:Class="Kuwantima.Sandbox.Views.Pages.FeedbackPage"
+             x:DataType="vm:MainWindowViewModel">
+
+    <Border Classes="KuwantimaGlass" Padding="0" ClipToBounds="True">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="24">
+        <StackPanel Spacing="24" MaxWidth="500">
+
+            <!-- Sliders -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="Sliders" FontWeight="SemiBold" FontSize="14"
+                           Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
+                <Slider Classes="Kuwantima" Value="{Binding SliderValue}" Minimum="0" Maximum="100"/>
+                <Slider Classes="Kuwantima" Value="30" Minimum="0" Maximum="100"/>
+                <Slider Classes="Kuwantima" Value="75" Minimum="0" Maximum="100" IsEnabled="False"/>
+            </StackPanel>
+
+            <!-- Progress Bars -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="Progress Bars" FontWeight="SemiBold" FontSize="14"
+                           Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
+                <ProgressBar Classes="Kuwantima" Value="{Binding ProgressValue}" Minimum="0" Maximum="100"/>
+                <ProgressBar Classes="Kuwantima" Value="80" Minimum="0" Maximum="100"/>
+                <ProgressBar Classes="Kuwantima" Value="100" Minimum="0" Maximum="100"/>
+                <ProgressBar Classes="Kuwantima" IsIndeterminate="True"/>
+                <ProgressBar Classes="Kuwantima" Value="50" IsEnabled="False"/>
+            </StackPanel>
+
+            <!-- Expanders -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="Expanders" FontWeight="SemiBold" FontSize="14"
+                           Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
+                <Expander Classes="Kuwantima" Header="Vehicle Details" IsExpanded="True">
+                    <StackPanel Spacing="4" Margin="4">
+                        <TextBlock Text="ID: VH-2048" FontSize="12"/>
+                        <TextBlock Text="Status: Active" FontSize="12"
+                                   Foreground="{DynamicResource KuwantimaSuccessTextBrush}"/>
+                        <TextBlock Text="Speed: 62 km/h" FontSize="12"/>
+                    </StackPanel>
+                </Expander>
+                <Expander Classes="Kuwantima" Header="Route Info">
+                    <TextBlock Text="Eastern corridor — 142km remaining" FontSize="12" Margin="4"/>
+                </Expander>
+                <Expander Classes="Kuwantima" Header="Disabled" IsEnabled="False">
+                    <TextBlock Text="Hidden"/>
+                </Expander>
+            </StackPanel>
+
+        </StackPanel>
+    </ScrollViewer>
+    </Border>
+</UserControl>

@@ -1,0 +1,120 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Kuwantima.Sandbox.Views.Pages.ButtonsPage">
+
+    <Grid RowDefinitions="*,Auto,*" Margin="4">
+
+        <!-- ═══ TOP ROW ═══ -->
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto,*">
+
+            <!-- TOP-LEFT: Standard Buttons -->
+            <Border Grid.Column="0" Classes="KuwantimaGlass" Padding="8">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Spacing="8" Margin="8">
+                        <TextBlock Text="Standard Buttons" FontWeight="SemiBold" FontSize="14"
+                                   Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
+                        <Button Classes="Kuwantima" Content="Standard"/>
+                        <Button Classes="Kuwantima Accent" Content="Accent"/>
+                        <Button Classes="Kuwantima Link" Content="Link Style"/>
+                        <Button Classes="Kuwantima Minimal">
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <PathIcon Data="{StaticResource Icon.Gear}" Width="14" Height="14"/>
+                                <TextBlock Text="Minimal" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Classes="Kuwantima" Content="Disabled" IsEnabled="False"/>
+                        <Button Classes="Kuwantima Accent" Content="Disabled" IsEnabled="False"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+
+            <!-- Top vertical pill splitter -->
+            <GridSplitter Classes="Kuwantima Pill Vertical" Grid.Column="1"/>
+
+            <!-- TOP-RIGHT: Icon Buttons -->
+            <Border Grid.Column="2" Classes="KuwantimaGlass" Padding="8">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Spacing="8" Margin="8">
+                        <TextBlock Text="Icon Buttons" FontWeight="SemiBold" FontSize="14"
+                                   Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
+                        <Button Classes="Kuwantima Accent">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <PathIcon Data="{StaticResource Icon.Search}" Width="14" Height="14"/>
+                                <TextBlock Text="Search" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Classes="Kuwantima">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <PathIcon Data="{StaticResource Icon.Refresh}" Width="14" Height="14"/>
+                                <TextBlock Text="Refresh" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Classes="Kuwantima">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <PathIcon Data="{StaticResource Icon.Copy}" Width="14" Height="14"/>
+                                <TextBlock Text="Copy" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+
+        <!-- Horizontal pill splitter -->
+        <GridSplitter Classes="Kuwantima Pill" Grid.Row="1"/>
+
+        <!-- ═══ BOTTOM ROW ═══ -->
+        <Grid Grid.Row="2" ColumnDefinitions="*,Auto,*">
+
+            <!-- BOTTOM-LEFT: Icon-Only Buttons -->
+            <Border Grid.Column="0" Classes="KuwantimaGlass" Padding="8">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Spacing="8" Margin="8">
+                        <TextBlock Text="Icon-Only" FontWeight="SemiBold" FontSize="14"
+                                   Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
+                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Button Classes="Kuwantima Minimal" Margin="0,0,8,8"
+                                    ToolTip.Tip="Home">
+                                <PathIcon Data="{StaticResource Icon.Home}" Width="16" Height="16"/>
+                            </Button>
+                            <Button Classes="Kuwantima Minimal" Margin="0,0,8,8"
+                                    ToolTip.Tip="Settings">
+                                <PathIcon Data="{StaticResource Icon.Gear}" Width="16" Height="16"/>
+                            </Button>
+                            <Button Classes="Kuwantima Minimal" Margin="0,0,8,8"
+                                    ToolTip.Tip="Search">
+                                <PathIcon Data="{StaticResource Icon.Search}" Width="16" Height="16"/>
+                            </Button>
+                            <Button Classes="Kuwantima Minimal" Margin="0,0,8,8"
+                                    ToolTip.Tip="Layers">
+                                <PathIcon Data="{StaticResource Icon.Layers}" Width="16" Height="16"/>
+                            </Button>
+                            <Button Classes="Kuwantima Minimal" Margin="0,0,8,8"
+                                    ToolTip.Tip="Refresh">
+                                <PathIcon Data="{StaticResource Icon.Refresh}" Width="16" Height="16"/>
+                            </Button>
+                        </WrapPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+
+            <!-- Bottom vertical pill splitter -->
+            <GridSplitter Classes="Kuwantima Pill Vertical" Grid.Column="1"/>
+
+            <!-- BOTTOM-RIGHT: Tooltips -->
+            <Border Grid.Column="2" Classes="KuwantimaGlass" Padding="8">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Spacing="8" Margin="8">
+                        <TextBlock Text="Tooltips" FontWeight="SemiBold" FontSize="14"
+                                   Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
+                        <Button Classes="Kuwantima" Content="Hover me"
+                                ToolTip.Tip="This is a Kuwantima styled tooltip"/>
+                        <Button Classes="Kuwantima Accent" Content="Or me"
+                                ToolTip.Tip="Accent button tooltip with glow border"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+
+    </Grid>
+</UserControl>

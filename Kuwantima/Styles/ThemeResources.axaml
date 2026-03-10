@@ -35,6 +35,10 @@
 			<SolidColorBrush x:Key="KuwantimaGlassGlowBorderHover" Color="#4169E1" Opacity="0.7"/>
 			<BoxShadows x:Key="KuwantimaGlassGlow">0 0 6 1 #30191970, 0 0 14 3 #18191970</BoxShadows>
 			<BoxShadows x:Key="KuwantimaGlassGlowHover">0 0 8 2 #60191970, 0 0 20 5 #30191970</BoxShadows>
+
+			<!-- Splitter -->
+			<SolidColorBrush x:Key="KuwantimaSplitterBrush" Color="MidnightBlue" Opacity="0.25"/>
+			<SolidColorBrush x:Key="KuwantimaSplitterHoverBrush" Color="MidnightBlue" Opacity="0.6"/>
 		</ResourceDictionary>
 
 		<!-- DARK THEME -->
@@ -70,6 +74,10 @@
 			<SolidColorBrush x:Key="KuwantimaGlassGlowBorderHover" Color="#B0D4FF" Opacity="0.75"/>
 			<BoxShadows x:Key="KuwantimaGlassGlow">0 0 6 1 #35F0F8FF, 0 0 14 3 #20F0F8FF</BoxShadows>
 			<BoxShadows x:Key="KuwantimaGlassGlowHover">0 0 8 2 #70B0D4FF, 0 0 22 6 #40B0D4FF</BoxShadows>
+
+			<!-- Splitter -->
+			<SolidColorBrush x:Key="KuwantimaSplitterBrush" Color="AliceBlue" Opacity="0.3"/>
+			<SolidColorBrush x:Key="KuwantimaSplitterHoverBrush" Color="AliceBlue" Opacity="0.7"/>
 		</ResourceDictionary>
 
 	</ResourceDictionary.ThemeDictionaries>

@@ -1,0 +1,86 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Kuwantima.Sandbox.ViewModels"
+             x:Class="Kuwantima.Sandbox.Views.Pages.TogglesPage"
+             x:DataType="vm:MainWindowViewModel">
+
+    <Border Classes="KuwantimaGlass" Padding="0" ClipToBounds="True">
+    <Grid RowDefinitions="*,Auto,*">
+
+        <!-- ═══ TOP ROW ═══ -->
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto,*">
+
+            <!-- TOP-LEFT: Toggle Buttons -->
+            <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
+                <StackPanel Spacing="8" Margin="16">
+                    <TextBlock Text="Toggle Buttons" FontWeight="SemiBold" FontSize="14"
+                               Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
+                    <ToggleButton Classes="Kuwantima" Content="Toggle Off" IsChecked="False"/>
+                    <ToggleButton Classes="Kuwantima" Content="Toggle On" IsChecked="{Binding IsToggled}"/>
+                    <ToggleButton Classes="Kuwantima" Content="Disabled" IsEnabled="False"/>
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- Top vertical arrow splitter -->
+            <GridSplitter Classes="Kuwantima Arrow Vertical" Grid.Column="1"/>
+
+            <!-- TOP-RIGHT: Checkboxes -->
+            <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto">
+                <StackPanel Spacing="8" Margin="16">
+                    <TextBlock Text="Checkboxes" FontWeight="SemiBold" FontSize="14"
+                               Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
+                    <CheckBox Classes="Kuwantima" Content="Unchecked" IsChecked="False"/>
+                    <CheckBox Classes="Kuwantima" Content="Checked" IsChecked="{Binding IsChecked}"/>
+                    <CheckBox Classes="Kuwantima" Content="Indeterminate" IsChecked="{x:Null}" IsThreeState="True"/>
+                    <CheckBox Classes="Kuwantima" Content="Disabled" IsEnabled="False"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <!-- Horizontal arrow splitter -->
+        <GridSplitter Classes="Kuwantima Arrow" Grid.Row="1"/>
+
+        <!-- ═══ BOTTOM ROW ═══ -->
+        <Grid Grid.Row="2" ColumnDefinitions="*,Auto,*">
+
+            <!-- BOTTOM-LEFT: Radio Buttons -->
+            <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
+                <StackPanel Spacing="8" Margin="16">
+                    <TextBlock Text="Radio Buttons" FontWeight="SemiBold" FontSize="14"
+                               Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
+                    <RadioButton Classes="Kuwantima" Content="Option A" GroupName="Demo" IsChecked="True"/>
+                    <RadioButton Classes="Kuwantima" Content="Option B" GroupName="Demo"/>
+                    <RadioButton Classes="Kuwantima" Content="Option C" GroupName="Demo"/>
+                    <RadioButton Classes="Kuwantima" Content="Disabled" GroupName="Demo" IsEnabled="False"/>
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- Bottom vertical arrow splitter -->
+            <GridSplitter Classes="Kuwantima Arrow Vertical" Grid.Column="1"/>
+
+            <!-- BOTTOM-RIGHT: Menu Toggle Buttons -->
+            <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto">
+                <StackPanel Spacing="8" Margin="16">
+                    <TextBlock Text="Menu Toggle Buttons" FontWeight="SemiBold" FontSize="14"
+                               Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
+                    <StackPanel Spacing="4">
+                        <ToggleButton Classes="KuwantimaMenu Expanded"
+                                      Tag="{StaticResource Icon.Expand}"
+                                      Content="Expand" IsChecked="False"/>
+                        <ToggleButton Classes="KuwantimaMenu Expanded"
+                                      Tag="{StaticResource Icon.Collapse}"
+                                      Content="Collapse" IsChecked="True"/>
+                        <ToggleButton Classes="KuwantimaMenu"
+                                      Tag="{StaticResource Icon.Gear}"
+                                      ToolTip.Tip="Icon-only toggle"/>
+                        <ToggleButton Classes="KuwantimaMenu Expanded"
+                                      Tag="{StaticResource Icon.Gear}"
+                                      Content="Disabled" IsEnabled="False"/>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+    </Grid>
+    </Border>
+</UserControl>

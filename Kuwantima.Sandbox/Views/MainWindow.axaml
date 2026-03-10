@@ -1,6 +1,7 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:Kuwantima.Sandbox.ViewModels"
+        xmlns:pages="using:Kuwantima.Sandbox.Views.Pages"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800"
@@ -19,41 +20,37 @@
     <Border Classes="KuwantimaGlass" Margin="8" Padding="0" ClipToBounds="True">
         <Grid RowDefinitions="Auto,*">
 
-            <!-- ═══ HEADER ═══ -->
+            <!-- HEADER -->
             <Border Grid.Row="0" Padding="16,12" Background="{DynamicResource KuwantimaGlassBackground}">
-                <Grid ColumnDefinitions="Auto,12,*,Auto">
+                <Grid ColumnDefinitions="Auto,8,Auto,12,*,Auto">
+                    <!-- Pane toggle -->
+                    <Button Classes="Kuwantima Minimal"
+                            Command="{Binding TogglePaneCommand}"
+                            ToolTip.Tip="Toggle navigation pane"
+                            Width="36" Height="36">
+                        <PathIcon Data="{StaticResource Icon.Sliders}" Width="16" Height="16"/>
+                    </Button>
+
                     <!-- Theme toggle -->
-                    <ToggleButton Classes="KuwantimaMenu"
+                    <ToggleButton Grid.Column="2" Classes="KuwantimaMenu"
+                                  Content="Theme"
                                   IsChecked="{Binding IsDarkTheme}"
-                                  ToolTip.Tip="Toggle light/dark theme"
-                                  Width="40" Height="40">
-                        <ToggleButton.Template>
-                            <ControlTemplate>
-                                <Border Background="{TemplateBinding Background}"
-                                        BorderBrush="{TemplateBinding BorderBrush}"
-                                        BorderThickness="{TemplateBinding BorderThickness}"
-                                        CornerRadius="{TemplateBinding CornerRadius}">
-                                    <Panel>
-                                        <PathIcon Name="SunIcon"
-                                                  Data="{StaticResource Icon.Sun}"
-                                                  Width="18" Height="18"
-                                                  Foreground="{DynamicResource SystemFillColorCautionBrush}"
-                                                  IsVisible="{Binding !IsDarkTheme}"/>
-                                        <PathIcon Name="MoonIcon"
-                                                  Data="{StaticResource Icon.Moon.ThirdEye.Smiling}"
-                                                  Width="18" Height="18"
-                                                  Foreground="{DynamicResource SystemFillColorAttentionBrush}"
-                                                  IsVisible="{Binding IsDarkTheme}"/>
-                                    </Panel>
-                                </Border>
-                            </ControlTemplate>
-                        </ToggleButton.Template>
+                                  ToolTip.Tip="Toggle light/dark theme">
+                        <ToggleButton.Styles>
+                            <Style Selector="ToggleButton">
+                                <Setter Property="Tag" Value="{DynamicResource Icon.Sun}"/>
+                            </Style>
+                            <Style Selector="ToggleButton:checked">
+                                <Setter Property="Tag" Value="{DynamicResource Icon.Moon.ThirdEye.Smiling}"/>
+                            </Style>
+                        </ToggleButton.Styles>
                     </ToggleButton>
 
-                    <TextBlock Grid.Column="2" Text="Kuwantima Style Sandbox"
+                    <TextBlock Grid.Column="4" Text="Kuwantima Style Sandbox"
                                FontSize="20" FontWeight="Bold"
                                VerticalAlignment="Center"/>
-                    <StackPanel Grid.Column="3" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+
+                    <StackPanel Grid.Column="5" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
                         <Button Classes="Kuwantima Accent" Content="Accent"/>
                         <Button Classes="Kuwantima" Content="Standard"/>
                         <Button Classes="Kuwantima Minimal">
@@ -63,322 +60,67 @@
                 </Grid>
             </Border>
 
-            <!-- ═══ MAIN CONTENT ═══ -->
-            <Grid Grid.Row="1" ColumnDefinitions="280,Auto,*">
+            <!-- SPLITVIEW -->
+            <SplitView Grid.Row="1"
+                       IsPaneOpen="{Binding IsPaneOpen}"
+                       DisplayMode="CompactInline"
+                       CompactPaneLength="56"
+                       OpenPaneLength="220"
+                       PaneBackground="Transparent">
 
-                <!-- ═══ LEFT: Navigation & Selection ═══ -->
-                <Border Grid.Column="0" Padding="12">
-                    <Grid RowDefinitions="Auto,*,Auto,Auto,*">
-
-                        <!-- Nav header -->
-                        <TextBlock Text="Navigation" FontWeight="SemiBold" FontSize="14"
-                                   Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"
-                                   Margin="4,0,0,8"/>
-
-                        <!-- Menu toggle buttons -->
-                        <StackPanel Grid.Row="1" Spacing="4">
-                            <ToggleButton Classes="KuwantimaMenu Expanded"
-                                          Tag="{StaticResource Icon.Home}"
-                                          Content="Dashboard" IsChecked="True"/>
-                            <ToggleButton Classes="KuwantimaMenu Expanded"
-                                          Tag="{StaticResource Icon.Layers}"
-                                          Content="Layers"/>
-                            <ToggleButton Classes="KuwantimaMenu Expanded"
-                                          Tag="{StaticResource Icon.Map}"
-                                          Content="Map View"/>
-                            <ToggleButton Classes="KuwantimaMenu Expanded"
-                                          Tag="{StaticResource Icon.Gear}"
-                                          Content="Settings"/>
-                            <ToggleButton Classes="KuwantimaMenu Expanded"
-                                          Tag="{StaticResource Icon.Search}"
-                                          Content="Search"/>
-                            <ToggleButton Classes="KuwantimaMenu Expanded"
-                                          Tag="{StaticResource Icon.Sliders}"
-                                          Content="Disabled" IsEnabled="False"/>
+                <SplitView.Pane>
+                    <Border Padding="4,8,4,8">
+                        <StackPanel Spacing="4">
+                                <ToggleButton Classes="KuwantimaMenu"
+                                              Classes.Expanded="{Binding IsPaneOpen}"
+                                              Tag="{StaticResource Icon.Home}"
+                                              Content="Buttons"
+                                              IsChecked="{Binding IsButtonsPageVisible, Mode=OneWay}"
+                                              Command="{Binding NavigateToCommand}"
+                                              CommandParameter="0"/>
+                                <ToggleButton Classes="KuwantimaMenu"
+                                              Classes.Expanded="{Binding IsPaneOpen}"
+                                              Tag="{StaticResource Icon.Search}"
+                                              Content="Inputs"
+                                              IsChecked="{Binding IsInputsPageVisible, Mode=OneWay}"
+                                              Command="{Binding NavigateToCommand}"
+                                              CommandParameter="1"/>
+                                <ToggleButton Classes="KuwantimaMenu"
+                                              Classes.Expanded="{Binding IsPaneOpen}"
+                                              Tag="{StaticResource Icon.Sliders}"
+                                              Content="Toggles"
+                                              IsChecked="{Binding IsTogglesPageVisible, Mode=OneWay}"
+                                              Command="{Binding NavigateToCommand}"
+                                              CommandParameter="2"/>
+                                <ToggleButton Classes="KuwantimaMenu"
+                                              Classes.Expanded="{Binding IsPaneOpen}"
+                                              Tag="{StaticResource Icon.Layers}"
+                                              Content="Feedback"
+                                              IsChecked="{Binding IsFeedbackPageVisible, Mode=OneWay}"
+                                              Command="{Binding NavigateToCommand}"
+                                              CommandParameter="3"/>
+                                <ToggleButton Classes="KuwantimaMenu"
+                                              Classes.Expanded="{Binding IsPaneOpen}"
+                                              Tag="{StaticResource Icon.Map}"
+                                              Content="Containers"
+                                              IsChecked="{Binding IsContainersPageVisible, Mode=OneWay}"
+                                              Command="{Binding NavigateToCommand}"
+                                              CommandParameter="4"/>
                         </StackPanel>
+                    </Border>
+                </SplitView.Pane>
 
-                        <GridSplitter Classes="Kuwantima Horizontal" Grid.Row="2" Margin="0,8"/>
-
-                        <!-- List section header -->
-                        <TextBlock Grid.Row="3" Text="Items" FontWeight="SemiBold" FontSize="14"
-                                   Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"
-                                   Margin="4,8,0,8"/>
-
-                        <!-- ListBox -->
-                        <ListBox Grid.Row="4" Classes="Kuwantima"
-                                 ItemsSource="{Binding ListItems}"
-                                 SelectedIndex="2"
-                                 ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
-                    </Grid>
-                </Border>
-
-                <!-- Vertical splitter -->
-                <GridSplitter Classes="Kuwantima" Grid.Column="1"/>
-
-                <!-- ═══ RIGHT: Controls showcase ═══ -->
-                <Border Grid.Column="2" Padding="12">
-                    <Grid RowDefinitions="*,Auto,*">
-
-                        <!-- ═══ TOP: Inputs & Actions ═══ -->
-                        <Grid Grid.Row="0" ColumnDefinitions="*,Auto,*">
-
-                            <!-- TOP-LEFT: Buttons & Text Input -->
-                            <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
-                                <StackPanel Spacing="16" Margin="4">
-                                    <TextBlock Text="Actions" FontWeight="SemiBold" FontSize="14"
-                                               Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
-
-                                    <!-- Buttons -->
-                                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                        <StackPanel Spacing="8" Margin="0,0,16,0">
-                                            <Button Classes="Kuwantima" Content="Standard"/>
-                                            <Button Classes="Kuwantima Accent" Content="Accent"/>
-                                            <Button Classes="Kuwantima Link" Content="Link style"/>
-                                            <Button Classes="Kuwantima" Content="Disabled" IsEnabled="False"/>
-                                            <Button Classes="Kuwantima Accent" Content="Disabled" IsEnabled="False"/>
-                                        </StackPanel>
-                                    </WrapPanel>
-
-                                    <!-- Text inputs -->
-                                    <TextBlock Text="Text Input" FontWeight="SemiBold" FontSize="14"
-                                               Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"
-                                               Margin="0,8,0,0"/>
-
-                                    <TextBox Classes="Kuwantima" Watermark="Enter text here..."/>
-                                    <TextBox Classes="Kuwantima" Text="Editable value"/>
-                                    <TextBox Classes="Kuwantima ReadOnly" Text="Read-only display" IsReadOnly="True"/>
-                                    <TextBox Classes="Kuwantima" Text="Disabled" IsEnabled="False"/>
-
-                                    <!-- ComboBox -->
-                                    <TextBlock Text="Selection" FontWeight="SemiBold" FontSize="14"
-                                               Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"
-                                               Margin="0,8,0,0"/>
-
-                                    <ComboBox Classes="Kuwantima" PlaceholderText="Choose..." HorizontalAlignment="Stretch">
-                                        <ComboBoxItem>Vehicle</ComboBoxItem>
-                                        <ComboBoxItem>Site</ComboBoxItem>
-                                        <ComboBoxItem>Feature</ComboBoxItem>
-                                        <ComboBoxItem>Route</ComboBoxItem>
-                                        <ComboBoxItem>Zone</ComboBoxItem>
-                                    </ComboBox>
-                                    <ComboBox Classes="Kuwantima" SelectedIndex="1" HorizontalAlignment="Stretch">
-                                        <ComboBoxItem>Light</ComboBoxItem>
-                                        <ComboBoxItem>Dark</ComboBoxItem>
-                                        <ComboBoxItem>System</ComboBoxItem>
-                                    </ComboBox>
-                                    <ComboBox Classes="Kuwantima" IsEnabled="False" SelectedIndex="0" HorizontalAlignment="Stretch">
-                                        <ComboBoxItem>Disabled</ComboBoxItem>
-                                    </ComboBox>
-                                </StackPanel>
-                            </ScrollViewer>
-
-                            <!-- Vertical splitter -->
-                            <GridSplitter Classes="Kuwantima" Grid.Column="1"/>
-
-                            <!-- TOP-RIGHT: Toggle Controls -->
-                            <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto">
-                                <StackPanel Spacing="16" Margin="4">
-                                    <TextBlock Text="Toggles" FontWeight="SemiBold" FontSize="14"
-                                               Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
-
-                                    <!-- Toggle buttons -->
-                                    <StackPanel Spacing="8">
-                                        <ToggleButton Classes="Kuwantima" Content="Toggle Off" IsChecked="False"/>
-                                        <ToggleButton Classes="Kuwantima" Content="Toggle On" IsChecked="{Binding IsToggled}"/>
-                                        <ToggleButton Classes="Kuwantima" Content="Disabled" IsEnabled="False"/>
-                                    </StackPanel>
-
-                                    <!-- Checkboxes -->
-                                    <TextBlock Text="Checkboxes" FontWeight="SemiBold" FontSize="14"
-                                               Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"
-                                               Margin="0,8,0,0"/>
-                                    <StackPanel Spacing="8">
-                                        <CheckBox Classes="Kuwantima" Content="Unchecked" IsChecked="False"/>
-                                        <CheckBox Classes="Kuwantima" Content="Checked" IsChecked="{Binding IsChecked}"/>
-                                        <CheckBox Classes="Kuwantima" Content="Indeterminate" IsChecked="{x:Null}" IsThreeState="True"/>
-                                        <CheckBox Classes="Kuwantima" Content="Disabled" IsEnabled="False"/>
-                                    </StackPanel>
-
-                                    <!-- Radio buttons -->
-                                    <TextBlock Text="Radio Buttons" FontWeight="SemiBold" FontSize="14"
-                                               Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"
-                                               Margin="0,8,0,0"/>
-                                    <StackPanel Spacing="8">
-                                        <RadioButton Classes="Kuwantima" Content="Option A" GroupName="Demo" IsChecked="True"/>
-                                        <RadioButton Classes="Kuwantima" Content="Option B" GroupName="Demo"/>
-                                        <RadioButton Classes="Kuwantima" Content="Option C" GroupName="Demo"/>
-                                        <RadioButton Classes="Kuwantima" Content="Disabled" GroupName="Demo" IsEnabled="False"/>
-                                    </StackPanel>
-                                </StackPanel>
-                            </ScrollViewer>
-                        </Grid>
-
-                        <!-- Horizontal splitter -->
-                        <GridSplitter Classes="Kuwantima Horizontal" Grid.Row="1" Margin="0,4"/>
-
-                        <!-- ═══ BOTTOM: Feedback & Layout ═══ -->
-                        <Grid Grid.Row="2" ColumnDefinitions="*,Auto,*">
-
-                            <!-- BOTTOM-LEFT: Sliders & Progress -->
-                            <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
-                                <StackPanel Spacing="16" Margin="4">
-                                    <TextBlock Text="Feedback" FontWeight="SemiBold" FontSize="14"
-                                               Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
-
-                                    <!-- Sliders -->
-                                    <StackPanel Spacing="4">
-                                        <TextBlock Text="Slider" FontSize="12"
-                                                   Foreground="{DynamicResource KuwantimaSecondaryTextBrush}"/>
-                                        <Slider Classes="Kuwantima" Value="{Binding SliderValue}" Minimum="0" Maximum="100"/>
-                                        <Slider Classes="Kuwantima" Value="30" Minimum="0" Maximum="100"/>
-                                        <Slider Classes="Kuwantima" Value="75" Minimum="0" Maximum="100" IsEnabled="False"/>
-                                    </StackPanel>
-
-                                    <!-- Progress bars -->
-                                    <StackPanel Spacing="8">
-                                        <TextBlock Text="Progress" FontSize="12"
-                                                   Foreground="{DynamicResource KuwantimaSecondaryTextBrush}"/>
-                                        <ProgressBar Classes="Kuwantima" Value="{Binding ProgressValue}" Minimum="0" Maximum="100"/>
-                                        <ProgressBar Classes="Kuwantima" Value="80" Minimum="0" Maximum="100"/>
-                                        <ProgressBar Classes="Kuwantima" Value="100" Minimum="0" Maximum="100"/>
-                                        <ProgressBar Classes="Kuwantima" IsIndeterminate="True"/>
-                                        <ProgressBar Classes="Kuwantima" Value="50" IsEnabled="False"/>
-                                    </StackPanel>
-
-                                    <!-- Expanders -->
-                                    <StackPanel Spacing="8" Margin="0,8,0,0">
-                                        <TextBlock Text="Expanders" FontSize="12"
-                                                   Foreground="{DynamicResource KuwantimaSecondaryTextBrush}"/>
-                                        <Expander Classes="Kuwantima" Header="Vehicle Details" IsExpanded="True">
-                                            <StackPanel Spacing="4" Margin="4">
-                                                <TextBlock Text="ID: VH-2048" FontSize="12"/>
-                                                <TextBlock Text="Status: Active" FontSize="12"
-                                                           Foreground="{DynamicResource KuwantimaSuccessTextBrush}"/>
-                                                <TextBlock Text="Speed: 62 km/h" FontSize="12"/>
-                                            </StackPanel>
-                                        </Expander>
-                                        <Expander Classes="Kuwantima" Header="Route Info">
-                                            <TextBlock Text="Eastern corridor — 142km remaining" FontSize="12" Margin="4"/>
-                                        </Expander>
-                                        <Expander Classes="Kuwantima" Header="Disabled" IsEnabled="False">
-                                            <TextBlock Text="Hidden"/>
-                                        </Expander>
-                                    </StackPanel>
-                                </StackPanel>
-                            </ScrollViewer>
-
-                            <!-- Vertical splitter -->
-                            <GridSplitter Classes="Kuwantima" Grid.Column="1"/>
-
-                            <!-- BOTTOM-RIGHT: Tabs & Glass -->
-                            <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto">
-                                <StackPanel Spacing="16" Margin="4">
-                                    <TextBlock Text="Containers" FontWeight="SemiBold" FontSize="14"
-                                               Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
-
-                                    <!-- TabControl -->
-                                    <TabControl Classes="Kuwantima">
-                                        <TabItem Header="Overview">
-                                            <StackPanel Spacing="6" Margin="8">
-                                                <TextBlock Text="Fleet summary" FontSize="12"/>
-                                                <TextBlock Text="12 vehicles online" FontSize="12"
-                                                           Foreground="{DynamicResource KuwantimaSuccessTextBrush}"/>
-                                                <TextBlock Text="3 alerts pending" FontSize="12"
-                                                           Foreground="{DynamicResource KuwantimaWarningTextBrush}"/>
-                                            </StackPanel>
-                                        </TabItem>
-                                        <TabItem Header="Details">
-                                            <StackPanel Spacing="6" Margin="8">
-                                                <TextBlock Text="Route: Eastern Seaboard Alpha" FontSize="12"/>
-                                                <TextBlock Text="ETA: 14:32" FontSize="12"/>
-                                                <TextBlock Text="Distance: 142 km" FontSize="12"/>
-                                            </StackPanel>
-                                        </TabItem>
-                                        <TabItem Header="History">
-                                            <TextBlock Text="Historical analytics and reports" Margin="8" FontSize="12"/>
-                                        </TabItem>
-                                        <TabItem Header="Disabled" IsEnabled="False">
-                                            <TextBlock Text="Disabled"/>
-                                        </TabItem>
-                                    </TabControl>
-
-                                    <!-- Glass panels -->
-                                    <TextBlock Text="Glass Panels" FontSize="12"
-                                               Foreground="{DynamicResource KuwantimaSecondaryTextBrush}"
-                                               Margin="0,8,0,0"/>
-
-                                    <Border Classes="KuwantimaGlass" Padding="12">
-                                        <StackPanel Spacing="6">
-                                            <TextBlock Text="Status Panel" FontWeight="SemiBold" FontSize="13"/>
-                                            <TextBlock Text="All systems operational" FontSize="12"
-                                                       Foreground="{DynamicResource KuwantimaSuccessTextBrush}"/>
-                                            <ProgressBar Classes="Kuwantima" Value="92" Minimum="0" Maximum="100"/>
-                                        </StackPanel>
-                                    </Border>
-
-                                    <Border Classes="KuwantimaGlass" Padding="12">
-                                        <StackPanel Spacing="6">
-                                            <TextBlock Text="Tooltip Demo" FontWeight="SemiBold" FontSize="13"/>
-                                            <StackPanel Orientation="Horizontal" Spacing="8">
-                                                <Button Classes="Kuwantima" Content="Hover me"
-                                                        ToolTip.Tip="This is a Kuwantima styled tooltip"/>
-                                                <Button Classes="Kuwantima Accent" Content="Or me"
-                                                        ToolTip.Tip="Accent button tooltip with glow border"/>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </Border>
-
-                                    <!-- Icon showcase -->
-                                    <TextBlock Text="Icons" FontSize="12"
-                                               Foreground="{DynamicResource KuwantimaSecondaryTextBrush}"
-                                               Margin="0,8,0,0"/>
-
-                                    <Border Classes="KuwantimaGlass" Padding="12">
-                                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                            <StackPanel Spacing="4" Margin="8" HorizontalAlignment="Center">
-                                                <PathIcon Data="{StaticResource Icon.Home}" Foreground="{DynamicResource SystemAccentColor}"/>
-                                                <TextBlock Text="Home" FontSize="10" HorizontalAlignment="Center"/>
-                                            </StackPanel>
-                                            <StackPanel Spacing="4" Margin="8" HorizontalAlignment="Center">
-                                                <PathIcon Data="{StaticResource Icon.Gear}" Foreground="{DynamicResource SystemAccentColor}"/>
-                                                <TextBlock Text="Gear" FontSize="10" HorizontalAlignment="Center"/>
-                                            </StackPanel>
-                                            <StackPanel Spacing="4" Margin="8" HorizontalAlignment="Center">
-                                                <PathIcon Data="{StaticResource Icon.Search}" Foreground="{DynamicResource SystemAccentColor}"/>
-                                                <TextBlock Text="Search" FontSize="10" HorizontalAlignment="Center"/>
-                                            </StackPanel>
-                                            <StackPanel Spacing="4" Margin="8" HorizontalAlignment="Center">
-                                                <PathIcon Data="{StaticResource Icon.Layers}" Foreground="{DynamicResource SystemAccentColor}"/>
-                                                <TextBlock Text="Layers" FontSize="10" HorizontalAlignment="Center"/>
-                                            </StackPanel>
-                                            <StackPanel Spacing="4" Margin="8" HorizontalAlignment="Center">
-                                                <PathIcon Data="{StaticResource Icon.Map}" Foreground="{DynamicResource SystemAccentColor}"/>
-                                                <TextBlock Text="Map" FontSize="10" HorizontalAlignment="Center"/>
-                                            </StackPanel>
-                                            <StackPanel Spacing="4" Margin="8" HorizontalAlignment="Center">
-                                                <PathIcon Data="{StaticResource Icon.Sun}" Foreground="{DynamicResource SystemFillColorCautionBrush}"/>
-                                                <TextBlock Text="Sun" FontSize="10" HorizontalAlignment="Center"/>
-                                            </StackPanel>
-                                            <StackPanel Spacing="4" Margin="8" HorizontalAlignment="Center">
-                                                <PathIcon Data="{StaticResource Icon.Moon.ThirdEye.Smiling}" Foreground="{DynamicResource SystemFillColorAttentionBrush}"/>
-                                                <TextBlock Text="Moon" FontSize="10" HorizontalAlignment="Center"/>
-                                            </StackPanel>
-                                            <StackPanel Spacing="4" Margin="8" HorizontalAlignment="Center">
-                                                <PathIcon Data="{StaticResource Icon.Refresh}" Foreground="{DynamicResource SystemFillColorSuccessBrush}"/>
-                                                <TextBlock Text="Refresh" FontSize="10" HorizontalAlignment="Center"/>
-                                            </StackPanel>
-                                            <StackPanel Spacing="4" Margin="8" HorizontalAlignment="Center">
-                                                <PathIcon Data="{StaticResource Icon.Copy}" Foreground="{DynamicResource SystemAccentColor}"/>
-                                                <TextBlock Text="Copy" FontSize="10" HorizontalAlignment="Center"/>
-                                            </StackPanel>
-                                        </WrapPanel>
-                                    </Border>
-                                </StackPanel>
-                            </ScrollViewer>
-                        </Grid>
-                    </Grid>
-                </Border>
-            </Grid>
+                <!-- PAGE CONTENT — all pages stay alive, visibility toggled -->
+                <SplitView.Content>
+                    <Panel Margin="4">
+                        <pages:ButtonsPage IsVisible="{Binding IsButtonsPageVisible}"/>
+                        <pages:InputsPage IsVisible="{Binding IsInputsPageVisible}"/>
+                        <pages:TogglesPage IsVisible="{Binding IsTogglesPageVisible}"/>
+                        <pages:FeedbackPage IsVisible="{Binding IsFeedbackPageVisible}"/>
+                        <pages:ContainersPage IsVisible="{Binding IsContainersPageVisible}"/>
+                    </Panel>
+                </SplitView.Content>
+            </SplitView>
         </Grid>
     </Border>
 </Window>

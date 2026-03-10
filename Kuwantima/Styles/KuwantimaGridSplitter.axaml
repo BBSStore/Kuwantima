@@ -149,4 +149,271 @@
 		<Setter Property="Background" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
 		<Setter Property="Height" Value="2.5"/>
 	</Style>
+
+	<!-- ═══ PILL: GridSplitter.Kuwantima.Pill (between glass panels — horizontal) ═══ -->
+	<Style Selector="GridSplitter.Kuwantima.Pill">
+		<Setter Property="Height" Value="8"/>
+		<Setter Property="Width" Value="NaN"/>
+		<Setter Property="MinWidth" Value="0"/>
+		<Setter Property="MinHeight" Value="0"/>
+		<Setter Property="HorizontalAlignment" Value="Stretch"/>
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="Cursor" Value="SizeNorthSouth"/>
+
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Border Background="{TemplateBinding Background}" Padding="0,2">
+					<Border Name="PillHandle"
+					        Height="3" Width="40" CornerRadius="2"
+					        HorizontalAlignment="Center"
+					        Background="{DynamicResource KuwantimaSplitterBrush}">
+						<Border.Transitions>
+							<Transitions>
+								<BrushTransition Property="Background" Duration="0:0:0.2"/>
+								<DoubleTransition Property="Width" Duration="0:0:0.15"/>
+							</Transitions>
+						</Border.Transitions>
+					</Border>
+				</Border>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+
+	<Style Selector="GridSplitter.Kuwantima.Pill:pointerover /template/ Border#PillHandle">
+		<Setter Property="Background" Value="{DynamicResource KuwantimaSplitterHoverBrush}"/>
+		<Setter Property="Width" Value="60"/>
+	</Style>
+
+	<Style Selector="GridSplitter.Kuwantima.Pill:pressed /template/ Border#PillHandle">
+		<Setter Property="Background" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+		<Setter Property="Width" Value="60"/>
+	</Style>
+
+	<!-- ═══ PILL VERTICAL: GridSplitter.Kuwantima.Pill.Vertical ═══ -->
+	<Style Selector="GridSplitter.Kuwantima.Pill.Vertical">
+		<Setter Property="Height" Value="NaN"/>
+		<Setter Property="Width" Value="8"/>
+		<Setter Property="VerticalAlignment" Value="Stretch"/>
+		<Setter Property="HorizontalAlignment" Value="Center"/>
+		<Setter Property="Cursor" Value="SizeWestEast"/>
+
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Border Background="{TemplateBinding Background}" Padding="0,2">
+					<Border Name="PillHandle"
+					        Width="3" Height="40" CornerRadius="2"
+					        HorizontalAlignment="Center"
+					        VerticalAlignment="Center"
+					        Background="{DynamicResource KuwantimaSplitterBrush}">
+						<Border.Transitions>
+							<Transitions>
+								<BrushTransition Property="Background" Duration="0:0:0.2"/>
+								<DoubleTransition Property="Height" Duration="0:0:0.15"/>
+							</Transitions>
+						</Border.Transitions>
+					</Border>
+				</Border>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+
+	<Style Selector="GridSplitter.Kuwantima.Pill.Vertical:pointerover /template/ Border#PillHandle">
+		<Setter Property="Background" Value="{DynamicResource KuwantimaSplitterHoverBrush}"/>
+		<Setter Property="Width" Value="3"/>
+		<Setter Property="Height" Value="50"/>
+	</Style>
+
+	<Style Selector="GridSplitter.Kuwantima.Pill.Vertical:pressed /template/ Border#PillHandle">
+		<Setter Property="Background" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+		<Setter Property="Width" Value="3"/>
+		<Setter Property="Height" Value="50"/>
+	</Style>
+
+	<!-- ═══ ARROW: GridSplitter.Kuwantima.Arrow (inside bordered container — horizontal) ═══ -->
+	<!-- Two parallel rails with arrow ends merging into the container border, pill centered -->
+	<Style Selector="GridSplitter.Kuwantima.Arrow">
+		<Setter Property="Height" Value="8"/>
+		<Setter Property="Width" Value="NaN"/>
+		<Setter Property="MinHeight" Value="8"/>
+		<Setter Property="MinWidth" Value="0"/>
+		<Setter Property="HorizontalAlignment" Value="Stretch"/>
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="Cursor" Value="SizeNorthSouth"/>
+
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Border Background="{TemplateBinding Background}">
+					<Panel>
+						<!-- Top rail — full width, inset for arrows -->
+						<Border Name="RailTop" Height="1"
+						        VerticalAlignment="Top" Margin="5,0"
+						        Background="{DynamicResource KuwantimaSplitterBrush}"/>
+						<!-- Bottom rail — full width, inset for arrows -->
+						<Border Name="RailBottom" Height="1"
+						        VerticalAlignment="Bottom" Margin="5,0"
+						        Background="{DynamicResource KuwantimaSplitterBrush}"/>
+						<!-- Left arrow ◁ connecting both rails to border -->
+						<Path Name="ArrowLeft"
+						      Data="M 5,0 L 0,4 L 5,8"
+						      StrokeThickness="1"
+						      Stroke="{DynamicResource KuwantimaSplitterBrush}"
+						      HorizontalAlignment="Left"
+						      VerticalAlignment="Center"
+						      Stretch="Uniform" Width="5" Height="8"/>
+						<!-- Right arrow ▷ connecting both rails to border -->
+						<Path Name="ArrowRight"
+						      Data="M 0,0 L 5,4 L 0,8"
+						      StrokeThickness="1"
+						      Stroke="{DynamicResource KuwantimaSplitterBrush}"
+						      HorizontalAlignment="Right"
+						      VerticalAlignment="Center"
+						      Stretch="Uniform" Width="5" Height="8"/>
+						<!-- Center pill handle -->
+						<Border Name="ArrowPill"
+						        Height="3" Width="40" CornerRadius="2"
+						        HorizontalAlignment="Center"
+						        VerticalAlignment="Center"
+						        Background="{DynamicResource KuwantimaSplitterBrush}">
+							<Border.Transitions>
+								<Transitions>
+									<DoubleTransition Property="Width" Duration="0:0:0.15"/>
+								</Transitions>
+							</Border.Transitions>
+						</Border>
+					</Panel>
+				</Border>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+
+	<!-- Arrow horizontal hover -->
+	<Style Selector="GridSplitter.Kuwantima.Arrow:pointerover /template/ Border#RailTop">
+		<Setter Property="Background" Value="{DynamicResource KuwantimaSplitterHoverBrush}"/>
+	</Style>
+	<Style Selector="GridSplitter.Kuwantima.Arrow:pointerover /template/ Border#RailBottom">
+		<Setter Property="Background" Value="{DynamicResource KuwantimaSplitterHoverBrush}"/>
+	</Style>
+	<Style Selector="GridSplitter.Kuwantima.Arrow:pointerover /template/ Path#ArrowLeft">
+		<Setter Property="Stroke" Value="{DynamicResource KuwantimaSplitterHoverBrush}"/>
+	</Style>
+	<Style Selector="GridSplitter.Kuwantima.Arrow:pointerover /template/ Path#ArrowRight">
+		<Setter Property="Stroke" Value="{DynamicResource KuwantimaSplitterHoverBrush}"/>
+	</Style>
+	<Style Selector="GridSplitter.Kuwantima.Arrow:pointerover /template/ Border#ArrowPill">
+		<Setter Property="Background" Value="{DynamicResource KuwantimaSplitterHoverBrush}"/>
+		<Setter Property="Width" Value="60"/>
+	</Style>
+
+	<!-- Arrow horizontal pressed -->
+	<Style Selector="GridSplitter.Kuwantima.Arrow:pressed /template/ Border#RailTop">
+		<Setter Property="Background" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+	</Style>
+	<Style Selector="GridSplitter.Kuwantima.Arrow:pressed /template/ Border#RailBottom">
+		<Setter Property="Background" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+	</Style>
+	<Style Selector="GridSplitter.Kuwantima.Arrow:pressed /template/ Path#ArrowLeft">
+		<Setter Property="Stroke" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+	</Style>
+	<Style Selector="GridSplitter.Kuwantima.Arrow:pressed /template/ Path#ArrowRight">
+		<Setter Property="Stroke" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+	</Style>
+	<Style Selector="GridSplitter.Kuwantima.Arrow:pressed /template/ Border#ArrowPill">
+		<Setter Property="Background" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+		<Setter Property="Width" Value="60"/>
+	</Style>
+
+	<!-- ═══ ARROW VERTICAL: GridSplitter.Kuwantima.Arrow.Vertical ═══ -->
+	<Style Selector="GridSplitter.Kuwantima.Arrow.Vertical">
+		<Setter Property="Width" Value="8"/>
+		<Setter Property="Height" Value="NaN"/>
+		<Setter Property="MinWidth" Value="8"/>
+		<Setter Property="MinHeight" Value="0"/>
+		<Setter Property="VerticalAlignment" Value="Stretch"/>
+		<Setter Property="HorizontalAlignment" Value="Center"/>
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="Cursor" Value="SizeWestEast"/>
+
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Border Background="{TemplateBinding Background}">
+					<Panel>
+						<!-- Left rail — full height, inset for arrows -->
+						<Border Name="RailLeft" Width="1"
+						        HorizontalAlignment="Left" Margin="0,5"
+						        Background="{DynamicResource KuwantimaSplitterBrush}"/>
+						<!-- Right rail — full height, inset for arrows -->
+						<Border Name="RailRight" Width="1"
+						        HorizontalAlignment="Right" Margin="0,5"
+						        Background="{DynamicResource KuwantimaSplitterBrush}"/>
+						<!-- Top arrow △ connecting both rails to border -->
+						<Path Name="ArrowTop"
+						      Data="M 0,5 L 4,0 L 8,5"
+						      StrokeThickness="1"
+						      Stroke="{DynamicResource KuwantimaSplitterBrush}"
+						      VerticalAlignment="Top"
+						      HorizontalAlignment="Center"
+						      Stretch="Uniform" Width="8" Height="5"/>
+						<!-- Bottom arrow ▽ connecting both rails to border -->
+						<Path Name="ArrowBottom"
+						      Data="M 0,0 L 4,5 L 8,0"
+						      StrokeThickness="1"
+						      Stroke="{DynamicResource KuwantimaSplitterBrush}"
+						      VerticalAlignment="Bottom"
+						      HorizontalAlignment="Center"
+						      Stretch="Uniform" Width="8" Height="5"/>
+						<!-- Center pill handle -->
+						<Border Name="ArrowPill"
+						        Width="3" Height="40" CornerRadius="2"
+						        HorizontalAlignment="Center"
+						        VerticalAlignment="Center"
+						        Background="{DynamicResource KuwantimaSplitterBrush}">
+							<Border.Transitions>
+								<Transitions>
+									<DoubleTransition Property="Height" Duration="0:0:0.15"/>
+								</Transitions>
+							</Border.Transitions>
+						</Border>
+					</Panel>
+				</Border>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+
+	<!-- Arrow vertical hover -->
+	<Style Selector="GridSplitter.Kuwantima.Arrow.Vertical:pointerover /template/ Border#RailLeft">
+		<Setter Property="Background" Value="{DynamicResource KuwantimaSplitterHoverBrush}"/>
+	</Style>
+	<Style Selector="GridSplitter.Kuwantima.Arrow.Vertical:pointerover /template/ Border#RailRight">
+		<Setter Property="Background" Value="{DynamicResource KuwantimaSplitterHoverBrush}"/>
+	</Style>
+	<Style Selector="GridSplitter.Kuwantima.Arrow.Vertical:pointerover /template/ Path#ArrowTop">
+		<Setter Property="Stroke" Value="{DynamicResource KuwantimaSplitterHoverBrush}"/>
+	</Style>
+	<Style Selector="GridSplitter.Kuwantima.Arrow.Vertical:pointerover /template/ Path#ArrowBottom">
+		<Setter Property="Stroke" Value="{DynamicResource KuwantimaSplitterHoverBrush}"/>
+	</Style>
+	<Style Selector="GridSplitter.Kuwantima.Arrow.Vertical:pointerover /template/ Border#ArrowPill">
+		<Setter Property="Background" Value="{DynamicResource KuwantimaSplitterHoverBrush}"/>
+		<Setter Property="Width" Value="3"/>
+		<Setter Property="Height" Value="50"/>
+	</Style>
+
+	<!-- Arrow vertical pressed -->
+	<Style Selector="GridSplitter.Kuwantima.Arrow.Vertical:pressed /template/ Border#RailLeft">
+		<Setter Property="Background" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+	</Style>
+	<Style Selector="GridSplitter.Kuwantima.Arrow.Vertical:pressed /template/ Border#RailRight">
+		<Setter Property="Background" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+	</Style>
+	<Style Selector="GridSplitter.Kuwantima.Arrow.Vertical:pressed /template/ Path#ArrowTop">
+		<Setter Property="Stroke" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+	</Style>
+	<Style Selector="GridSplitter.Kuwantima.Arrow.Vertical:pressed /template/ Path#ArrowBottom">
+		<Setter Property="Stroke" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+	</Style>
+	<Style Selector="GridSplitter.Kuwantima.Arrow.Vertical:pressed /template/ Border#ArrowPill">
+		<Setter Property="Background" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+		<Setter Property="Width" Value="3"/>
+		<Setter Property="Height" Value="50"/>
+	</Style>
 </Styles>
