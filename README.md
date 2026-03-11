@@ -14,7 +14,13 @@ One `StyleInclude`, 16 styled controls, automatic light/dark theming.
 
 ## Quick Start
 
-Add a project reference (NuGet package coming soon), then in your `App.axaml`:
+Install via NuGet:
+
+```
+dotnet add package Kuwantima
+```
+
+Then in your `App.axaml`:
 
 ```xml
 <Application.Styles>

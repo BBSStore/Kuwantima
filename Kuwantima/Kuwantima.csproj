@@ -12,8 +12,8 @@
     <Description>A glass-glow design system for Avalonia UI. 16 styled controls, automatic light/dark theming, Fluent palette integration.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageProjectUrl>https://github.com/coleblarson/Kuwantima</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/coleblarson/Kuwantima</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Votskwani/Kuwantima</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Votskwani/Kuwantima</RepositoryUrl>
     <PackageTags>avalonia;ui;theme;glass;design-system</PackageTags>
   </PropertyGroup>
 
