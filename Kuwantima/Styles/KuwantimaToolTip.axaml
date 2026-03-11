@@ -69,12 +69,12 @@
 
 	<!-- ═══ ToolTip ═══ -->
 	<Style Selector="ToolTip">
-		<Setter Property="Background" Value="{DynamicResource KuwantimaGlassBackground}"/>
+		<Setter Property="Background" Value="{DynamicResource KuwantimaTooltipBackground}"/>
 		<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorder}"/>
 		<Setter Property="BorderThickness" Value="1.5"/>
 		<Setter Property="CornerRadius" Value="6"/>
 		<Setter Property="Padding" Value="10,6"/>
-		<Setter Property="Foreground" Value="{DynamicResource SystemBaseHighColor}"/>
+		<Setter Property="Foreground" Value="{DynamicResource KuwantimaTooltipForeground}"/>
 		<Setter Property="FontSize" Value="12"/>
 
 		<Setter Property="Template">

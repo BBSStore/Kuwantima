@@ -1,0 +1,273 @@
+<!--
+	KuwantimaPrimaryTheme.axaml
+	═══════════════════════════════════════════════════════════════════════════
+	Entry point for the Kuwantima design system.  One StyleInclude in your
+	App.axaml is all that's needed to apply the full theme:
+
+	VERSION HISTORY:
+	  1.0.0  2025-03-11  Initial release
+	         • 16 styled controls (Button, CheckBox, ComboBox, Expander,
+	           GlassBorder, GridSplitter, ListBox, MenuToggleButton,
+	           ProgressBar, RadioButton, Slider, TabControl, TextBox,
+	           ToggleButton, ToolTip) + StreamIcons
+	         • Classic variants for CheckBox and RadioButton
+	         • Accent variant for Button
+	         • GridSplitter variants: Pill, Arrow (horizontal + vertical)
+	         • Full Fluent palette override (28 tokens, Light + Dark)
+	         • Glass-glow border/shadow system
+	         • Tooltip, Splitter, and semantic status theme resources
+	         • Fluent brush integration (accent foreground, secondary/tertiary text)
+	         • Cursor="Hand" on interactive toggle controls
+
+		<StyleInclude Source="avares://Kuwantima/Theme/KuwantimaPrimaryTheme.axaml"/>
+
+	LOAD ORDER (order matters — later entries can override earlier ones):
+	  1. Merged resources  — icons + KuwantimaThemeResources (custom brushes)
+	  2. Control styles    — Kuwantima-classed templates for 16 controls
+	  3. Fluent palette    — ColorPaletteResources that tint the entire Fluent
+	                         base with MidnightBlue / AliceBlue
+	  4. Global defaults   — PathIcon sizing
+
+	COLOR PHILOSOPHY:
+	  • Cool anchor:  MidnightBlue (#191970) / AliceBlue (#F0F8FF)
+	    – Provides the blue-ink / icy-frost tint that flows through every
+	      Base*, Chrome*, Alt*, and List* Fluent token.
+	  • Warm accent:  Orange (#FF8C00 light / #FFA500 dark)
+	    – Used for checked/selected borders (KuwantimaAccentOrangeBrush).
+	    – Contrasts intentionally against the cool blue to draw attention.
+	  • System accent: #0078D4 (Fluent blue)
+	    – Drives filled accent backgrounds (buttons, checks, selections).
+	  • Together: cool structure + warm signal + blue action.
+
+	FLUENT INTEGRATION:
+	  Several Kuwantima brushes were replaced by their Fluent equivalents so
+	  they automatically track system accent and high-contrast changes:
+	    KuwantimaAccentForeground  → TextOnAccentFillColorPrimaryBrush
+	    KuwantimaSecondaryTextBrush → TextFillColorSecondaryBrush
+	    KuwantimaSubtitleTextBrush  → TextFillColorTertiaryBrush
+	  These can be reclaimed by redefining the Fluent keys in
+	  KuwantimaThemeResources.axaml if you need to diverge.
+-->
+<Styles xmlns="https://github.com/avaloniaui"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:fluent="clr-namespace:Avalonia.Themes.Fluent;assembly=Avalonia.Themes.Fluent">
+	<Design.PreviewWith>
+		<ScrollViewer Background="AliceBlue" HorizontalScrollBarVisibility="Auto">
+			<!-- Root container with a neutral background and proper padding -->
+			<Border Padding="30"  CornerRadius="8" Classes="KuwantimaGlass" MinWidth="400">
+				<StackPanel Orientation="Horizontal" Spacing="40">
+
+					<!-- LIGHT PREVIEW -->
+					<ThemeVariantScope RequestedThemeVariant="Light">
+						<Border CornerRadius="8" BoxShadow="0 4 10 0 #40000000"
+								Background="{DynamicResource SystemRegionBrush}" MinWidth="400" Padding="20">
+							<StackPanel Spacing="20">
+								<TextBlock Text="Kuwantima Primary (Light)"
+										   FontWeight="Bold" FontSize="18"
+										   Foreground="{DynamicResource SystemAccentColor}" />
+
+								<StackPanel Orientation="Horizontal" Spacing="15">
+									<Button Content="Primary Accent" Classes="accent" />
+									<Button Content="Standard" />
+									<Button Classes="Kuwantima" Content="Kuwantima" />
+								</StackPanel>
+
+								<Separator Background="{DynamicResource SystemBaseLowColor}" Height="1" />
+
+								<UniformGrid Columns="3">
+									<StackPanel Spacing="5" HorizontalAlignment="Center">
+										<Ellipse Width="40" Height="40" Fill="{DynamicResource SystemFillColorSuccessBrush}" />
+										<TextBlock Text="Success" HorizontalAlignment="Center" FontSize="10" Foreground="{DynamicResource SystemBaseHighColor}"/>
+									</StackPanel>
+									<StackPanel Spacing="5" HorizontalAlignment="Center">
+										<Ellipse Width="40" Height="40" Fill="{DynamicResource SystemFillColorAttentionBrush}" />
+										<TextBlock Text="Attention" HorizontalAlignment="Center" FontSize="10" Foreground="{DynamicResource SystemBaseHighColor}"/>
+									</StackPanel>
+									<StackPanel Spacing="5" HorizontalAlignment="Center">
+										<Ellipse Width="40" Height="40" Fill="{DynamicResource SystemFillColorCautionBrush}" />
+										<TextBlock Text="Caution" HorizontalAlignment="Center" FontSize="10" Foreground="{DynamicResource SystemBaseHighColor}"/>
+									</StackPanel>
+								</UniformGrid>
+							</StackPanel>
+						</Border>
+					</ThemeVariantScope>
+
+					<!-- DARK PREVIEW -->
+					<ThemeVariantScope RequestedThemeVariant="Dark">
+						<Border CornerRadius="8" Classes="KuwantimaGlass" MinWidth="400" Padding="20">
+							<StackPanel Spacing="20">
+								<TextBlock Text="Kuwantima Primary (Dark)"
+										   FontWeight="Bold" FontSize="18"
+										   Foreground="{DynamicResource SystemAccentColor}" />
+
+								<StackPanel Orientation="Horizontal" Spacing="15">
+									<Button Content="Primary Accent" Classes="accent" />
+									<Button Content="Standard" />
+									<Button Classes="Kuwantima" Content="Kuwantima" />
+								</StackPanel>
+
+								<Separator Background="{DynamicResource SystemBaseLowColor}" Height="1" />
+
+								<UniformGrid Columns="3">
+									<StackPanel Spacing="5" HorizontalAlignment="Center">
+										<Ellipse Width="40" Height="40" Fill="{DynamicResource SystemFillColorSuccessBrush}" />
+										<TextBlock Text="Success" HorizontalAlignment="Center" FontSize="10" Foreground="{DynamicResource SystemBaseHighColor}"/>
+									</StackPanel>
+									<StackPanel Spacing="5" HorizontalAlignment="Center">
+										<Ellipse Width="40" Height="40" Fill="{DynamicResource SystemFillColorAttentionBrush}" />
+										<TextBlock Text="Attention" HorizontalAlignment="Center" FontSize="10" Foreground="{DynamicResource SystemBaseHighColor}"/>
+									</StackPanel>
+									<StackPanel Spacing="5" HorizontalAlignment="Center">
+										<Ellipse Width="40" Height="40" Fill="{DynamicResource SystemFillColorCautionBrush}" />
+										<TextBlock Text="Caution" HorizontalAlignment="Center" FontSize="10" Foreground="{DynamicResource SystemBaseHighColor}"/>
+									</StackPanel>
+								</UniformGrid>
+							</StackPanel>
+						</Border>
+					</ThemeVariantScope>
+
+				</StackPanel>
+			</Border>
+		</ScrollViewer>
+	</Design.PreviewWith>
+
+
+	<!-- ═══════════════════════════════════════════════════════════════════ -->
+	<!-- 1. MERGED RESOURCES                                               -->
+	<!--    Icons and theme-aware brush/shadow definitions loaded before    -->
+	<!--    any control style so all DynamicResource keys resolve.         -->
+	<!-- ═══════════════════════════════════════════════════════════════════ -->
+	<Styles.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+
+				<ResourceInclude Source="avares://Kuwantima/Styles/KuwantimaStreamIcons.axaml"/>
+				<ResourceInclude Source="avares://Kuwantima/Theme/KuwantimaThemeResources.axaml"/>
+
+			</ResourceDictionary.MergedDictionaries>
+
+		</ResourceDictionary>
+	</Styles.Resources>
+
+	<!-- ═══════════════════════════════════════════════════════════════════ -->
+	<!-- 2. CONTROL STYLES                                                 -->
+	<!--    Each file defines one or more Kuwantima-classed style variants -->
+	<!--    for a single Avalonia control.  Applied via Classes="Kuwantima" -->
+	<!--    (and optional variant classes like Classic, Accent, Pill, etc.) -->
+	<!-- ═══════════════════════════════════════════════════════════════════ -->
+
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaButton.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaCheckBox.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaComboBox.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaExpander.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaGlassBorder.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaListBox.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaMenuToggleButton.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaRadioButton.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaTextBox.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaToggleButton.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaSlider.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaProgressBar.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaTabControl.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaToolTip.axaml"/>
+	<StyleInclude Source="avares://Kuwantima/Styles/KuwantimaGridSplitter.axaml"/>
+
+	<!-- ═══════════════════════════════════════════════════════════════════ -->
+	<!-- 3. FLUENT PALETTE                                                 -->
+	<!--    Overrides Avalonia's built-in FluentTheme ColorPaletteResources -->
+	<!--    so that EVERY Fluent control (styled or unstyled) inherits the  -->
+	<!--    Kuwantima color story.                                         -->
+	<!--                                                                   -->
+	<!--    Base*   = text color hierarchy (high→low = bold→subtle)         -->
+	<!--    Alt*    = background layer hierarchy (high = nearest surface)   -->
+	<!--    Chrome* = borders, dividers, scrollbars, subtle UI chrome      -->
+	<!--    List*   = selection/hover highlights inside list-like controls  -->
+	<!--                                                                   -->
+	<!--    LIGHT uses MidnightBlue-tinted values (blue-ink feel).         -->
+	<!--    DARK  uses AliceBlue-tinted values (icy-frost feel).           -->
+	<!-- ═══════════════════════════════════════════════════════════════════ -->
+	<fluent:FluentTheme>
+		<fluent:FluentTheme.Palettes>
+
+			<!-- LIGHT: MidnightBlue ink on AliceBlue paper ─────────────── -->
+			<fluent:ColorPaletteResources x:Key="Light"
+										  Accent="#0078D4"
+										  ErrorText="#E81123"
+										  RegionColor="#F3F3F3"
+
+										  BaseHigh="#191970"
+										  BaseMediumHigh="#3D3D80"
+										  BaseMedium="#6A6A9E"
+										  BaseMediumLow="#9090B0"
+										  BaseLow="#F0F8FF"
+
+										  AltHigh="#FFFFFF"
+										  AltMediumHigh="#FAFCFF"
+										  AltMedium="#F4F8FF"
+										  AltMediumLow="#F0F4FF"
+										  AltLow="#EAF0FC"
+
+										  ChromeHigh="#C4C4D8"
+										  ChromeMedium="#D4D4E4"
+										  ChromeMediumLow="#DDDDE9"
+										  ChromeLow="#E5E5EE"
+										  ChromeDisabledHigh="#BDBDCF"
+										  ChromeDisabledLow="#E0E0EC"
+
+										  ChromeAltLow="#191970"
+										  ChromeBlackHigh="#191970"
+										  ChromeBlackMedium="#3D3D80"
+										  ChromeBlackMediumLow="#6A6A9E"
+										  ChromeBlackLow="#C4C4D8"
+										  ChromeWhite="#FFFFFF"
+
+										  ListLow="#E6E8F2"
+										  ListMedium="#D2D6E6" />
+
+			<!-- DARK: AliceBlue frost on deep blue-black ────────────────── -->
+			<fluent:ColorPaletteResources x:Key="Dark"
+										  Accent="#0078D4"
+										  ErrorText="#F1707A"
+										  RegionColor="#1C1C1C"
+
+										  BaseHigh="#F0F8FF"
+										  BaseMediumHigh="#CCD6EE"
+										  BaseMedium="#A0B4D0"
+										  BaseMediumLow="#7088A8"
+										  BaseLow="#191970"
+
+										  AltHigh="#1A1A2E"
+										  AltMediumHigh="#1E1E34"
+										  AltMedium="#22223A"
+										  AltMediumLow="#282842"
+										  AltLow="#F0F8FF"
+
+										  ChromeHigh="#3A3A55"
+										  ChromeMedium="#333348"
+										  ChromeMediumLow="#2E2E42"
+										  ChromeLow="#28283C"
+										  ChromeDisabledHigh="#404058"
+										  ChromeDisabledLow="#2A2A3E"
+
+										  ChromeAltLow="#F0F8FF"
+										  ChromeBlackHigh="#000000"
+										  ChromeBlackMedium="#1A1A2E"
+										  ChromeBlackMediumLow="#2A2A44"
+										  ChromeBlackLow="#3A3A55"
+										  ChromeWhite="#F0F8FF"
+
+										  ListLow="#252540"
+										  ListMedium="#30304E" />
+
+		</fluent:FluentTheme.Palettes>
+	</fluent:FluentTheme>
+
+	<!-- ═══════════════════════════════════════════════════════════════════ -->
+	<!-- 4. GLOBAL DEFAULTS                                                -->
+	<!-- ═══════════════════════════════════════════════════════════════════ -->
+	<Style Selector="PathIcon">
+		<Setter Property="Width" Value="20" />
+		<Setter Property="Height" Value="20" />
+	</Style>
+
+</Styles>

@@ -1,3 +1,4 @@
+using System.Linq;
 using Avalonia;
 using Avalonia.Styling;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -7,6 +8,12 @@ namespace Kuwantima.Sandbox.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
+        public static string KuwantimaVersion =>
+            typeof(Kuwantima.Sandbox.App).Assembly
+                .GetReferencedAssemblies()
+                .FirstOrDefault(a => a.Name == "Kuwantima")
+                ?.Version?.ToString(3) ?? "0.0.0";
+
         [ObservableProperty]
         private bool _isDarkTheme;
 
@@ -43,6 +50,8 @@ namespace Kuwantima.Sandbox.ViewModels
             OnPropertyChanged(nameof(IsTogglesPageVisible));
             OnPropertyChanged(nameof(IsFeedbackPageVisible));
             OnPropertyChanged(nameof(IsContainersPageVisible));
+            OnPropertyChanged(nameof(IsThemePreviewPageVisible));
+            OnPropertyChanged(nameof(IsDocumentsPageVisible));
         }
 
         public bool IsButtonsPageVisible => SelectedPageIndex == 0;
@@ -50,6 +59,8 @@ namespace Kuwantima.Sandbox.ViewModels
         public bool IsTogglesPageVisible => SelectedPageIndex == 2;
         public bool IsFeedbackPageVisible => SelectedPageIndex == 3;
         public bool IsContainersPageVisible => SelectedPageIndex == 4;
+        public bool IsThemePreviewPageVisible => SelectedPageIndex == 5;
+        public bool IsDocumentsPageVisible => SelectedPageIndex == 6;
 
         [RelayCommand]
         private void NavigateTo(string pageIndex)

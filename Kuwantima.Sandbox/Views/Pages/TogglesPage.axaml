@@ -14,10 +14,13 @@
             <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
                 <StackPanel Spacing="8" Margin="16">
                     <TextBlock Text="Toggle Buttons" FontWeight="SemiBold" FontSize="14"
-                               Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
-                    <ToggleButton Classes="Kuwantima" Content="Toggle Off" IsChecked="False"/>
-                    <ToggleButton Classes="Kuwantima" Content="Toggle On" IsChecked="{Binding IsToggled}"/>
-                    <ToggleButton Classes="Kuwantima" Content="Disabled" IsEnabled="False"/>
+                               Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+                    <ToggleButton Classes="Kuwantima" Content="Toggle Off" IsChecked="False"
+                                  ToolTip.Tip='&lt;ToggleButton Classes="Kuwantima" Content="Toggle Off"/&gt;'/>
+                    <ToggleButton Classes="Kuwantima" Content="Toggle On" IsChecked="{Binding IsToggled}"
+                                  ToolTip.Tip='&lt;ToggleButton Classes="Kuwantima" IsChecked="{Binding IsToggled}"/&gt;'/>
+                    <ToggleButton Classes="Kuwantima" Content="Disabled" IsEnabled="False"
+                                  ToolTip.Tip='&lt;ToggleButton Classes="Kuwantima" IsEnabled="False"/&gt;'/>
                 </StackPanel>
             </ScrollViewer>
 
@@ -28,11 +31,26 @@
             <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto">
                 <StackPanel Spacing="8" Margin="16">
                     <TextBlock Text="Checkboxes" FontWeight="SemiBold" FontSize="14"
-                               Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
-                    <CheckBox Classes="Kuwantima" Content="Unchecked" IsChecked="False"/>
-                    <CheckBox Classes="Kuwantima" Content="Checked" IsChecked="{Binding IsChecked}"/>
-                    <CheckBox Classes="Kuwantima" Content="Indeterminate" IsChecked="{x:Null}" IsThreeState="True"/>
-                    <CheckBox Classes="Kuwantima" Content="Disabled" IsEnabled="False"/>
+                               Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+                    <CheckBox Classes="Kuwantima" Content="Unchecked" IsChecked="False"
+                              ToolTip.Tip='&lt;CheckBox Classes="Kuwantima"/&gt;'/>
+                    <CheckBox Classes="Kuwantima" Content="Checked" IsChecked="{Binding IsChecked}"
+                              ToolTip.Tip='&lt;CheckBox Classes="Kuwantima" IsChecked="{Binding IsOn}"/&gt;'/>
+                    <CheckBox Classes="Kuwantima" Content="Indeterminate" IsChecked="{x:Null}" IsThreeState="True"
+                              ToolTip.Tip='&lt;CheckBox Classes="Kuwantima" IsThreeState="True"/&gt;'/>
+                    <CheckBox Classes="Kuwantima" Content="Disabled" IsEnabled="False"
+                              ToolTip.Tip='&lt;CheckBox Classes="Kuwantima" IsEnabled="False"/&gt;'/>
+
+                    <TextBlock Text="Classic Checkboxes" FontWeight="SemiBold" FontSize="14" Margin="0,8,0,0"
+                               Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+                    <CheckBox Classes="Kuwantima Classic" Content="Unchecked" IsChecked="False"
+                              ToolTip.Tip='&lt;CheckBox Classes="Kuwantima Classic"/&gt;'/>
+                    <CheckBox Classes="Kuwantima Classic" Content="Checked" IsChecked="{Binding IsChecked}"
+                              ToolTip.Tip='&lt;CheckBox Classes="Kuwantima Classic" IsChecked="{Binding IsOn}"/&gt;'/>
+                    <CheckBox Classes="Kuwantima Classic" Content="Indeterminate" IsChecked="{x:Null}" IsThreeState="True"
+                              ToolTip.Tip='&lt;CheckBox Classes="Kuwantima Classic" IsThreeState="True"/&gt;'/>
+                    <CheckBox Classes="Kuwantima Classic" Content="Disabled" IsEnabled="False"
+                              ToolTip.Tip='&lt;CheckBox Classes="Kuwantima Classic" IsEnabled="False"/&gt;'/>
                 </StackPanel>
             </ScrollViewer>
         </Grid>
@@ -47,11 +65,26 @@
             <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
                 <StackPanel Spacing="8" Margin="16">
                     <TextBlock Text="Radio Buttons" FontWeight="SemiBold" FontSize="14"
-                               Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
-                    <RadioButton Classes="Kuwantima" Content="Option A" GroupName="Demo" IsChecked="True"/>
-                    <RadioButton Classes="Kuwantima" Content="Option B" GroupName="Demo"/>
-                    <RadioButton Classes="Kuwantima" Content="Option C" GroupName="Demo"/>
-                    <RadioButton Classes="Kuwantima" Content="Disabled" GroupName="Demo" IsEnabled="False"/>
+                               Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+                    <RadioButton Classes="Kuwantima" Content="Option A" GroupName="Demo" IsChecked="True"
+                                 ToolTip.Tip='&lt;RadioButton Classes="Kuwantima" GroupName="G1"/&gt;'/>
+                    <RadioButton Classes="Kuwantima" Content="Option B" GroupName="Demo"
+                                 ToolTip.Tip='&lt;RadioButton Classes="Kuwantima" GroupName="G1"/&gt;'/>
+                    <RadioButton Classes="Kuwantima" Content="Option C" GroupName="Demo"
+                                 ToolTip.Tip='&lt;RadioButton Classes="Kuwantima" GroupName="G1"/&gt;'/>
+                    <RadioButton Classes="Kuwantima" Content="Disabled" GroupName="Demo" IsEnabled="False"
+                                 ToolTip.Tip='&lt;RadioButton Classes="Kuwantima" IsEnabled="False"/&gt;'/>
+
+                    <TextBlock Text="Classic Radio Buttons" FontWeight="SemiBold" FontSize="14" Margin="0,8,0,0"
+                               Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+                    <RadioButton Classes="Kuwantima Classic" Content="Option A" GroupName="ClassicDemo" IsChecked="True"
+                                 ToolTip.Tip='&lt;RadioButton Classes="Kuwantima Classic" GroupName="G1"/&gt;'/>
+                    <RadioButton Classes="Kuwantima Classic" Content="Option B" GroupName="ClassicDemo"
+                                 ToolTip.Tip='&lt;RadioButton Classes="Kuwantima Classic" GroupName="G1"/&gt;'/>
+                    <RadioButton Classes="Kuwantima Classic" Content="Option C" GroupName="ClassicDemo"
+                                 ToolTip.Tip='&lt;RadioButton Classes="Kuwantima Classic" GroupName="G1"/&gt;'/>
+                    <RadioButton Classes="Kuwantima Classic" Content="Disabled" GroupName="ClassicDemo" IsEnabled="False"
+                                 ToolTip.Tip='&lt;RadioButton Classes="Kuwantima Classic" IsEnabled="False"/&gt;'/>
                 </StackPanel>
             </ScrollViewer>
 
@@ -62,20 +95,23 @@
             <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto">
                 <StackPanel Spacing="8" Margin="16">
                     <TextBlock Text="Menu Toggle Buttons" FontWeight="SemiBold" FontSize="14"
-                               Foreground="{DynamicResource KuwantimaSubtitleTextBrush}"/>
+                               Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
                     <StackPanel Spacing="4">
                         <ToggleButton Classes="KuwantimaMenu Expanded"
                                       Tag="{StaticResource Icon.Expand}"
-                                      Content="Expand" IsChecked="False"/>
+                                      Content="Expand" IsChecked="False"
+                                      ToolTip.Tip='&lt;ToggleButton Classes="KuwantimaMenu Expanded" Tag="{StaticResource Icon.Expand}"/&gt;'/>
                         <ToggleButton Classes="KuwantimaMenu Expanded"
                                       Tag="{StaticResource Icon.Collapse}"
-                                      Content="Collapse" IsChecked="True"/>
+                                      Content="Collapse" IsChecked="True"
+                                      ToolTip.Tip='&lt;ToggleButton Classes="KuwantimaMenu Expanded" Tag="{StaticResource Icon.Collapse}"/&gt;'/>
                         <ToggleButton Classes="KuwantimaMenu"
                                       Tag="{StaticResource Icon.Gear}"
-                                      ToolTip.Tip="Icon-only toggle"/>
+                                      ToolTip.Tip='&lt;ToggleButton Classes="KuwantimaMenu" Tag="{StaticResource Icon.Gear}"/&gt;'/>
                         <ToggleButton Classes="KuwantimaMenu Expanded"
                                       Tag="{StaticResource Icon.Gear}"
-                                      Content="Disabled" IsEnabled="False"/>
+                                      Content="Disabled" IsEnabled="False"
+                                      ToolTip.Tip='&lt;ToggleButton Classes="KuwantimaMenu Expanded" IsEnabled="False"/&gt;'/>
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>

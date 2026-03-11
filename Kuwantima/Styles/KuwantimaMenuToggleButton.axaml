@@ -126,7 +126,7 @@
 
 		<!-- 2. Checked -->
 		<Style Selector="^:checked">
-			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="Foreground" Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}"/>
 			<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAccentBrush}"/>
 			<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
 		</Style>

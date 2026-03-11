@@ -1,0 +1,238 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Kuwantima.Sandbox.Views.Pages.ThemePreviewPage">
+
+    <Grid ColumnDefinitions="*,16,*" Margin="4">
+
+        <!-- LIGHT PREVIEW -->
+        <ThemeVariantScope Grid.Column="0" RequestedThemeVariant="Light">
+            <Border Background="{DynamicResource SystemRegionBrush}" CornerRadius="8" ClipToBounds="True">
+                <Border Classes="KuwantimaGlass" Padding="0" ClipToBounds="True">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="24">
+                    <StackPanel Spacing="20" >
+
+                        <TextBlock Text="Light Theme" FontWeight="Bold" FontSize="18"
+                                   Foreground="{DynamicResource SystemAccentColor}"/>
+
+                        <!-- Buttons -->
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Buttons" FontWeight="SemiBold" FontSize="14"
+                                       Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <Button Classes="Kuwantima Accent" Content="Accent"/>
+                                <Button Classes="Kuwantima" Content="Standard"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Toggles -->
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Toggles" FontWeight="SemiBold" FontSize="14"
+                                       Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <CheckBox Classes="Kuwantima" Content="Check" IsChecked="True"/>
+                                <CheckBox Classes="Kuwantima Classic" Content="Classic" IsChecked="True"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <RadioButton Classes="Kuwantima" Content="Radio" IsChecked="True"/>
+                                <RadioButton Classes="Kuwantima Classic" Content="Classic" IsChecked="True"/>
+                            </StackPanel>
+                            <ToggleButton Classes="Kuwantima" Content="Toggle" IsChecked="True"/>
+                        </StackPanel>
+
+                        <!-- Inputs -->
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Inputs" FontWeight="SemiBold" FontSize="14"
+                                       Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+                            <TextBox Classes="Kuwantima" Watermark="Enter text..." Text="Sample input"/>
+                            <ComboBox Classes="Kuwantima" SelectedIndex="0" HorizontalAlignment="Stretch">
+                                <ComboBoxItem>Option A</ComboBoxItem>
+                                <ComboBoxItem>Option B</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <!-- Feedback -->
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Feedback" FontWeight="SemiBold" FontSize="14"
+                                       Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+                            <Slider Classes="Kuwantima" Value="65" Minimum="0" Maximum="100"/>
+                            <ProgressBar Classes="Kuwantima" Value="75" Minimum="0" Maximum="100"/>
+                        </StackPanel>
+
+                        <!-- Containers -->
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Containers" FontWeight="SemiBold" FontSize="14"
+                                       Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+                            <Expander Classes="Kuwantima" Header="Expander" IsExpanded="True">
+                                <StackPanel Spacing="4" Margin="4">
+                                    <TextBlock Text="Status: Active" FontSize="12"
+                                               Foreground="{DynamicResource KuwantimaSuccessTextBrush}"/>
+                                    <TextBlock Text="2 alerts pending" FontSize="12"
+                                               Foreground="{DynamicResource KuwantimaWarningTextBrush}"/>
+                                </StackPanel>
+                            </Expander>
+                            <TabControl Classes="Kuwantima">
+                                <TabItem Header="Tab A">
+                                    <TextBlock Text="Content for tab A" FontSize="12" Margin="8"/>
+                                </TabItem>
+                                <TabItem Header="Tab B">
+                                    <TextBlock Text="Content for tab B" FontSize="12" Margin="8"/>
+                                </TabItem>
+                            </TabControl>
+                        </StackPanel>
+
+                        <!-- Status Colors -->
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Status Colors" FontWeight="SemiBold" FontSize="14"
+                                       Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+                            <UniformGrid Columns="3">
+                                <StackPanel Spacing="4" HorizontalAlignment="Center">
+                                    <Ellipse Width="32" Height="32" Fill="{DynamicResource SystemFillColorSuccessBrush}"/>
+                                    <TextBlock Text="Success" HorizontalAlignment="Center" FontSize="10"/>
+                                </StackPanel>
+                                <StackPanel Spacing="4" HorizontalAlignment="Center">
+                                    <Ellipse Width="32" Height="32" Fill="{DynamicResource SystemFillColorAttentionBrush}"/>
+                                    <TextBlock Text="Attention" HorizontalAlignment="Center" FontSize="10"/>
+                                </StackPanel>
+                                <StackPanel Spacing="4" HorizontalAlignment="Center">
+                                    <Ellipse Width="32" Height="32" Fill="{DynamicResource SystemFillColorCautionBrush}"/>
+                                    <TextBlock Text="Caution" HorizontalAlignment="Center" FontSize="10"/>
+                                </StackPanel>
+                            </UniformGrid>
+                        </StackPanel>
+
+                        <!-- Glass Panel -->
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Glass Panel" FontWeight="SemiBold" FontSize="14"
+                                       Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+                            <Border Classes="KuwantimaGlass" Padding="12">
+                                <StackPanel Spacing="4">
+                                    <TextBlock Text="Nested glass panel" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Text="Glass layers stack with increasing depth" FontSize="12"
+                                               Foreground="{DynamicResource TextFillColorSecondaryBrush}"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+
+                    </StackPanel>
+                </ScrollViewer>
+                </Border>
+            </Border>
+            </ThemeVariantScope>
+
+            <!-- DARK PREVIEW -->
+            <ThemeVariantScope Grid.Column="2" RequestedThemeVariant="Dark">
+            <Border Background="{DynamicResource SystemRegionBrush}" CornerRadius="8" ClipToBounds="True">
+                <Border Classes="KuwantimaGlass" Padding="0" ClipToBounds="True">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="24">
+                    <StackPanel Spacing="20" >
+
+                        <TextBlock Text="Dark Theme" FontWeight="Bold" FontSize="18"
+                                   Foreground="{DynamicResource SystemAccentColor}"/>
+
+                        <!-- Buttons -->
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Buttons" FontWeight="SemiBold" FontSize="14"
+                                       Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <Button Classes="Kuwantima Accent" Content="Accent"/>
+                                <Button Classes="Kuwantima" Content="Standard"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Toggles -->
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Toggles" FontWeight="SemiBold" FontSize="14"
+                                       Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <CheckBox Classes="Kuwantima" Content="Check" IsChecked="True"/>
+                                <CheckBox Classes="Kuwantima Classic" Content="Classic" IsChecked="True"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <RadioButton Classes="Kuwantima" Content="Radio" IsChecked="True"/>
+                                <RadioButton Classes="Kuwantima Classic" Content="Classic" IsChecked="True"/>
+                            </StackPanel>
+                            <ToggleButton Classes="Kuwantima" Content="Toggle" IsChecked="True"/>
+                        </StackPanel>
+
+                        <!-- Inputs -->
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Inputs" FontWeight="SemiBold" FontSize="14"
+                                       Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+                            <TextBox Classes="Kuwantima" Watermark="Enter text..." Text="Sample input"/>
+                            <ComboBox Classes="Kuwantima" SelectedIndex="0" HorizontalAlignment="Stretch">
+                                <ComboBoxItem>Option A</ComboBoxItem>
+                                <ComboBoxItem>Option B</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <!-- Feedback -->
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Feedback" FontWeight="SemiBold" FontSize="14"
+                                       Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+                            <Slider Classes="Kuwantima" Value="65" Minimum="0" Maximum="100"/>
+                            <ProgressBar Classes="Kuwantima" Value="75" Minimum="0" Maximum="100"/>
+                        </StackPanel>
+
+                        <!-- Containers -->
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Containers" FontWeight="SemiBold" FontSize="14"
+                                       Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+                            <Expander Classes="Kuwantima" Header="Expander" IsExpanded="True">
+                                <StackPanel Spacing="4" Margin="4">
+                                    <TextBlock Text="Status: Active" FontSize="12"
+                                               Foreground="{DynamicResource KuwantimaSuccessTextBrush}"/>
+                                    <TextBlock Text="2 alerts pending" FontSize="12"
+                                               Foreground="{DynamicResource KuwantimaWarningTextBrush}"/>
+                                </StackPanel>
+                            </Expander>
+                            <TabControl Classes="Kuwantima">
+                                <TabItem Header="Tab A">
+                                    <TextBlock Text="Content for tab A" FontSize="12" Margin="8"/>
+                                </TabItem>
+                                <TabItem Header="Tab B">
+                                    <TextBlock Text="Content for tab B" FontSize="12" Margin="8"/>
+                                </TabItem>
+                            </TabControl>
+                        </StackPanel>
+
+                        <!-- Status Colors -->
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Status Colors" FontWeight="SemiBold" FontSize="14"
+                                       Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+                            <UniformGrid Columns="3">
+                                <StackPanel Spacing="4" HorizontalAlignment="Center">
+                                    <Ellipse Width="32" Height="32" Fill="{DynamicResource SystemFillColorSuccessBrush}"/>
+                                    <TextBlock Text="Success" HorizontalAlignment="Center" FontSize="10"/>
+                                </StackPanel>
+                                <StackPanel Spacing="4" HorizontalAlignment="Center">
+                                    <Ellipse Width="32" Height="32" Fill="{DynamicResource SystemFillColorAttentionBrush}"/>
+                                    <TextBlock Text="Attention" HorizontalAlignment="Center" FontSize="10"/>
+                                </StackPanel>
+                                <StackPanel Spacing="4" HorizontalAlignment="Center">
+                                    <Ellipse Width="32" Height="32" Fill="{DynamicResource SystemFillColorCautionBrush}"/>
+                                    <TextBlock Text="Caution" HorizontalAlignment="Center" FontSize="10"/>
+                                </StackPanel>
+                            </UniformGrid>
+                        </StackPanel>
+
+                        <!-- Glass Panel -->
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Glass Panel" FontWeight="SemiBold" FontSize="14"
+                                       Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+                            <Border Classes="KuwantimaGlass" Padding="12">
+                                <StackPanel Spacing="4">
+                                    <TextBlock Text="Nested glass panel" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock Text="Glass layers stack with increasing depth" FontSize="12"
+                                               Foreground="{DynamicResource TextFillColorSecondaryBrush}"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+
+                    </StackPanel>
+                </ScrollViewer>
+                </Border>
+            </Border>
+            </ThemeVariantScope>
+
+    </Grid>
+</UserControl>

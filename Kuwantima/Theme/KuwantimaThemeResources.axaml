@@ -1,0 +1,148 @@
+<!--
+	KuwantimaThemeResources.axaml
+	═══════════════════════════════════════════════════════════════════════════
+	Custom brush and shadow definitions that go BEYOND what the Fluent palette
+	provides.  Merged into KuwantimaPrimaryTheme.axaml as a ResourceInclude.
+
+	Each key is defined per-theme (Light / Dark) inside ThemeDictionaries so
+	values swap automatically with the application's RequestedThemeVariant.
+
+	NAMING CONVENTION:
+	  Kuwantima{Category}{Variant}  e.g. KuwantimaGlassGlowBorderHover
+
+	RETIRED KEYS (replaced by Fluent equivalents — see KuwantimaPrimaryTheme):
+	  KuwantimaAccentForeground   → TextOnAccentFillColorPrimaryBrush
+	  KuwantimaSecondaryTextBrush → TextFillColorSecondaryBrush
+	  KuwantimaSubtitleTextBrush  → TextFillColorTertiaryBrush
+	  To override, redefine the Fluent key in the appropriate ThemeDictionary.
+
+	RESOURCE CATALOG:
+	┌────────────────────────────────────────┬──────────────────────────────────┐
+	│ Key                                    │ Purpose                          │
+	├────────────────────────────────────────┼──────────────────────────────────┤
+	│ SEMANTIC STATUS                        │                                  │
+	│ SystemFillColorSuccessBrush            │ Green indicator / icon fill      │
+	│ SystemFillColorAttentionBrush          │ Blue indicator / icon fill       │
+	│ SystemFillColorCautionBrush            │ Yellow indicator / icon fill     │
+	├────────────────────────────────────────┼──────────────────────────────────┤
+	│ UI INTERACTION                         │                                  │
+	│ KuwantimaControlHoverBrush             │ Background on pointer-over       │
+	│ KuwantimaAccentOrangeBrush             │ Warm border for checked/selected │
+	│ KuwantimaDarkBorderBrush               │ Subtle separator (dark only)     │
+	├────────────────────────────────────────┼──────────────────────────────────┤
+	│ TEXT                                   │                                  │
+	│ KuwantimaSuccessTextBrush              │ Positive-outcome label text      │
+	│ KuwantimaWarningTextBrush              │ Negative-outcome label text      │
+	├────────────────────────────────────────┼──────────────────────────────────┤
+	│ GLASS PANEL                            │                                  │
+	│ KuwantimaGlassBackground               │ Panel fill (very low opacity)    │
+	├────────────────────────────────────────┼──────────────────────────────────┤
+	│ GLASS GLOW (outer-glow effect)         │                                  │
+	│ KuwantimaGlassGlowBorder               │ Control border at rest           │
+	│ KuwantimaGlassGlowBorderHover          │ Control border on hover          │
+	│ KuwantimaGlassGlow          (BoxShadow)│ Outer glow at rest               │
+	│ KuwantimaGlassGlowHover     (BoxShadow)│ Outer glow on hover             │
+	├────────────────────────────────────────┼──────────────────────────────────┤
+	│ TOOLTIP                                │                                  │
+	│ KuwantimaTooltipBackground             │ Near-opaque tooltip backdrop     │
+	│ KuwantimaTooltipForeground             │ Tooltip text color               │
+	├────────────────────────────────────────┼──────────────────────────────────┤
+	│ SPLITTER                               │                                  │
+	│ KuwantimaSplitterBrush                 │ GridSplitter line at rest        │
+	│ KuwantimaSplitterHoverBrush            │ GridSplitter line on hover       │
+	└────────────────────────────────────────┴──────────────────────────────────┘
+
+	THEME STRATEGY:
+	  Light — MidnightBlue-tinted.  Glass uses dark tint on light surface.
+	          Glow is MidnightBlue / RoyalBlue.
+	  Dark  — AliceBlue-tinted.  Glass uses frosty white tint on dark surface.
+	          Glow is AliceBlue / SteelBlue.
+-->
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<ResourceDictionary.ThemeDictionaries>
+
+		<!-- ═════════════════════════════════════════════════════════════ -->
+		<!-- LIGHT THEME                                                 -->
+		<!-- Tint family: MidnightBlue (#191970)                         -->
+		<!-- Glass tint:  dark on light — subtle ink wash                -->
+		<!-- Glow color:  MidnightBlue / RoyalBlue (#4169E1)             -->
+		<!-- Shadows:     classic downward drop-shadows                  -->
+		<!-- ═════════════════════════════════════════════════════════════ -->
+		<ResourceDictionary x:Key="Light">
+
+			<!-- Semantic status colors -->
+			<SolidColorBrush x:Key="SystemFillColorSuccessBrush" Color="#0E700E" />
+			<SolidColorBrush x:Key="SystemFillColorAttentionBrush" Color="#0078D4" />
+			<SolidColorBrush x:Key="SystemFillColorCautionBrush" Color="#FCE100" />
+
+			<!-- UI interaction brushes -->
+			<SolidColorBrush x:Key="KuwantimaControlHoverBrush" Color="#33A0C0FF"/>
+			<SolidColorBrush x:Key="KuwantimaDarkBorderBrush" Color="Transparent"/>
+			<SolidColorBrush x:Key="KuwantimaAccentOrangeBrush" Color="#FF8C00" />
+
+			<!-- Text — semantic labels (no Fluent equivalent) -->
+			<SolidColorBrush x:Key="KuwantimaSuccessTextBrush" Color="#0E700E" />
+			<SolidColorBrush x:Key="KuwantimaWarningTextBrush" Color="#C23616" />
+
+			<!-- Glass panel: subtle dark tint on light surface -->
+			<SolidColorBrush x:Key="KuwantimaGlassBackground" Color="Black" Opacity="0.05"/>
+
+			<!-- Glass glow: MidnightBlue outline + dual-layer outer glow -->
+			<SolidColorBrush x:Key="KuwantimaGlassGlowBorder" Color="MidnightBlue" Opacity="0.5"/>
+			<SolidColorBrush x:Key="KuwantimaGlassGlowBorderHover" Color="#4169E1" Opacity="0.7"/>
+			<BoxShadows x:Key="KuwantimaGlassGlow">0 0 6 1 #30191970, 0 0 14 3 #18191970</BoxShadows>
+			<BoxShadows x:Key="KuwantimaGlassGlowHover">0 0 8 2 #60191970, 0 0 20 5 #30191970</BoxShadows>
+
+			<!-- Tooltip: near-opaque dark backdrop for maximum readability -->
+			<SolidColorBrush x:Key="KuwantimaTooltipBackground" Color="Black" Opacity="0.85"/>
+			<SolidColorBrush x:Key="KuwantimaTooltipForeground" Color="White"/>
+
+			<!-- Splitter: MidnightBlue line, intensifies on hover -->
+			<SolidColorBrush x:Key="KuwantimaSplitterBrush" Color="MidnightBlue" Opacity="0.25"/>
+			<SolidColorBrush x:Key="KuwantimaSplitterHoverBrush" Color="MidnightBlue" Opacity="0.6"/>
+		</ResourceDictionary>
+
+		<!-- ═════════════════════════════════════════════════════════════ -->
+		<!-- DARK THEME                                                  -->
+		<!-- Tint family: AliceBlue (#F0F8FF)                            -->
+		<!-- Glass tint:  frosty white on dark — icy shimmer             -->
+		<!-- Glow color:  AliceBlue / SteelBlue (#B0D4FF)                -->
+		<!-- Shadows:     neon glows (omnidirectional, light-blue-based)  -->
+		<!-- ═════════════════════════════════════════════════════════════ -->
+		<ResourceDictionary x:Key="Dark">
+
+			<!-- Semantic status colors -->
+			<SolidColorBrush x:Key="SystemFillColorSuccessBrush" Color="#6CCB5F" />
+			<SolidColorBrush x:Key="SystemFillColorAttentionBrush" Color="#4CC2FF" />
+			<SolidColorBrush x:Key="SystemFillColorCautionBrush" Color="#FCE100" />
+
+			<!-- UI interaction brushes -->
+			<SolidColorBrush x:Key="KuwantimaControlHoverBrush" Color="#80D4DFFF"/>
+			<SolidColorBrush x:Key="KuwantimaDarkBorderBrush" Color="#20FFFFFF"/>
+			<SolidColorBrush x:Key="KuwantimaAccentOrangeBrush" Color="#FFA500" />
+
+			<!-- Text — semantic labels (no Fluent equivalent) -->
+			<SolidColorBrush x:Key="KuwantimaSuccessTextBrush" Color="#6CCB5F" />
+			<SolidColorBrush x:Key="KuwantimaWarningTextBrush" Color="#E84118" />
+
+			<!-- Glass panel: frosty white tint on dark surface -->
+			<SolidColorBrush x:Key="KuwantimaGlassBackground" Color="White" Opacity="0.1"/>
+
+			<!-- Glass glow: AliceBlue outline + dual-layer outer glow -->
+			<SolidColorBrush x:Key="KuwantimaGlassGlowBorder" Color="#F0F8FF" Opacity="0.45"/>
+			<SolidColorBrush x:Key="KuwantimaGlassGlowBorderHover" Color="#B0D4FF" Opacity="0.75"/>
+			<BoxShadows x:Key="KuwantimaGlassGlow">0 0 6 1 #35F0F8FF, 0 0 14 3 #20F0F8FF</BoxShadows>
+			<BoxShadows x:Key="KuwantimaGlassGlowHover">0 0 8 2 #70B0D4FF, 0 0 22 6 #40B0D4FF</BoxShadows>
+
+			<!-- Tooltip: near-opaque deep-navy backdrop for maximum readability -->
+			<SolidColorBrush x:Key="KuwantimaTooltipBackground" Color="#1E1E2E" Opacity="0.9"/>
+			<SolidColorBrush x:Key="KuwantimaTooltipForeground" Color="White"/>
+
+			<!-- Splitter: AliceBlue line, intensifies on hover -->
+			<SolidColorBrush x:Key="KuwantimaSplitterBrush" Color="AliceBlue" Opacity="0.3"/>
+			<SolidColorBrush x:Key="KuwantimaSplitterHoverBrush" Color="AliceBlue" Opacity="0.7"/>
+		</ResourceDictionary>
+
+	</ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

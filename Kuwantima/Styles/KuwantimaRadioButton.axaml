@@ -17,6 +17,14 @@
 
 							<!-- Disabled State -->
 							<RadioButton Classes="Kuwantima" Content="Disabled Mode" IsEnabled="False"/>
+							<Separator Height="1" Margin="0,8" Background="{DynamicResource KuwantimaDarkBorderBrush}"/>
+							<TextBlock Text="Classic Variant" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center"/>
+
+							<RadioButton Classes="Kuwantima Classic" Content="Standard Mode" IsChecked="False"/>
+
+							<RadioButton Classes="Kuwantima Classic" Content="Accent Mode" IsChecked="True"/>
+
+							<RadioButton Classes="Kuwantima Classic" Content="Disabled Mode" IsEnabled="False"/>
 						</StackPanel>
 					</Panel>
 				</ThemeVariantScope>
@@ -35,6 +43,14 @@
 
 							<!-- Disabled State -->
 							<RadioButton Classes="Kuwantima" Content="Disabled Mode" IsEnabled="False"/>
+							<Separator Height="1" Margin="0,8" Background="{DynamicResource KuwantimaDarkBorderBrush}"/>
+							<TextBlock Text="Classic Variant" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center"/>
+
+							<RadioButton Classes="Kuwantima Classic" Content="Button 1" IsChecked="False"/>
+
+							<RadioButton Classes="Kuwantima Classic" Content="Button 2" IsChecked="True"/>
+
+							<RadioButton Classes="Kuwantima Classic" Content="Disabled Mode" IsEnabled="False"/>
 						</StackPanel>
 					</Panel>
 				</ThemeVariantScope>
@@ -47,6 +63,7 @@
 
 	<!-- Base Style for Kuwantima RadioButtons -->
 	<Style Selector="RadioButton.Kuwantima">
+		<Setter Property="Cursor" Value="Hand"/>
 		<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundBaseLowBrush}"/>
 		<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorder}"/>
 		<Setter Property="BorderThickness" Value="1.5"/>
@@ -97,7 +114,7 @@
 
 		<!-- 2. Checked -->
 		<Style Selector="^:checked">
-			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="Foreground" Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}"/>
 			<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAccentBrush}"/>
 			<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
 
@@ -106,7 +123,7 @@
 			</Style>
 
 			<Style Selector="^ /template/ Ellipse#StatusCircle">
-				<Setter Property="Fill" Value="White"/>
+				<Setter Property="Fill" Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}"/>
 			</Style>
 		</Style>
 
@@ -124,6 +141,91 @@
 			<Setter Property="Cursor" Value="Arrow"/>
 
 			<Style Selector="^ /template/ Ellipse#StatusCircle">
+				<Setter Property="Opacity" Value="0.3"/>
+			</Style>
+		</Style>
+	</Style>
+
+	<!-- ═══ Classic Variant: traditional radio button with circle on left ═══ -->
+	<Style Selector="RadioButton.Kuwantima.Classic">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="BorderBrush" Value="Transparent"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="Padding" Value="0"/>
+		<Setter Property="CornerRadius" Value="0"/>
+		<Setter Property="HorizontalContentAlignment" Value="Left"/>
+		<Setter Property="Cursor" Value="Hand"/>
+
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Border Background="Transparent" Padding="4,6">
+					<Grid ColumnDefinitions="Auto,8,*">
+						<!-- Radio circle -->
+						<Border Name="RadioBorder"
+								Grid.Column="0"
+								Width="18" Height="18"
+								VerticalAlignment="Center"
+								BorderThickness="1.5"
+								BorderBrush="{DynamicResource KuwantimaGlassGlowBorder}"
+								CornerRadius="9"
+								Background="{DynamicResource SystemControlBackgroundBaseLowBrush}">
+							<!-- Inner dot -->
+							<Ellipse Name="RadioDot"
+									 Width="8" Height="8"
+									 HorizontalAlignment="Center"
+									 VerticalAlignment="Center"
+									 Fill="{DynamicResource SystemControlBackgroundAccentBrush}"
+									 Opacity="0"/>
+						</Border>
+						<!-- Label -->
+						<ContentPresenter Name="PART_ContentPresenter"
+										  Grid.Column="2"
+										  TextElement.Foreground="{TemplateBinding Foreground}"
+										  Content="{TemplateBinding Content}"
+										  VerticalAlignment="Center"/>
+					</Grid>
+				</Border>
+			</ControlTemplate>
+		</Setter>
+
+		<!-- Hover -->
+		<Style Selector="^:pointerover">
+			<Style Selector="^ /template/ Border#RadioBorder">
+				<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaGlassGlowBorderHover}"/>
+				<Setter Property="Background" Value="{DynamicResource KuwantimaControlHoverBrush}"/>
+			</Style>
+		</Style>
+
+		<!-- Checked: pin foreground back (base Kuwantima sets it to White) -->
+		<Style Selector="^:checked">
+			<Setter Property="Foreground" Value="{DynamicResource SystemBaseHighColor}"/>
+			<Style Selector="^ /template/ Border#RadioBorder">
+				<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAccentBrush}"/>
+				<Setter Property="BorderBrush" Value="{DynamicResource KuwantimaAccentOrangeBrush}"/>
+			</Style>
+			<Style Selector="^ /template/ Ellipse#RadioDot">
+				<Setter Property="Fill" Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}"/>
+				<Setter Property="Opacity" Value="1"/>
+			</Style>
+		</Style>
+
+		<!-- Checked + Hover -->
+		<Style Selector="^:checked:pointerover">
+			<Style Selector="^ /template/ Border#RadioBorder">
+				<Setter Property="Background" Value="{DynamicResource SystemAccentColorLight3}"/>
+			</Style>
+		</Style>
+
+		<!-- Disabled -->
+		<Style Selector="^:disabled">
+			<Setter Property="Foreground" Value="{DynamicResource SystemBaseHighColor}"/>
+			<Setter Property="Opacity" Value="0.5"/>
+			<Setter Property="Cursor" Value="Arrow"/>
+
+			<Style Selector="^ /template/ Border#RadioBorder">
+				<Setter Property="BorderBrush" Value="Transparent"/>
+			</Style>
+			<Style Selector="^ /template/ Ellipse#RadioDot">
 				<Setter Property="Opacity" Value="0.3"/>
 			</Style>
 		</Style>
