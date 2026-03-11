@@ -2,7 +2,7 @@
 # ═══════════════════════════════════════════════════════════════════
 # Kuwantima Publish Script
 # ═══════════════════════════════════════════════════════════════════
-# Usage:  ./publish.sh <version> [nuget-api-key]
+# Usage:  ./publish.sh <version>
 #
 # Before running, ensure you have:
 #   1. Updated VERSION HISTORY in KuwantimaPrimaryTheme.axaml
@@ -15,14 +15,12 @@
 #   2. Commit all changes
 #   3. Tag the commit
 #   4. Push commit + tag to origin
-#   5. Build NuGet package
-#   6. Publish to nuget.org (if API key provided)
+#   5. GitHub Actions handles NuGet pack + publish (Trusted Publishing)
 # ═══════════════════════════════════════════════════════════════════
 
 set -e
 
 VERSION="$1"
-NUGET_KEY="$2"
 REPO_ROOT="$(cd "$(dirname "$0")" && pwd)"
 CSPROJ="$REPO_ROOT/Kuwantima/Kuwantima.csproj"
 
@@ -86,24 +84,12 @@ git push origin master
 git push origin "v$VERSION"
 echo "  → Pushed commit + tag"
 
-# ── Step 5: Pack ─────────────────────────────────────────────────
+# ── Step 5: NuGet publish ────────────────────────────────────────
 echo ""
-echo "Step 5/6: Building NuGet package..."
-dotnet pack "$CSPROJ" -c Release
-NUPKG="$REPO_ROOT/Kuwantima/bin/Release/Kuwantima.$VERSION.nupkg"
-echo "  → Package: $NUPKG"
-
-# ── Step 6: Publish (optional) ───────────────────────────────────
-echo ""
-if [ -n "$NUGET_KEY" ]; then
-    echo "Step 6/6: Publishing to nuget.org..."
-    dotnet nuget push "$NUPKG" --api-key "$NUGET_KEY" --source https://api.nuget.org/v3/index.json
-    echo "  → Published! Package will be indexed in ~15 minutes."
-else
-    echo "Step 6/6: Skipped (no API key provided)"
-    echo "  To publish manually:"
-    echo "  dotnet nuget push \"$NUPKG\" --api-key YOUR_KEY --source https://api.nuget.org/v3/index.json"
-fi
+echo "Step 5/5: NuGet publish triggered via GitHub Actions"
+echo "  → The v$VERSION tag push triggers .github/workflows/publish.yml"
+echo "  → GitHub Actions will build, pack, and publish to nuget.org"
+echo "  → Monitor at: https://github.com/Votskwani/Kuwantima/actions"
 
 echo ""
 echo "═══════════════════════════════════════════════════════"
