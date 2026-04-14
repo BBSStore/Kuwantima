@@ -33,7 +33,7 @@ That's it. Every Fluent control picks up the Kuwantima color palette. To apply f
 ```xml
 <Button Classes="Kuwantima" Content="Click me"/>
 <CheckBox Classes="Kuwantima" Content="Accept terms"/>
-<TextBox Classes="Kuwantima" Watermark="Search..."/>
+<TextBox Classes="Kuwantima" PlaceholderText="Search..."/>
 ```
 
 ## Controls
@@ -137,8 +137,8 @@ Seven demo pages: **Buttons**, **Inputs**, **Toggles**, **Feedback**, **Containe
 ## Requirements
 
 - .NET 10.0
-- Avalonia 11.3+
-- Avalonia.Themes.Fluent 11.3+
+- Avalonia 12.0+
+- Avalonia.Themes.Fluent 12.0+
 
 ## License
 

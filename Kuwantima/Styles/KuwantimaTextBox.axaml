@@ -9,7 +9,7 @@
 						<StackPanel Spacing="16" Margin="20" HorizontalAlignment="Stretch">
 							<TextBlock Text="Light Theme" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
 
-							<TextBox Classes="Kuwantima" Watermark="Enter text..." HorizontalAlignment="Stretch"/>
+							<TextBox Classes="Kuwantima" PlaceholderText="Enter text..." HorizontalAlignment="Stretch"/>
 
 							<TextBox Classes="Kuwantima" Text="Editable value" HorizontalAlignment="Stretch"/>
 
@@ -27,7 +27,7 @@
 						<StackPanel Spacing="16" Margin="20" HorizontalAlignment="Stretch">
 							<TextBlock Text="Dark Theme" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
 
-							<TextBox Classes="Kuwantima" Watermark="Enter text..." HorizontalAlignment="Stretch"/>
+							<TextBox Classes="Kuwantima" PlaceholderText="Enter text..." HorizontalAlignment="Stretch"/>
 
 							<TextBox Classes="Kuwantima" Text="Editable value" HorizontalAlignment="Stretch"/>
 

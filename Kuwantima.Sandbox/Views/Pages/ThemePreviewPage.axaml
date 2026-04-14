@@ -7,9 +7,9 @@
         <!-- LIGHT PREVIEW -->
         <ThemeVariantScope Grid.Column="0" RequestedThemeVariant="Light">
             <Border Background="{DynamicResource SystemRegionBrush}" CornerRadius="8" ClipToBounds="True">
-                <Border Classes="KuwantimaGlass" Padding="0" ClipToBounds="True">
+                <Border Classes="KuwantimaGlass" Padding="0" CornerRadius="8" ClipToBounds="True">
                 <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="24">
-                    <StackPanel Spacing="20" >
+                    <StackPanel Spacing="20" Margin="0,0,0,96">
 
                         <TextBlock Text="Light Theme" FontWeight="Bold" FontSize="18"
                                    Foreground="{DynamicResource SystemAccentColor}"/>
@@ -43,7 +43,7 @@
                         <StackPanel Spacing="8">
                             <TextBlock Text="Inputs" FontWeight="SemiBold" FontSize="14"
                                        Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
-                            <TextBox Classes="Kuwantima" Watermark="Enter text..." Text="Sample input"/>
+                            <TextBox Classes="Kuwantima" PlaceholderText="Enter text..." Text="Sample input"/>
                             <ComboBox Classes="Kuwantima" SelectedIndex="0" HorizontalAlignment="Stretch">
                                 <ComboBoxItem>Option A</ComboBoxItem>
                                 <ComboBoxItem>Option B</ComboBoxItem>
@@ -122,9 +122,9 @@
             <!-- DARK PREVIEW -->
             <ThemeVariantScope Grid.Column="2" RequestedThemeVariant="Dark">
             <Border Background="{DynamicResource SystemRegionBrush}" CornerRadius="8" ClipToBounds="True">
-                <Border Classes="KuwantimaGlass" Padding="0" ClipToBounds="True">
+                <Border Classes="KuwantimaGlass" Padding="0" CornerRadius="8" ClipToBounds="True">
                 <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="24">
-                    <StackPanel Spacing="20" >
+                    <StackPanel Spacing="20" Margin="0,0,0,96">
 
                         <TextBlock Text="Dark Theme" FontWeight="Bold" FontSize="18"
                                    Foreground="{DynamicResource SystemAccentColor}"/>
@@ -158,7 +158,7 @@
                         <StackPanel Spacing="8">
                             <TextBlock Text="Inputs" FontWeight="SemiBold" FontSize="14"
                                        Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
-                            <TextBox Classes="Kuwantima" Watermark="Enter text..." Text="Sample input"/>
+                            <TextBox Classes="Kuwantima" PlaceholderText="Enter text..." Text="Sample input"/>
                             <ComboBox Classes="Kuwantima" SelectedIndex="0" HorizontalAlignment="Stretch">
                                 <ComboBoxItem>Option A</ComboBoxItem>
                                 <ComboBoxItem>Option B</ComboBoxItem>
