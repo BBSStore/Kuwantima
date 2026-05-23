@@ -130,8 +130,8 @@
 			<SolidColorBrush x:Key="KuwantimaGlassBackground" Color="White" Opacity="0.1"/>
 
 			<!-- Glass glow: AliceBlue outline + dual-layer outer glow -->
-			<SolidColorBrush x:Key="KuwantimaGlassGlowBorder" Color="#F0F8FF" Opacity="0.45"/>
-			<SolidColorBrush x:Key="KuwantimaGlassGlowBorderHover" Color="#B0D4FF" Opacity="0.75"/>
+			<SolidColorBrush x:Key="KuwantimaGlassGlowBorder" Color="#FF00CED1" Opacity="0.45"/>
+			<SolidColorBrush x:Key="KuwantimaGlassGlowBorderHover" Color="#F0F8FF" Opacity="0.75"/>
 			<BoxShadows x:Key="KuwantimaGlassGlow">0 0 6 1 #35F0F8FF, 0 0 14 3 #20F0F8FF</BoxShadows>
 			<BoxShadows x:Key="KuwantimaGlassGlowHover">0 0 8 2 #70B0D4FF, 0 0 22 6 #40B0D4FF</BoxShadows>
 
