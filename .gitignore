@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+# Local-only sensitive folders (added 2026-06-10)
+# Sensitive credentials and personal notes - never commit
+Keys and Passwords/
+Layout, Information and Notes/
